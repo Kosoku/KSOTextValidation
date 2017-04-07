@@ -19,7 +19,9 @@
 		079728981E97FFA300E86545 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = KSO;
 				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = "Kosoku Interactive, LLC.";
 			};
 			buildConfigurationList = 0797289B1E97FFA300E86545 /* Build configuration list for PBXProject "KSOTextValidation" */;
 			compatibilityVersion = "Xcode 3.2";
