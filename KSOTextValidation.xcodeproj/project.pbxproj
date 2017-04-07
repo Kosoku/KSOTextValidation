@@ -6,14 +6,95 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		079728A81E97FFF400E86545 /* KSOTextValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 079728A61E97FFF400E86545 /* KSOTextValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		079728A31E97FFF400E86545 /* KSOTextValidation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KSOTextValidation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		079728A61E97FFF400E86545 /* KSOTextValidation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSOTextValidation.h; sourceTree = "<group>"; };
+		079728A71E97FFF400E86545 /* KSOTextValidation-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KSOTextValidation-iOS-Info.plist"; sourceTree = "<group>"; };
+		079728AD1E98004F00E86545 /* KSOTextValidation-Info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KSOTextValidation-Info.h"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0797289F1E97FFF400E86545 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
 /* Begin PBXGroup section */
 		079728971E97FFA300E86545 = {
 			isa = PBXGroup;
 			children = (
+				079728A51E97FFF400E86545 /* KSOTextValidation */,
+				079728A41E97FFF400E86545 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
+		079728A41E97FFF400E86545 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				079728A31E97FFF400E86545 /* KSOTextValidation.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		079728A51E97FFF400E86545 /* KSOTextValidation */ = {
+			isa = PBXGroup;
+			children = (
+				079728A61E97FFF400E86545 /* KSOTextValidation.h */,
+				079728AC1E98002E00E86545 /* Supporting Files */,
+			);
+			path = KSOTextValidation;
+			sourceTree = "<group>";
+		};
+		079728AC1E98002E00E86545 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				079728A71E97FFF400E86545 /* KSOTextValidation-iOS-Info.plist */,
+				079728AD1E98004F00E86545 /* KSOTextValidation-Info.h */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		079728A01E97FFF400E86545 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				079728A81E97FFF400E86545 /* KSOTextValidation.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		079728A21E97FFF400E86545 /* KSOTextValidation-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 079728A91E97FFF400E86545 /* Build configuration list for PBXNativeTarget "KSOTextValidation-iOS" */;
+			buildPhases = (
+				0797289E1E97FFF400E86545 /* Sources */,
+				0797289F1E97FFF400E86545 /* Frameworks */,
+				079728A01E97FFF400E86545 /* Headers */,
+				079728A11E97FFF400E86545 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "KSOTextValidation-iOS";
+			productName = KSOTextValidation;
+			productReference = 079728A31E97FFF400E86545 /* KSOTextValidation.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		079728981E97FFA300E86545 /* Project object */ = {
@@ -22,6 +103,12 @@
 				CLASSPREFIX = KSO;
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Kosoku Interactive, LLC.";
+				TargetAttributes = {
+					079728A21E97FFF400E86545 = {
+						CreatedOnToolsVersion = 8.3;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = 0797289B1E97FFA300E86545 /* Build configuration list for PBXProject "KSOTextValidation" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -31,12 +118,34 @@
 				en,
 			);
 			mainGroup = 079728971E97FFA300E86545;
+			productRefGroup = 079728A41E97FFF400E86545 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				079728A21E97FFF400E86545 /* KSOTextValidation-iOS */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		079728A11E97FFF400E86545 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0797289E1E97FFF400E86545 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		0797289C1E97FFA300E86545 /* Debug */ = {
@@ -51,6 +160,130 @@
 			};
 			name = Release;
 		};
+		079728AA1E97FFF400E86545 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/KSOTextValidation/KSOTextValidation-iOS-Info.plist";
+				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/KSOTextValidation/KSOTextValidation-Info.h";
+				INFOPLIST_PREPROCESS = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kosoku.ksotextvalidation;
+				PRODUCT_NAME = KSOTextValidation;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		079728AB1E97FFF400E86545 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/KSOTextValidation/KSOTextValidation-iOS-Info.plist";
+				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/KSOTextValidation/KSOTextValidation-Info.h";
+				INFOPLIST_PREPROCESS = YES;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.kosoku.ksotextvalidation;
+				PRODUCT_NAME = KSOTextValidation;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -62,6 +295,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		079728A91E97FFF400E86545 /* Build configuration list for PBXNativeTarget "KSOTextValidation-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				079728AA1E97FFF400E86545 /* Debug */,
+				079728AB1E97FFF400E86545 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
