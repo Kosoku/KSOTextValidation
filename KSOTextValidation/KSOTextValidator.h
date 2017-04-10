@@ -17,10 +17,25 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ Protocol describing a text validator object.
+ */
 @protocol KSOTextValidator <NSObject>
 @required
+/**
+ Called whenever new text needs validation. The receiver should examine the provided text and return YES if it validates, otherwise NO. The receiver can provide an optional error describing the reason for failing validation.
+ 
+ @param text The text to validate
+ @param error A pointer to an NSError object that can be optionally populated
+ @return YES if *text* validates, otherwise NO
+ */
 - (BOOL)validateText:(nullable NSString *)text error:(NSError * __autoreleasing *)error;
 @optional
+/**
+ If the receiver responds to this method and returns a non-nil value, it will be displayed as the *rightView* of the associated UITextField.
+ 
+ @return The right accessory view
+ */
 - (nullable UIView *)rightAccessoryView;
 @end
 

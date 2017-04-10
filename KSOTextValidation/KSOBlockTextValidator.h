@@ -21,12 +21,32 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class KSOBlockTextValidator;
 
+/**
+ Block that is invoked whenever there is text to validate.
+ 
+ @param textValidator The text validator
+ @param text The text to validate
+ @param error A pointer to an optional NSError describing the reason for failed validation
+ @return YES if the text validates, otherwise NO
+ */
 typedef BOOL(^KSOBlockTextValidatorBlock)(KSOBlockTextValidator *textValidator, NSString * _Nullable text, NSError * __autoreleasing * error);
 
+/**
+ KSOBlockTextValidator is designed to be set as the *KSO_textValidator* of a UITextField. The provided block is called to perform text validation.
+ */
 @interface KSOBlockTextValidator : NSObject <KSOTextValidator>
 
+/**
+ Set and get the rightAccessoryView of the receiver. Set this to a non-nil value before returning from an invocation of the block to have it displayed within the associated UITextField.
+ */
 @property (strong,nonatomic,nullable) __kindof UIView *rightAccessoryView;
 
+/**
+ Creates and returns a block text validator instance.
+ 
+ @param block The block to invoke when validating text
+ @return The initialized instance
+ */
 - (instancetype)initWithBlock:(KSOBlockTextValidatorBlock)block NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)init NS_UNAVAILABLE;

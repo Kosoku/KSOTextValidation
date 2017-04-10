@@ -21,6 +21,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface UITextField (KSOTextValidationExtensions)
 
+/**
+ Set and get the text validator of the receiver.
+ 
+ @see KSOTextValidator
+ */
 @property (strong,nonatomic,nullable) id<KSOTextValidator> KSO_textValidator;
 
 @end

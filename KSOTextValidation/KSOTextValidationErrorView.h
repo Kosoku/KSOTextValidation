@@ -17,8 +17,17 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+/**
+ KSOTextValidationErrorView displays an exclamation point in a red circle and can optionally display an NSError object if provided. It is meant to be returned as the *rightAccessoryView* of an object conforming to the KSOTextValidator protocol.
+ */
 @interface KSOTextValidationErrorView : UIView
 
+/**
+ Creates and returns an instance of the receiver representing the provided *error*.
+ 
+ @param error The optional error to display
+ @return The initialized instance
+ */
 - (instancetype)initWithError:(nullable NSError *)error NS_DESIGNATED_INITIALIZER;
 
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
