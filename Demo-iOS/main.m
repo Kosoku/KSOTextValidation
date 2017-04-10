@@ -1,8 +1,8 @@
 //
-//  KSOTextValidation.h
-//  KSOTextValidation
+//  main.m
+//  Demo-iOS
 //
-//  Created by William Towe on 4/7/17.
+//  Created by William Towe on 4/9/17.
 //  Copyright © 2017 Kosoku Interactive, LLC. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -14,16 +14,10 @@
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
-//! Project version number for KSOTextValidation.
-FOUNDATION_EXPORT double KSOTextValidationVersionNumber;
-
-//! Project version string for KSOTextValidation.
-FOUNDATION_EXPORT const unsigned char KSOTextValidationVersionString[];
-
-// In this header, you should import all the public headers of your framework using statements like #import <KSOTextValidation/PublicHeader.h>
-
-#import <KSOTextValidation/KSOTextValidator.h>
-#import <KSOTextValidation/UITextField+KSOTextValidationExtensions.h>
-#import <KSOTextValidation/KSOTextValidationErrorView.h>
-#import <KSOTextValidation/KSOBlockTextValidator.h>
+int main(int argc, char * argv[]) {
+    @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+    }
+}

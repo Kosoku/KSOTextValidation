@@ -1,8 +1,8 @@
 //
-//  KSOTextValidation.h
+//  KSOTextValidationErrorView.h
 //  KSOTextValidation
 //
-//  Created by William Towe on 4/7/17.
+//  Created by William Towe on 4/9/17.
 //  Copyright © 2017 Kosoku Interactive, LLC. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -15,15 +15,15 @@
 
 #import <UIKit/UIKit.h>
 
-//! Project version number for KSOTextValidation.
-FOUNDATION_EXPORT double KSOTextValidationVersionNumber;
+NS_ASSUME_NONNULL_BEGIN
 
-//! Project version string for KSOTextValidation.
-FOUNDATION_EXPORT const unsigned char KSOTextValidationVersionString[];
+@interface KSOTextValidationErrorView : UIView
 
-// In this header, you should import all the public headers of your framework using statements like #import <KSOTextValidation/PublicHeader.h>
+- (instancetype)initWithError:(nullable NSError *)error NS_DESIGNATED_INITIALIZER;
 
-#import <KSOTextValidation/KSOTextValidator.h>
-#import <KSOTextValidation/UITextField+KSOTextValidationExtensions.h>
-#import <KSOTextValidation/KSOTextValidationErrorView.h>
-#import <KSOTextValidation/KSOBlockTextValidator.h>
+- (instancetype)initWithFrame:(CGRect)frame __attribute__((unavailable("use initWithError:")));
+- (instancetype)initWithCoder:(NSCoder *)aDecoder __attribute__((unavailable("use initWithError:")));
+
+@end
+
+NS_ASSUME_NONNULL_END
