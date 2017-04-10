@@ -15,6 +15,9 @@
 
 #import "KSOTextValidationErrorView.h"
 
+#import <Stanley/KSTGeometryFunctions.h>
+#import <Ditko/UIAlertController+KDIExtensions.h>
+
 @interface KSOTextValidationErrorView ()
 @property (strong,nonatomic) UIButton *button;
 
@@ -37,6 +40,7 @@
     _error = error;
     
     _button = [UIButton buttonWithType:UIButtonTypeCustom];
+    [_button setUserInteractionEnabled:error != nil];
     [_button setTranslatesAutoresizingMaskIntoConstraints:NO];
     [_button setImage:({
         UIImage *retval;
@@ -52,7 +56,13 @@
         
         [style setAlignment:NSTextAlignmentCenter];
         
-        [@"!" drawInRect:rect withAttributes:@{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0], NSForegroundColorAttributeName: [UIColor whiteColor], NSParagraphStyleAttributeName: style}];
+        NSString *string = @"!";
+        NSDictionary *attributes = @{NSFontAttributeName: [UIFont boldSystemFontOfSize:17.0],
+                                     NSForegroundColorAttributeName: [UIColor whiteColor],
+                                     NSParagraphStyleAttributeName: style};
+        CGSize stringSize = [string sizeWithAttributes:attributes];
+        
+        [string drawInRect:KSTCGRectCenterInRect(CGRectMake(0, 0, stringSize.width, stringSize.height),rect) withAttributes:attributes];
         
         retval = UIGraphicsGetImageFromCurrentImageContext();
         
@@ -70,7 +80,9 @@
 }
 
 - (IBAction)_buttonAction:(id)sender {
-    
+    if (self.error != nil) {
+        [UIAlertController KDI_presentAlertControllerWithError:self.error];
+    }
 }
 
 @end

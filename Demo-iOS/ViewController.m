@@ -38,6 +38,11 @@
             
             return YES;
         }
+        
+        if (text.length > 0) {
+            *error = [NSError errorWithDomain:@"error" code:0 userInfo:@{NSLocalizedDescriptionKey: @"Enter a valid email address"}];
+        }
+        
         return NO;
     }]];
     
@@ -46,6 +51,13 @@
 }
 - (void)viewWillLayoutSubviews {
     [self.emailTextField setFrame:CGRectMake(8, [self.topLayoutGuide length] + 8, CGRectGetWidth(self.view.bounds) - 16, [self.emailTextField sizeThatFits:CGSizeZero].height)];
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (!self.emailTextField.isFirstResponder) {
+        [self.emailTextField becomeFirstResponder];
+    }
 }
 
 @end

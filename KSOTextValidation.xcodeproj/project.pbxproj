@@ -16,6 +16,14 @@
 		07106B471E9B2AB5009FBC4E /* KSOBlockTextValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 07106B441E9B2AB5009FBC4E /* KSOBlockTextValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07106B481E9B2AB5009FBC4E /* KSOBlockTextValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 07106B451E9B2AB5009FBC4E /* KSOBlockTextValidator.m */; };
 		07106B491E9B2AB5009FBC4E /* KSOBlockTextValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 07106B451E9B2AB5009FBC4E /* KSOBlockTextValidator.m */; };
+		0721884B1E9BEF68005C18D5 /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0721884A1E9BEF68005C18D5 /* Ditko.framework */; };
+		0721884C1E9BEF68005C18D5 /* Ditko.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0721884A1E9BEF68005C18D5 /* Ditko.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0721884E1E9BEF74005C18D5 /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0721884D1E9BEF74005C18D5 /* Ditko.framework */; };
+		072188501E9BEF7B005C18D5 /* Ditko.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0721884F1E9BEF7B005C18D5 /* Ditko.framework */; };
+		07277DD01E9BE518004237FD /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07277DCF1E9BE518004237FD /* Stanley.framework */; };
+		07277DD11E9BE518004237FD /* Stanley.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07277DCF1E9BE518004237FD /* Stanley.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07277DD41E9BE52F004237FD /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07277DD31E9BE52F004237FD /* Stanley.framework */; };
+		07277DD61E9BE545004237FD /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07277DD51E9BE545004237FD /* Stanley.framework */; };
 		076798101E9ACF6E009AB0F9 /* KSOTextValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0767980F1E9ACF6E009AB0F9 /* KSOTextValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		076798111E9ACF6E009AB0F9 /* KSOTextValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 0767980F1E9ACF6E009AB0F9 /* KSOTextValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0767981A1E9ACFAE009AB0F9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 076798191E9ACFAE009AB0F9 /* main.m */; };
@@ -51,6 +59,8 @@
 			dstSubfolderSpec = 10;
 			files = (
 				0767982E1E9ACFD2009AB0F9 /* KSOTextValidation.framework in Embed Frameworks */,
+				07277DD11E9BE518004237FD /* Stanley.framework in Embed Frameworks */,
+				0721884C1E9BEF68005C18D5 /* Ditko.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,6 +72,12 @@
 		07106B3F1E9B23FA009FBC4E /* KSOTextValidationErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSOTextValidationErrorView.m; sourceTree = "<group>"; };
 		07106B441E9B2AB5009FBC4E /* KSOBlockTextValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSOBlockTextValidator.h; sourceTree = "<group>"; };
 		07106B451E9B2AB5009FBC4E /* KSOBlockTextValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSOBlockTextValidator.m; sourceTree = "<group>"; };
+		0721884A1E9BEF68005C18D5 /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0721884D1E9BEF74005C18D5 /* Ditko.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ditko.framework; path = "Vendor/Ditko/build/Debug-iphoneos/Ditko.framework"; sourceTree = "<group>"; };
+		0721884F1E9BEF7B005C18D5 /* Ditko.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ditko.framework; path = "Vendor/Ditko/build/Debug-appletvos/Ditko.framework"; sourceTree = "<group>"; };
+		07277DCF1E9BE518004237FD /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		07277DD31E9BE52F004237FD /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "Vendor/Stanley/build/Debug-iphoneos/Stanley.framework"; sourceTree = "<group>"; };
+		07277DD51E9BE545004237FD /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "Vendor/Stanley/build/Debug-appletvos/Stanley.framework"; sourceTree = "<group>"; };
 		076798061E9ACEA4009AB0F9 /* KSOTextValidation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KSOTextValidation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0767980E1E9ACEE3009AB0F9 /* KSOTextValidation-tvOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KSOTextValidation-tvOS-Info.plist"; sourceTree = "<group>"; };
 		0767980F1E9ACF6E009AB0F9 /* KSOTextValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSOTextValidator.h; sourceTree = "<group>"; };
@@ -88,6 +104,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				072188501E9BEF7B005C18D5 /* Ditko.framework in Frameworks */,
+				07277DD61E9BE545004237FD /* Stanley.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +114,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0767982D1E9ACFD2009AB0F9 /* KSOTextValidation.framework in Frameworks */,
+				07277DD01E9BE518004237FD /* Stanley.framework in Frameworks */,
+				0721884B1E9BEF68005C18D5 /* Ditko.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,12 +123,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0721884E1E9BEF74005C18D5 /* Ditko.framework in Frameworks */,
+				07277DD41E9BE52F004237FD /* Stanley.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		07277DD21E9BE52F004237FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0721884F1E9BEF7B005C18D5 /* Ditko.framework */,
+				0721884D1E9BEF74005C18D5 /* Ditko.framework */,
+				0721884A1E9BEF68005C18D5 /* Ditko.framework */,
+				07277DD51E9BE545004237FD /* Stanley.framework */,
+				07277DCF1E9BE518004237FD /* Stanley.framework */,
+				07277DD31E9BE52F004237FD /* Stanley.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		076798001E9ACE6F009AB0F9 /* Source */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +188,7 @@
 				079728A51E97FFF400E86545 /* KSOTextValidation */,
 				076798171E9ACFAE009AB0F9 /* Demo-iOS */,
 				079728A41E97FFF400E86545 /* Products */,
+				07277DD21E9BE52F004237FD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -435,6 +471,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-appletvos",
+					"$(PROJECT_DIR)/Vendor/Ditko/build/Debug-appletvos",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -499,6 +540,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-appletvos",
+					"$(PROJECT_DIR)/Vendor/Ditko/build/Debug-appletvos",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -672,6 +718,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Vendor/Ditko/build/Debug-iphoneos",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -737,6 +788,11 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Vendor/Ditko/build/Debug-iphoneos",
+				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
