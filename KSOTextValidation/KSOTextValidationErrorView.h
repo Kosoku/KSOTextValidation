@@ -21,8 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (instancetype)initWithError:(nullable NSError *)error NS_DESIGNATED_INITIALIZER;
 
-- (instancetype)initWithFrame:(CGRect)frame __attribute__((unavailable("use initWithError:")));
-- (instancetype)initWithCoder:(NSCoder *)aDecoder __attribute__((unavailable("use initWithError:")));
+- (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
+- (instancetype)initWithCoder:(NSCoder *)aDecoder NS_UNAVAILABLE;
 
 @end
 

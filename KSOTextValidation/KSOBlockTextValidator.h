@@ -29,7 +29,7 @@ typedef BOOL(^KSOBlockTextValidatorBlock)(KSOBlockTextValidator *textValidator, 
 
 - (instancetype)initWithBlock:(KSOBlockTextValidatorBlock)block NS_DESIGNATED_INITIALIZER;
 
-- (instancetype)init UNAVAILABLE_ATTRIBUTE;
+- (instancetype)init NS_UNAVAILABLE;
 
 @end
 
