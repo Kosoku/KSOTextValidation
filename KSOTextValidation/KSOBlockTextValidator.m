@@ -25,7 +25,9 @@
     NSError *outError;
     BOOL retval = self.block(self,text,&outError);
     
-    if (!retval) {
+    if (!retval &&
+        error != NULL) {
+        
         *error = outError;
     }
     

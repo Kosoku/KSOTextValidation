@@ -46,7 +46,7 @@
     if (retval) {
         [self.textField setRightView:nil];
     }
-    else {
+    else if (outError != nil) {
         if ([self.textValidator respondsToSelector:@selector(rightAccessoryView)] &&
             [self.textValidator rightAccessoryView] != nil) {
             
@@ -63,6 +63,9 @@
             [self.textField setRightView:rightAccessoryView];
             [self.textField setRightViewMode:UITextFieldViewModeAlways];
         }
+    }
+    else {
+        [self.textField setRightView:nil];
     }
 }
 

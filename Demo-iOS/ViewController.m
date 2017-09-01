@@ -35,7 +35,7 @@
     [emailTextField setKSO_textValidator:[[KSOBlockTextValidator alloc] initWithBlock:^BOOL(KSOBlockTextValidator * _Nonnull textValidator, NSString * _Nullable text, NSError * _Nullable __autoreleasing * _Nullable error) {
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}" options:0 error:NULL];
         
-        if (text.length == 0 ||
+        if (text.length > 0 &&
             [regex firstMatchInString:text options:0 range:NSMakeRange(0, text.length)] != nil) {
             
             return YES;
