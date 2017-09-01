@@ -15,6 +15,7 @@
 
 #import "ViewController.h"
 
+#import <Ditko/Ditko.h>
 #import <KSOTextValidation/KSOTextValidation.h>
 
 @interface ViewController ()
@@ -26,10 +27,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UITextField *emailTextField = [[UITextField alloc] initWithFrame:CGRectZero];
+    KDITextField *emailTextField = [[KDITextField alloc] initWithFrame:CGRectZero];
     
     [emailTextField setBorderStyle:UITextBorderStyleRoundedRect];
     [emailTextField setPlaceholder:@"Email"];
+    [emailTextField setRightViewEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 8)];
     [emailTextField setKSO_textValidator:[[KSOBlockTextValidator alloc] initWithBlock:^BOOL(KSOBlockTextValidator * _Nonnull textValidator, NSString * _Nullable text, NSError * _Nullable __autoreleasing * _Nullable error) {
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}" options:0 error:NULL];
         

@@ -50,6 +50,12 @@
 		076798361E9AD00D009AB0F9 /* UITextField+KSOTextValidationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 076798331E9AD00D009AB0F9 /* UITextField+KSOTextValidationExtensions.m */; };
 		076798371E9AD00D009AB0F9 /* UITextField+KSOTextValidationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 076798331E9AD00D009AB0F9 /* UITextField+KSOTextValidationExtensions.m */; };
 		079728A81E97FFF400E86545 /* KSOTextValidation.h in Headers */ = {isa = PBXBuildFile; fileRef = 079728A61E97FFF400E86545 /* KSOTextValidation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07A1689D1F592CE000B03AA8 /* Loki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A1689C1F592CE000B03AA8 /* Loki.framework */; };
+		07A1689F1F592CE600B03AA8 /* Loki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A1689E1F592CE600B03AA8 /* Loki.framework */; };
+		07A168A11F592CEF00B03AA8 /* Loki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A168A01F592CEF00B03AA8 /* Loki.framework */; };
+		07A168A21F592CEF00B03AA8 /* Loki.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07A168A01F592CEF00B03AA8 /* Loki.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07A168A41F592CF900B03AA8 /* Loki.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07A168A31F592CF900B03AA8 /* Loki.framework */; };
+		07A168A51F592CF900B03AA8 /* Loki.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07A168A31F592CF900B03AA8 /* Loki.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +83,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				072188731E9BFC48005C18D5 /* Stanley.framework in Embed Frameworks */,
+				07A168A51F592CF900B03AA8 /* Loki.framework in Embed Frameworks */,
 				072188701E9BFC41005C18D5 /* Ditko.framework in Embed Frameworks */,
 				0721886A1E9BFC3B005C18D5 /* KSOTextValidation.framework in Embed Frameworks */,
 			);
@@ -90,6 +97,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				0767982E1E9ACFD2009AB0F9 /* KSOTextValidation.framework in Embed Frameworks */,
+				07A168A21F592CEF00B03AA8 /* Loki.framework in Embed Frameworks */,
 				07277DD11E9BE518004237FD /* Stanley.framework in Embed Frameworks */,
 				0721884C1E9BEF68005C18D5 /* Ditko.framework in Embed Frameworks */,
 			);
@@ -139,6 +147,10 @@
 		079728A61E97FFF400E86545 /* KSOTextValidation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KSOTextValidation.h; sourceTree = "<group>"; };
 		079728A71E97FFF400E86545 /* KSOTextValidation-iOS-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KSOTextValidation-iOS-Info.plist"; sourceTree = "<group>"; };
 		079728AD1E98004F00E86545 /* KSOTextValidation-Info.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KSOTextValidation-Info.h"; sourceTree = "<group>"; };
+		07A1689C1F592CE000B03AA8 /* Loki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Loki.framework; path = "Vendor/Loki/build/Debug-iphoneos/Loki.framework"; sourceTree = "<group>"; };
+		07A1689E1F592CE600B03AA8 /* Loki.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Loki.framework; path = "Vendor/Loki/build/Debug-iphoneos/Loki.framework"; sourceTree = "<group>"; };
+		07A168A01F592CEF00B03AA8 /* Loki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Loki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		07A168A31F592CF900B03AA8 /* Loki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Loki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				072188721E9BFC48005C18D5 /* Stanley.framework in Frameworks */,
+				07A168A41F592CF900B03AA8 /* Loki.framework in Frameworks */,
 				0721886F1E9BFC41005C18D5 /* Ditko.framework in Frameworks */,
 				072188691E9BFC3B005C18D5 /* KSOTextValidation.framework in Frameworks */,
 			);
@@ -156,6 +169,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07A1689F1F592CE600B03AA8 /* Loki.framework in Frameworks */,
 				072188501E9BEF7B005C18D5 /* Ditko.framework in Frameworks */,
 				07277DD61E9BE545004237FD /* Stanley.framework in Frameworks */,
 			);
@@ -166,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0767982D1E9ACFD2009AB0F9 /* KSOTextValidation.framework in Frameworks */,
+				07A168A11F592CEF00B03AA8 /* Loki.framework in Frameworks */,
 				07277DD01E9BE518004237FD /* Stanley.framework in Frameworks */,
 				0721884B1E9BEF68005C18D5 /* Ditko.framework in Frameworks */,
 			);
@@ -175,6 +190,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07A1689D1F592CE000B03AA8 /* Loki.framework in Frameworks */,
 				0721884E1E9BEF74005C18D5 /* Ditko.framework in Frameworks */,
 				07277DD41E9BE52F004237FD /* Stanley.framework in Frameworks */,
 			);
@@ -209,6 +225,10 @@
 		07277DD21E9BE52F004237FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07A168A31F592CF900B03AA8 /* Loki.framework */,
+				07A168A01F592CEF00B03AA8 /* Loki.framework */,
+				07A1689E1F592CE600B03AA8 /* Loki.framework */,
+				07A1689C1F592CE000B03AA8 /* Loki.framework */,
 				072188711E9BFC48005C18D5 /* Stanley.framework */,
 				0721886E1E9BFC41005C18D5 /* Ditko.framework */,
 				0721884F1E9BEF7B005C18D5 /* Ditko.framework */,
@@ -712,6 +732,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-appletvos",
 					"$(PROJECT_DIR)/Vendor/Ditko/build/Debug-appletvos",
+					"$(PROJECT_DIR)/Vendor/Loki/build/Debug-iphoneos",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -781,6 +802,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-appletvos",
 					"$(PROJECT_DIR)/Vendor/Ditko/build/Debug-appletvos",
+					"$(PROJECT_DIR)/Vendor/Loki/build/Debug-iphoneos",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -959,6 +981,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/Vendor/Ditko/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Vendor/Loki/build/Debug-iphoneos",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1029,6 +1052,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/Vendor/Ditko/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Vendor/Loki/build/Debug-iphoneos",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1066,6 +1090,7 @@
 				072188681E9BFC18005C18D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0767980B1E9ACEA4009AB0F9 /* Build configuration list for PBXNativeTarget "KSOTextValidation-tvOS" */ = {
 			isa = XCConfigurationList;
