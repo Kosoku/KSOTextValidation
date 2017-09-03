@@ -16,6 +16,8 @@
 #import "UITextField+KSOTextValidationExtensions.h"
 #import "KSOTextValidationErrorView.h"
 
+#import <Stanley/KSTScopeMacros.h>
+
 #import <objc/runtime.h>
 
 @interface KSOTextFieldTextValidatorWrapper : NSObject
@@ -71,10 +73,73 @@
 
 @end
 
-static void const *kKSOTextValidatorKey = &kKSOTextValidatorKey;
+static void *kKSOTextFieldTextFormatterWrapperObservingContext = &kKSOTextFieldTextFormatterWrapperObservingContext;
+
+@interface KSOTextFieldFormatterWrapper : NSObject <UITextFieldDelegate>
+@property (strong,nonatomic) NSFormatter *formatter;
+@property (weak,nonatomic) UITextField *textField;
+@property (weak,nonatomic) id<UITextFieldDelegate> realDelegate;
+
+- (instancetype)initWithFormatter:(NSFormatter *)formatter textField:(UITextField *)textField;
+@end
+
+@implementation KSOTextFieldFormatterWrapper
+
+- (void)dealloc {
+    [_textField removeObserver:self forKeyPath:@kstKeypath(_textField,delegate) context:kKSOTextFieldTextFormatterWrapperObservingContext];
+}
+
+- (instancetype)initWithFormatter:(NSFormatter *)formatter textField:(UITextField *)textField {
+    if (!(self = [super init]))
+        return nil;
+    
+    _formatter = formatter;
+    _textField = textField;
+    
+    [_textField addObserver:self forKeyPath:@kstKeypath(_textField,delegate) options:NSKeyValueObservingOptionNew|NSKeyValueObservingOptionInitial context:kKSOTextFieldTextFormatterWrapperObservingContext];
+    
+    return self;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
+    if (context == kKSOTextFieldTextFormatterWrapperObservingContext) {
+        if ([keyPath isEqualToString:@kstKeypath(self.textField,delegate)]) {
+            id<UITextFieldDelegate> new = change[NSKeyValueChangeNewKey];
+            
+            if (new == self) {
+                return;
+            }
+            
+            if ([new isEqual:[NSNull null]]) {
+                [self setRealDelegate:nil];
+                [self.textField setDelegate:self];
+            }
+            else {
+                [self setRealDelegate:new];
+                [self.textField setDelegate:self];
+            }
+        }
+    }
+    else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    return YES;
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason {
+    
+}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    return YES;
+}
+
+@end
 
 @implementation UITextField (KSOTextValidationExtensions)
 
+static void const *kKSOTextValidatorKey = &kKSOTextValidatorKey;
 @dynamic KSO_textValidator;
 - (id<KSOTextValidator>)KSO_textValidator {
     KSOTextFieldTextValidatorWrapper *wrapper = objc_getAssociatedObject(self, kKSOTextValidatorKey);
@@ -85,6 +150,19 @@ static void const *kKSOTextValidatorKey = &kKSOTextValidatorKey;
     KSOTextFieldTextValidatorWrapper *wrapper = [[KSOTextFieldTextValidatorWrapper alloc] initWithTextValidator:KSO_textValidator textField:self];
     
     objc_setAssociatedObject(self, kKSOTextValidatorKey, wrapper, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+static void const *kKSOFormatterKey = &kKSOFormatterKey;
+@dynamic KSO_formatter;
+- (NSFormatter *)KSO_formatter {
+    KSOTextFieldFormatterWrapper *wrapper = objc_getAssociatedObject(self, kKSOFormatterKey);
+    
+    return wrapper.formatter;
+}
+- (void)setKSO_formatter:(NSFormatter *)KSO_formatter {
+    KSOTextFieldFormatterWrapper *wrapper = [[KSOTextFieldFormatterWrapper alloc] initWithFormatter:KSO_formatter textField:self];
+    
+    objc_setAssociatedObject(self, kKSOFormatterKey, wrapper, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end
