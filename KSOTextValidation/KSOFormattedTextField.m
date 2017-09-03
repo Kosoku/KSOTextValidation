@@ -42,9 +42,28 @@
     return retval;
 }
 - (void)setText:(NSString *)text {
-    [super setText:self.formatter == nil || self.isEditing ? text : [self.formatter editingStringForObjectValue:text]];
+    if (self.formatter == nil ||
+        self.isEditing) {
+        
+        [super setText:text];
+    }
+    else {
+        NSAttributedString *attrText = [self.formatter attributedStringForObjectValue:text withDefaultAttributes:@{NSForegroundColorAttributeName: UIColor.blackColor}];
+        
+        if (attrText == nil) {
+            [super setText:[self.formatter stringForObjectValue:text]];
+        }
+        else {
+            [self setAttributedText:attrText];
+        }
+    }
 }
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    if (self.formatter != nil) {
+        [textField setText:[self.formatter editingStringForObjectValue:textField.text]];
+    }
+}
 - (void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason {
     [textField setText:textField.text];
 }
@@ -68,14 +87,14 @@
         BOOL retval = [self.formatter isPartialStringValid:&newText proposedSelectedRange:&newRange originalString:textField.text originalSelectedRange:NSMakeRange(location, length) errorDescription:NULL];
         
         if (!retval) {
-            [textField setText:newText];
-            
             UITextPosition *start = [textField positionFromPosition:beginning offset:newRange.location];
             UITextPosition *end = [textField positionFromPosition:start offset:newRange.length];
             
             textRange = [textField textRangeFromPosition:start toPosition:end];
             
             [textField setSelectedTextRange:textRange];
+            
+            [textField setText:newText];
             
             [textField sendActionsForControlEvents:UIControlEventEditingChanged];
         }

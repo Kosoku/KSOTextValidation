@@ -69,6 +69,7 @@
 		07EEB31E1F5BD908000C44C8 /* KSOEmailAddressValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 07EEB31B1F5BD908000C44C8 /* KSOEmailAddressValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07EEB31F1F5BD908000C44C8 /* KSOEmailAddressValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EEB31C1F5BD908000C44C8 /* KSOEmailAddressValidator.m */; };
 		07EEB3201F5BD908000C44C8 /* KSOEmailAddressValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EEB31C1F5BD908000C44C8 /* KSOEmailAddressValidator.m */; };
+		07EEB3231F5BE719000C44C8 /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EEB3221F5BE719000C44C8 /* PhoneNumberFormatter.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +173,8 @@
 		07EEB3161F5BD760000C44C8 /* KSOPhoneNumberValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSOPhoneNumberValidator.m; sourceTree = "<group>"; };
 		07EEB31B1F5BD908000C44C8 /* KSOEmailAddressValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSOEmailAddressValidator.h; sourceTree = "<group>"; };
 		07EEB31C1F5BD908000C44C8 /* KSOEmailAddressValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSOEmailAddressValidator.m; sourceTree = "<group>"; };
+		07EEB3211F5BE719000C44C8 /* PhoneNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumberFormatter.h; sourceTree = "<group>"; };
+		07EEB3221F5BE719000C44C8 /* PhoneNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberFormatter.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +294,8 @@
 				0767981F1E9ACFAE009AB0F9 /* ViewController.m */,
 				07EEB30C1F5BC880000C44C8 /* ECPhoneNumberFormatter.h */,
 				07EEB30D1F5BC880000C44C8 /* ECPhoneNumberFormatter.m */,
+				07EEB3211F5BE719000C44C8 /* PhoneNumberFormatter.h */,
+				07EEB3221F5BE719000C44C8 /* PhoneNumberFormatter.m */,
 				076798211E9ACFAE009AB0F9 /* Main.storyboard */,
 				076798241E9ACFAE009AB0F9 /* Assets.xcassets */,
 				076798261E9ACFAE009AB0F9 /* LaunchScreen.storyboard */,
@@ -574,6 +579,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				076798201E9ACFAE009AB0F9 /* ViewController.m in Sources */,
+				07EEB3231F5BE719000C44C8 /* PhoneNumberFormatter.m in Sources */,
 				0767981D1E9ACFAE009AB0F9 /* AppDelegate.m in Sources */,
 				07EEB30E1F5BC880000C44C8 /* ECPhoneNumberFormatter.m in Sources */,
 				0767981A1E9ACFAE009AB0F9 /* main.m in Sources */,
