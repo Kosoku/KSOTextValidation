@@ -73,6 +73,27 @@
 
 @end
 
+@interface KSOTextFieldTextFormatterWrapper : NSObject
+@property (strong,nonatomic) id<KSOTextFormatter> textFormatter;
+@property (weak,nonatomic) UITextField *textField;
+
+- (instancetype)initWithTextFormatter:(id<KSOTextFormatter>)textFormatter textField:(UITextField *)textField;
+@end
+
+@implementation KSOTextFieldTextFormatterWrapper
+
+- (instancetype)initWithTextFormatter:(id<KSOTextFormatter>)textFormatter textField:(UITextField *)textField {
+    if (!(self = [super init]))
+        return nil;
+    
+    _textFormatter = textFormatter;
+    _textField = textField;
+    
+    return self;
+}
+
+@end
+
 @implementation UITextField (KSOTextValidationExtensions)
 
 static void const *kKSOTextValidatorKey = &kKSOTextValidatorKey;

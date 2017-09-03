@@ -36,7 +36,15 @@
     if (!self.isEditing &&
         self.formatter != nil) {
         
-        [self.formatter getObjectValue:&retval forString:retval errorDescription:NULL];
+        id realRetval;
+        [self.formatter getObjectValue:&realRetval forString:retval errorDescription:NULL];
+        
+        if ([realRetval isKindOfClass:NSString.class]) {
+            retval = realRetval;
+        }
+        else {
+            retval = [self.formatter stringForObjectValue:realRetval];
+        }
     }
     
     return retval;
@@ -51,7 +59,19 @@
         NSAttributedString *attrText = [self.formatter attributedStringForObjectValue:text withDefaultAttributes:@{NSForegroundColorAttributeName: UIColor.blackColor}];
         
         if (attrText == nil) {
-            [super setText:[self.formatter stringForObjectValue:text]];
+            NSString *realText = [self.formatter stringForObjectValue:text];
+            
+            if ([realText isKindOfClass:NSString.class]) {
+                [super setText:realText];
+            }
+            else {
+                id objectValue;
+                [self.formatter getObjectValue:&objectValue forString:text errorDescription:NULL];
+                
+                realText = [self.formatter stringForObjectValue:objectValue];
+                
+                [super setText:realText];
+            }
         }
         else {
             [self setAttributedText:attrText];

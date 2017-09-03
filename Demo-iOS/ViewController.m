@@ -21,7 +21,7 @@
 
 @interface ViewController ()
 @property (strong,nonatomic) KDITextField *emailTextField, *minMaxTextField;
-@property (strong,nonatomic) KSOFormattedTextField *phoneNumberTextField;
+@property (strong,nonatomic) KSOFormattedTextField *phoneNumberTextField, *numberTextField;
 @end
 
 @implementation ViewController
@@ -79,6 +79,27 @@
     
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|" options:0 metrics:nil views:@{@"view": self.minMaxTextField}]];
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-[view]" options:0 metrics:nil views:@{@"view": self.minMaxTextField, @"top": self.phoneNumberTextField}]];
+    
+    [self setNumberTextField:[[KSOFormattedTextField alloc] initWithFrame:CGRectZero]];
+    [self.numberTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.numberTextField setBorderStyle:UITextBorderStyleRoundedRect];
+    [self.numberTextField setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.numberTextField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+    [self.numberTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
+    [self.numberTextField setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
+    [self.numberTextField setPlaceholder:@"Currency"];
+    [self.numberTextField setFormatter:({
+        NSNumberFormatter *retval = [[NSNumberFormatter alloc] init];
+        
+        [retval setNumberStyle:NSNumberFormatterDecimalStyle];
+        [retval setTextAttributesForNegativeValues:@{NSForegroundColorAttributeName: UIColor.redColor}];
+        
+        retval;
+    })];
+    [self.view addSubview:self.numberTextField];
+    
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|" options:0 metrics:nil views:@{@"view": self.numberTextField}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-[view]" options:0 metrics:nil views:@{@"view": self.numberTextField, @"top": self.minMaxTextField}]];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
