@@ -6,6 +6,7 @@
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
     "95DFEE02B27284838A8FA3A07714FEA27B4CE167" : 9223372036854775807,
     "C94B06A26B26F3DFAC67E018206B5755A8E083DD" : 9223372036854775807,
+    "23D2B14CFC63A56B8AF48015DF4E29561E083AAB" : 9223372036854775807,
     "8B2A7E3741DEC22B5DBC9F3C8A40DDED7A1A1DF5" : 9223372036854775807,
     "092992F99F236C29DF2CD167CFC9863E1570ED68" : 9223372036854775807
   },
@@ -13,6 +14,7 @@
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "95DFEE02B27284838A8FA3A07714FEA27B4CE167" : "KSOTextValidation\/Vendor\/Ditko\/",
     "C94B06A26B26F3DFAC67E018206B5755A8E083DD" : "KSOTextValidation\/Vendor\/Stanley\/",
+    "23D2B14CFC63A56B8AF48015DF4E29561E083AAB" : "KSOTextValidation\/Vendor\/ECPhoneNumberFormatter\/",
     "8B2A7E3741DEC22B5DBC9F3C8A40DDED7A1A1DF5" : "KSOTextValidation\/",
     "092992F99F236C29DF2CD167CFC9863E1570ED68" : "KSOTextValidation\/Vendor\/Loki\/"
   },
@@ -24,6 +26,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Kosoku\/Loki.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "092992F99F236C29DF2CD167CFC9863E1570ED68"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/enriquez\/ECPhoneNumberFormatter.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "23D2B14CFC63A56B8AF48015DF4E29561E083AAB"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Kosoku\/KSOTextValidation.git",

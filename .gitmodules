@@ -7,3 +7,6 @@
 [submodule "Vendor/Loki"]
 	path = Vendor/Loki
 	url = https://github.com/Kosoku/Loki.git
+[submodule "Vendor/ECPhoneNumberFormatter"]
+	path = Vendor/ECPhoneNumberFormatter
+	url = https://github.com/enriquez/ECPhoneNumberFormatter.git

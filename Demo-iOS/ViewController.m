@@ -14,12 +14,14 @@
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "ViewController.h"
+#import "ECPhoneNumberFormatter.h"
 
 #import <Ditko/Ditko.h>
 #import <KSOTextValidation/KSOTextValidation.h>
 
 @interface ViewController ()
-@property (strong,nonatomic) UITextField *emailTextField;
+@property (strong,nonatomic) KDITextField *emailTextField;
+@property (strong,nonatomic) KSOFormattedTextField *phoneNumberTextField;
 @end
 
 @implementation ViewController
@@ -27,12 +29,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    KDITextField *emailTextField = [[KDITextField alloc] initWithFrame:CGRectZero];
-    
-    [emailTextField setBorderStyle:UITextBorderStyleRoundedRect];
-    [emailTextField setPlaceholder:@"Email"];
-    [emailTextField setRightViewEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 8)];
-    [emailTextField setKSO_textValidator:[[KSOBlockTextValidator alloc] initWithBlock:^BOOL(KSOBlockTextValidator * _Nonnull textValidator, NSString * _Nullable text, NSError * _Nullable __autoreleasing * _Nullable error) {
+    [self setEmailTextField:[[KDITextField alloc] initWithFrame:CGRectZero]];
+    [self.emailTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.emailTextField setBorderStyle:UITextBorderStyleRoundedRect];
+    [self.emailTextField setPlaceholder:@"Email"];
+    [self.emailTextField setKeyboardType:UIKeyboardTypeEmailAddress];
+    [self.emailTextField setTextContentType:UITextContentTypeEmailAddress];
+    [self.emailTextField setRightViewEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 8)];
+    [self.emailTextField setKSO_textValidator:[[KSOBlockTextValidator alloc] initWithBlock:^BOOL(KSOBlockTextValidator * _Nonnull textValidator, NSString * _Nullable text, NSError * _Nullable __autoreleasing * _Nullable error) {
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^.+@.+\\..+$" options:0 error:NULL];
         
         if (text.length > 0 &&
@@ -47,19 +51,27 @@
         
         return NO;
     }]];
+    [self.view addSubview:self.emailTextField];
     
-    [self.view addSubview:emailTextField];
-    [self setEmailTextField:emailTextField];
-}
-- (void)viewWillLayoutSubviews {
-    [self.emailTextField setFrame:CGRectMake(8, [self.topLayoutGuide length] + 8, CGRectGetWidth(self.view.bounds) - 16, [self.emailTextField sizeThatFits:CGSizeZero].height)];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|" options:0 metrics:nil views:@{@"view": self.emailTextField}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-[view]" options:0 metrics:nil views:@{@"view": self.emailTextField, @"top": self.topLayoutGuide}]];
+    
+    [self setPhoneNumberTextField:[[KSOFormattedTextField alloc] initWithFrame:CGRectZero]];
+    [self.phoneNumberTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.phoneNumberTextField setBorderStyle:UITextBorderStyleRoundedRect];
+    [self.phoneNumberTextField setKeyboardType:UIKeyboardTypePhonePad];
+    [self.phoneNumberTextField setTextContentType:UITextContentTypeTelephoneNumber];
+    [self.phoneNumberTextField setPlaceholder:@"Phone Number"];
+    [self.phoneNumberTextField setFormatter:[[ECPhoneNumberFormatter alloc] init]];
+    [self.view addSubview:self.phoneNumberTextField];
+    
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|" options:0 metrics:nil views:@{@"view": self.phoneNumberTextField}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-[view]" options:0 metrics:nil views:@{@"view": self.phoneNumberTextField, @"top": self.emailTextField}]];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    if (!self.emailTextField.isFirstResponder) {
-        [self.emailTextField becomeFirstResponder];
-    }
+    [self.emailTextField becomeFirstResponder];
 }
 
 @end

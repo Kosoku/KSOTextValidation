@@ -27,3 +27,4 @@ FOUNDATION_EXPORT const unsigned char KSOTextValidationVersionString[];
 #import <KSOTextValidation/UITextField+KSOTextValidationExtensions.h>
 #import <KSOTextValidation/KSOTextValidationErrorView.h>
 #import <KSOTextValidation/KSOBlockTextValidator.h>
+#import <KSOTextValidation/KSOFormattedTextField.h>
