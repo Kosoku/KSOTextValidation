@@ -61,6 +61,14 @@
 		07EEB3121F5BCA5E000C44C8 /* KSOFormattedTextField.h in Headers */ = {isa = PBXBuildFile; fileRef = 07EEB30F1F5BCA5E000C44C8 /* KSOFormattedTextField.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07EEB3131F5BCA5E000C44C8 /* KSOFormattedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EEB3101F5BCA5E000C44C8 /* KSOFormattedTextField.m */; };
 		07EEB3141F5BCA5E000C44C8 /* KSOFormattedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EEB3101F5BCA5E000C44C8 /* KSOFormattedTextField.m */; };
+		07EEB3171F5BD760000C44C8 /* KSOPhoneNumberValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 07EEB3151F5BD760000C44C8 /* KSOPhoneNumberValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07EEB3181F5BD760000C44C8 /* KSOPhoneNumberValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 07EEB3151F5BD760000C44C8 /* KSOPhoneNumberValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07EEB3191F5BD760000C44C8 /* KSOPhoneNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EEB3161F5BD760000C44C8 /* KSOPhoneNumberValidator.m */; };
+		07EEB31A1F5BD760000C44C8 /* KSOPhoneNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EEB3161F5BD760000C44C8 /* KSOPhoneNumberValidator.m */; };
+		07EEB31D1F5BD908000C44C8 /* KSOEmailAddressValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 07EEB31B1F5BD908000C44C8 /* KSOEmailAddressValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07EEB31E1F5BD908000C44C8 /* KSOEmailAddressValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 07EEB31B1F5BD908000C44C8 /* KSOEmailAddressValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07EEB31F1F5BD908000C44C8 /* KSOEmailAddressValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EEB31C1F5BD908000C44C8 /* KSOEmailAddressValidator.m */; };
+		07EEB3201F5BD908000C44C8 /* KSOEmailAddressValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EEB31C1F5BD908000C44C8 /* KSOEmailAddressValidator.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,6 +168,10 @@
 		07EEB30D1F5BC880000C44C8 /* ECPhoneNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECPhoneNumberFormatter.m; path = Vendor/ECPhoneNumberFormatter/ECPhoneNumberFormatter/ECPhoneNumberFormatter.m; sourceTree = SOURCE_ROOT; };
 		07EEB30F1F5BCA5E000C44C8 /* KSOFormattedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSOFormattedTextField.h; sourceTree = "<group>"; };
 		07EEB3101F5BCA5E000C44C8 /* KSOFormattedTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSOFormattedTextField.m; sourceTree = "<group>"; };
+		07EEB3151F5BD760000C44C8 /* KSOPhoneNumberValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSOPhoneNumberValidator.h; sourceTree = "<group>"; };
+		07EEB3161F5BD760000C44C8 /* KSOPhoneNumberValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSOPhoneNumberValidator.m; sourceTree = "<group>"; };
+		07EEB31B1F5BD908000C44C8 /* KSOEmailAddressValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSOEmailAddressValidator.h; sourceTree = "<group>"; };
+		07EEB31C1F5BD908000C44C8 /* KSOEmailAddressValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSOEmailAddressValidator.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +272,10 @@
 				07106B3F1E9B23FA009FBC4E /* KSOTextValidationErrorView.m */,
 				07106B441E9B2AB5009FBC4E /* KSOBlockTextValidator.h */,
 				07106B451E9B2AB5009FBC4E /* KSOBlockTextValidator.m */,
+				07EEB3151F5BD760000C44C8 /* KSOPhoneNumberValidator.h */,
+				07EEB3161F5BD760000C44C8 /* KSOPhoneNumberValidator.m */,
+				07EEB31B1F5BD908000C44C8 /* KSOEmailAddressValidator.h */,
+				07EEB31C1F5BD908000C44C8 /* KSOEmailAddressValidator.m */,
 				07EEB30F1F5BCA5E000C44C8 /* KSOFormattedTextField.h */,
 				07EEB3101F5BCA5E000C44C8 /* KSOFormattedTextField.m */,
 			);
@@ -342,10 +358,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				07106B411E9B23FA009FBC4E /* KSOTextValidationErrorView.h in Headers */,
+				07EEB31E1F5BD908000C44C8 /* KSOEmailAddressValidator.h in Headers */,
 				07106B471E9B2AB5009FBC4E /* KSOBlockTextValidator.h in Headers */,
 				076798351E9AD00D009AB0F9 /* UITextField+KSOTextValidationExtensions.h in Headers */,
 				07EEB3121F5BCA5E000C44C8 /* KSOFormattedTextField.h in Headers */,
 				07106B3D1E9B2337009FBC4E /* KSOTextValidation.h in Headers */,
+				07EEB3181F5BD760000C44C8 /* KSOPhoneNumberValidator.h in Headers */,
 				076798111E9ACF6E009AB0F9 /* KSOTextValidator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -355,10 +373,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				07106B401E9B23FA009FBC4E /* KSOTextValidationErrorView.h in Headers */,
+				07EEB31D1F5BD908000C44C8 /* KSOEmailAddressValidator.h in Headers */,
 				07106B461E9B2AB5009FBC4E /* KSOBlockTextValidator.h in Headers */,
 				076798101E9ACF6E009AB0F9 /* KSOTextValidator.h in Headers */,
 				07EEB3111F5BCA5E000C44C8 /* KSOFormattedTextField.h in Headers */,
 				076798341E9AD00D009AB0F9 /* UITextField+KSOTextValidationExtensions.h in Headers */,
+				07EEB3171F5BD760000C44C8 /* KSOPhoneNumberValidator.h in Headers */,
 				079728A81E97FFF400E86545 /* KSOTextValidation.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -540,9 +560,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07EEB31A1F5BD760000C44C8 /* KSOPhoneNumberValidator.m in Sources */,
 				07106B491E9B2AB5009FBC4E /* KSOBlockTextValidator.m in Sources */,
 				076798371E9AD00D009AB0F9 /* UITextField+KSOTextValidationExtensions.m in Sources */,
 				07EEB3141F5BCA5E000C44C8 /* KSOFormattedTextField.m in Sources */,
+				07EEB3201F5BD908000C44C8 /* KSOEmailAddressValidator.m in Sources */,
 				07106B431E9B23FA009FBC4E /* KSOTextValidationErrorView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -562,9 +584,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07EEB3191F5BD760000C44C8 /* KSOPhoneNumberValidator.m in Sources */,
 				07106B481E9B2AB5009FBC4E /* KSOBlockTextValidator.m in Sources */,
 				076798361E9AD00D009AB0F9 /* UITextField+KSOTextValidationExtensions.m in Sources */,
 				07EEB3131F5BCA5E000C44C8 /* KSOFormattedTextField.m in Sources */,
+				07EEB31F1F5BD908000C44C8 /* KSOEmailAddressValidator.m in Sources */,
 				07106B421E9B23FA009FBC4E /* KSOTextValidationErrorView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

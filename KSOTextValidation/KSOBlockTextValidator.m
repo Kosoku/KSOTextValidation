@@ -15,8 +15,10 @@
 
 #import "KSOBlockTextValidator.h"
 
+NSString *const KSOBlockTextValidatorErrorDomain = @"KSOBlockTextValidatorErrorDomain";
+
 @interface KSOBlockTextValidator ()
-@property (copy,nonatomic) KSOBlockTextValidatorBlock block;
+@property (copy,nonatomic) KSOBlockTextValidatorValidateBlock block;
 @end
 
 @implementation KSOBlockTextValidator
@@ -24,6 +26,22 @@
 - (BOOL)validateText:(NSString *)text error:(NSError * _Nullable __autoreleasing *)error {
     NSError *outError;
     BOOL retval = self.block(self,text,&outError);
+    
+    if (retval &&
+        self.minimumLength > 0 &&
+        text.length < self.minimumLength) {
+        
+        retval = NO;
+        outError = [NSError errorWithDomain:KSOBlockTextValidatorErrorDomain code:KSOBlockTextValidatorErrorCodeMinimumLength userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedString(@"The string must be at least %@ characters long", @"block text validator minimum length error message format"),[NSNumberFormatter localizedStringFromNumber:@(self.minimumLength) numberStyle:NSNumberFormatterDecimalStyle]]}];
+    }
+    
+    if (retval &&
+        self.maximumLength > 0 &&
+        text.length > self.maximumLength) {
+        
+        retval = NO;
+        outError = [NSError errorWithDomain:KSOBlockTextValidatorErrorDomain code:KSOBlockTextValidatorErrorCodeMaximumLength userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedString(@"The string cannot be more than %@ characters long", @"block text validator maximum length error message format"),[NSNumberFormatter localizedStringFromNumber:@(self.maximumLength) numberStyle:NSNumberFormatterDecimalStyle]]}];
+    }
     
     if (!retval &&
         error != NULL) {
@@ -34,13 +52,20 @@
     return retval;
 }
 
-- (instancetype)initWithBlock:(KSOBlockTextValidatorBlock)block {
+- (instancetype)initWithConfigureBlock:(KSOBlockTextValidatorConfigureBlock)configureBlock validateBlock:(KSOBlockTextValidatorValidateBlock)validateBlock {
     if (!(self = [super init]))
         return nil;
     
-    _block = [block copy];
+    _block = [validateBlock copy];
+    
+    if (configureBlock != nil) {
+        configureBlock(self);
+    }
     
     return self;
+}
+- (instancetype)initWithValidateBlock:(KSOBlockTextValidatorValidateBlock)validateBlock {
+    return [self initWithConfigureBlock:nil validateBlock:validateBlock];
 }
 
 @end

@@ -1,8 +1,8 @@
 //
-//  KSOTextValidation.h
+//  KSOPhoneNumberValidator.m
 //  KSOTextValidation
 //
-//  Created by William Towe on 4/7/17.
+//  Created by William Towe on 9/3/17.
 //  Copyright © 2017 Kosoku Interactive, LLC. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -13,20 +13,24 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <UIKit/UIKit.h>
+#import "KSOPhoneNumberValidator.h"
 
-//! Project version number for KSOTextValidation.
-FOUNDATION_EXPORT double KSOTextValidationVersionNumber;
+NSString *const KSOPhoneNumberValidatorErrorDomain = @"KSOPhoneNumberValidatorErrorDomain";
 
-//! Project version string for KSOTextValidation.
-FOUNDATION_EXPORT const unsigned char KSOTextValidationVersionString[];
+@implementation KSOPhoneNumberValidator
 
-// In this header, you should import all the public headers of your framework using statements like #import <KSOTextValidation/PublicHeader.h>
++ (instancetype)phoneNumberValidator {
+    return [[self alloc] initWithValidateBlock:^BOOL(KSOBlockTextValidator * _Nonnull textValidator, NSString * _Nullable text, NSError * _Nullable __autoreleasing * _Nullable error) {
+        BOOL retval = text.length > 0 && [[NSDataDetector dataDetectorWithTypes:NSTextCheckingTypePhoneNumber error:NULL] firstMatchInString:text options:0 range:NSMakeRange(0, text.length)] != nil;
+        
+        if (!retval &&
+            text.length > 0) {
+            
+            *error = [NSError errorWithDomain:KSOPhoneNumberValidatorErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Enter a valid phone number", @"phone number validator error message")}];
+        }
+        
+        return retval;
+    }];
+}
 
-#import <KSOTextValidation/KSOTextValidator.h>
-#import <KSOTextValidation/UITextField+KSOTextValidationExtensions.h>
-#import <KSOTextValidation/KSOTextValidationErrorView.h>
-#import <KSOTextValidation/KSOBlockTextValidator.h>
-#import <KSOTextValidation/KSOPhoneNumberValidator.h>
-#import <KSOTextValidation/KSOEmailAddressValidator.h>
-#import <KSOTextValidation/KSOFormattedTextField.h>
+@end

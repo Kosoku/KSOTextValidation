@@ -20,7 +20,7 @@
 #import <KSOTextValidation/KSOTextValidation.h>
 
 @interface ViewController ()
-@property (strong,nonatomic) KDITextField *emailTextField;
+@property (strong,nonatomic) KDITextField *emailTextField, *minMaxTextField;
 @property (strong,nonatomic) KSOFormattedTextField *phoneNumberTextField;
 @end
 
@@ -32,25 +32,14 @@
     [self setEmailTextField:[[KDITextField alloc] initWithFrame:CGRectZero]];
     [self.emailTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.emailTextField setBorderStyle:UITextBorderStyleRoundedRect];
+    [self.emailTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
+    [self.emailTextField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+    [self.emailTextField setSpellCheckingType:UITextSpellCheckingTypeNo];
     [self.emailTextField setPlaceholder:@"Email"];
     [self.emailTextField setKeyboardType:UIKeyboardTypeEmailAddress];
     [self.emailTextField setTextContentType:UITextContentTypeEmailAddress];
     [self.emailTextField setRightViewEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 8)];
-    [self.emailTextField setKSO_textValidator:[[KSOBlockTextValidator alloc] initWithBlock:^BOOL(KSOBlockTextValidator * _Nonnull textValidator, NSString * _Nullable text, NSError * _Nullable __autoreleasing * _Nullable error) {
-        NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"^.+@.+\\..+$" options:0 error:NULL];
-        
-        if (text.length > 0 &&
-            [regex firstMatchInString:text options:0 range:NSMakeRange(0, text.length)] != nil) {
-            
-            return YES;
-        }
-        
-        if (text.length > 0) {
-            *error = [NSError errorWithDomain:@"error" code:0 userInfo:@{NSLocalizedDescriptionKey: @"Enter a valid email address"}];
-        }
-        
-        return NO;
-    }]];
+    [self.emailTextField setKSO_textValidator:[KSOEmailAddressValidator emailAddressValidator]];
     [self.view addSubview:self.emailTextField];
     
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|" options:0 metrics:nil views:@{@"view": self.emailTextField}]];
@@ -59,14 +48,37 @@
     [self setPhoneNumberTextField:[[KSOFormattedTextField alloc] initWithFrame:CGRectZero]];
     [self.phoneNumberTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.phoneNumberTextField setBorderStyle:UITextBorderStyleRoundedRect];
+    [self.phoneNumberTextField setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.phoneNumberTextField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+    [self.phoneNumberTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
     [self.phoneNumberTextField setKeyboardType:UIKeyboardTypePhonePad];
     [self.phoneNumberTextField setTextContentType:UITextContentTypeTelephoneNumber];
     [self.phoneNumberTextField setPlaceholder:@"Phone Number"];
+    [self.phoneNumberTextField setKSO_textValidator:[KSOPhoneNumberValidator phoneNumberValidator]];
     [self.phoneNumberTextField setFormatter:[[ECPhoneNumberFormatter alloc] init]];
     [self.view addSubview:self.phoneNumberTextField];
     
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|" options:0 metrics:nil views:@{@"view": self.phoneNumberTextField}]];
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-[view]" options:0 metrics:nil views:@{@"view": self.phoneNumberTextField, @"top": self.emailTextField}]];
+    
+    [self setMinMaxTextField:[[KDITextField alloc] initWithFrame:CGRectZero]];
+    [self.minMaxTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.minMaxTextField setBorderStyle:UITextBorderStyleRoundedRect];
+    [self.minMaxTextField setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.minMaxTextField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+    [self.minMaxTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
+    [self.minMaxTextField setSecureTextEntry:YES];
+    [self.minMaxTextField setPlaceholder:@"Password"];
+    [self.minMaxTextField setKSO_textValidator:[[KSOBlockTextValidator alloc] initWithConfigureBlock:^(__kindof KSOBlockTextValidator * _Nonnull validator) {
+        [validator setMinimumLength:8];
+        [validator setMaximumLength:16];
+    } validateBlock:^BOOL(KSOBlockTextValidator * _Nonnull textValidator, NSString * _Nullable text, NSError * _Nullable __autoreleasing * _Nullable error) {
+        return YES;
+    }]];
+    [self.view addSubview:self.minMaxTextField];
+    
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|" options:0 metrics:nil views:@{@"view": self.minMaxTextField}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-[view]" options:0 metrics:nil views:@{@"view": self.minMaxTextField, @"top": self.phoneNumberTextField}]];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];

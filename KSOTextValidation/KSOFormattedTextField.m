@@ -76,6 +76,8 @@
             textRange = [textField textRangeFromPosition:start toPosition:end];
             
             [textField setSelectedTextRange:textRange];
+            
+            [textField sendActionsForControlEvents:UIControlEventEditingChanged];
         }
         
         return retval;
