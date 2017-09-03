@@ -85,9 +85,23 @@
     [self.uppercaseTextField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
     [self.uppercaseTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
     [self.uppercaseTextField setPlaceholder:@"Always Uppercase"];
-    [self.uppercaseTextField setKSO_textFormatter:[KSOBlockTextFormatter blockTextFormatterWithTextBlock:^NSString * _Nullable(NSString * _Nullable editingText) {
+    [self.uppercaseTextField setKSO_textFormatter:[[KSOBlockTextFormatter alloc] initWithConfigureBlock:^(__kindof KSOBlockTextFormatter * _Nonnull formatter) {
+        [formatter setAttributedTextForEditingTextBlock:^NSAttributedString * _Nullable(__kindof KSOBlockTextFormatter * _Nonnull formatter, NSString * _Nullable editingText, NSDictionary<NSString *,id> * _Nonnull defaultAttributes){
+            NSMutableAttributedString *retval = [[NSMutableAttributedString alloc] initWithString:formatter.textBlock(formatter,editingText) attributes:defaultAttributes];
+            NSCharacterSet *set = [NSCharacterSet.letterCharacterSet invertedSet];
+            NSRange range = [retval.string rangeOfCharacterFromSet:set options:0 range:NSMakeRange(0, retval.length)];
+            
+            while (range.length > 0) {
+                [retval addAttribute:NSForegroundColorAttributeName value:UIColor.redColor range:range];
+                
+                range = [retval.string rangeOfCharacterFromSet:set options:0 range:NSMakeRange(NSMaxRange(range), retval.length - NSMaxRange(range))];
+            }
+            
+            return retval;
+        }];
+    } textBlock:^NSString * _Nullable(__kindof KSOBlockTextFormatter * _Nonnull formatter, NSString * _Nullable editingText) {
         return editingText.uppercaseString;
-    } editingTextBlock:^NSString * _Nullable(NSString * _Nullable text) {
+    } editingTextBlock:^NSString * _Nullable(__kindof KSOBlockTextFormatter * _Nonnull formatter, NSString * _Nullable text) {
         return text.uppercaseString;
     }]];
     [self.view addSubview:self.uppercaseTextField];

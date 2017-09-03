@@ -16,23 +16,27 @@
 #import "KSOBlockTextFormatter.h"
 
 @interface KSOBlockTextFormatter ()
-@property (copy,nonatomic) KSOBlockTextFormatterTextForEditingTextBlock textBlock;
-@property (copy,nonatomic) KSOBlockTextFormatterEditingTextForTextBlock editingTextBlock;
+@property (readwrite,copy,nonatomic) KSOBlockTextFormatterTextForEditingTextBlock textBlock;
+@property (readwrite,copy,nonatomic) KSOBlockTextFormatterEditingTextForTextBlock editingTextBlock;
 @end
 
 @implementation KSOBlockTextFormatter
 
-- (instancetype)init {
-    return [self initWithTextBlock:nil editingTextBlock:nil];
-}
 - (NSString *)textForEditingText:(NSString *)editingText {
-    return self.textBlock(editingText);
+    return self.textBlock(self,editingText);
 }
 - (NSString *)editingTextForText:(NSString *)text {
-    return self.editingTextBlock(text);
+    return self.editingTextBlock(self,text);
 }
 
-- (instancetype)initWithTextBlock:(KSOBlockTextFormatterTextForEditingTextBlock)textBlock editingTextBlock:(KSOBlockTextFormatterEditingTextForTextBlock)editingTextBlock {
+- (NSAttributedString *)attributedTextForEditingText:(NSString *)editingText defaultAttributes:(NSDictionary<NSString *,id> *)defaultAttributes {
+    if (self.attributedTextForEditingTextBlock == nil) {
+        return nil;
+    }
+    return self.attributedTextForEditingTextBlock(self,editingText,defaultAttributes);
+}
+
+- (instancetype)initWithConfigureBlock:(KSOBlockTextFormatterConfigureBlock)configureBlock textBlock:(KSOBlockTextFormatterTextForEditingTextBlock)textBlock editingTextBlock:(KSOBlockTextFormatterEditingTextForTextBlock)editingTextBlock {
     if (!(self = [super init]))
         return nil;
     
@@ -40,21 +44,24 @@
     _editingTextBlock = [editingTextBlock copy];
     
     if (_textBlock == nil) {
-        _textBlock = ^NSString*(NSString *text){
+        _textBlock = ^NSString*(KSOBlockTextFormatter *s, NSString *text){
             return text;
         };
     }
     if (_editingTextBlock == nil) {
-        _editingTextBlock = ^NSString*(NSString *editingText){
+        _editingTextBlock = ^NSString*(KSOBlockTextFormatter *s, NSString *editingText){
             return editingText;
         };
     }
     
+    if (configureBlock != nil) {
+        configureBlock(self);
+    }
+    
     return self;
 }
-
-+ (instancetype)blockTextFormatterWithTextBlock:(KSOBlockTextFormatterTextForEditingTextBlock)textBlock editingTextBlock:(KSOBlockTextFormatterEditingTextForTextBlock)editingTextBlock {
-    return [[self alloc] initWithTextBlock:textBlock editingTextBlock:editingTextBlock];
+- (instancetype)initWithTextBlock:(KSOBlockTextFormatterTextForEditingTextBlock)textBlock editingTextBlock:(KSOBlockTextFormatterEditingTextForTextBlock)editingTextBlock {
+    return [self initWithConfigureBlock:nil textBlock:textBlock editingTextBlock:editingTextBlock];
 }
 
 @end

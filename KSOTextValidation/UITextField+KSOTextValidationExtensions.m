@@ -98,7 +98,14 @@
     }
     
     if (retval) {
-        [textField setText:[self.textFormatter editingTextForText:textField.text]];
+        NSAttributedString *attrEditingText = [self.textFormatter respondsToSelector:@selector(attributedEditingTextForText:defaultAttributes:)] ? [self.textFormatter attributedEditingTextForText:textField.text defaultAttributes:@{NSFontAttributeName: textField.font ?: [UIFont preferredFontForTextStyle:UIFontTextStyleBody], NSForegroundColorAttributeName: textField.textColor ?: UIColor.blackColor}] : nil;
+        
+        if (attrEditingText == nil) {
+            [textField setText:[self.textFormatter editingTextForText:textField.text]];
+        }
+        else {
+            [textField setAttributedText:attrEditingText];
+        }
     }
     
     return retval;
@@ -109,6 +116,8 @@
     }
     
     [textField setText:[self.textFormatter textForEditingText:textField.text]];
+    
+    [textField sendActionsForControlEvents:UIControlEventEditingChanged];
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     BOOL retval = YES;

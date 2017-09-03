@@ -17,14 +17,27 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-typedef NSString * _Nullable(^KSOBlockTextFormatterTextForEditingTextBlock)(NSString * _Nullable editingText);
-typedef NSString * _Nullable(^KSOBlockTextFormatterEditingTextForTextBlock)(NSString * _Nullable text);
+@class KSOBlockTextFormatter;
+
+typedef void(^KSOBlockTextFormatterConfigureBlock)(__kindof KSOBlockTextFormatter *formatter);
+
+typedef NSString * _Nullable(^KSOBlockTextFormatterTextForEditingTextBlock)(__kindof KSOBlockTextFormatter *formatter, NSString * _Nullable editingText);
+typedef NSString * _Nullable(^KSOBlockTextFormatterEditingTextForTextBlock)(__kindof KSOBlockTextFormatter *formatter, NSString * _Nullable text);
+
+typedef NSAttributedString * _Nullable(^KSOBlockTextFormatterAttributedTextForEditingTextBlock)(__kindof KSOBlockTextFormatter *formatter, NSString * _Nullable editingText, NSDictionary<NSString *,id> *defaultAttributes);
 
 @interface KSOBlockTextFormatter : NSObject <KSOTextFormatter>
 
-- (instancetype)initWithTextBlock:(nullable KSOBlockTextFormatterTextForEditingTextBlock)textBlock editingTextBlock:(nullable KSOBlockTextFormatterEditingTextForTextBlock)editingTextBlock NS_DESIGNATED_INITIALIZER;
+@property (readonly,copy,nonatomic) KSOBlockTextFormatterTextForEditingTextBlock textBlock;
+@property (readonly,copy,nonatomic) KSOBlockTextFormatterEditingTextForTextBlock editingTextBlock;
 
-+ (instancetype)blockTextFormatterWithTextBlock:(nullable KSOBlockTextFormatterTextForEditingTextBlock)textBlock editingTextBlock:(nullable KSOBlockTextFormatterEditingTextForTextBlock)editingTextBlock;
+@property (copy,nonatomic) KSOBlockTextFormatterAttributedTextForEditingTextBlock attributedTextForEditingTextBlock;
+
+- (instancetype)initWithConfigureBlock:(nullable KSOBlockTextFormatterConfigureBlock)configureBlock textBlock:(nullable KSOBlockTextFormatterTextForEditingTextBlock)textBlock editingTextBlock:(nullable KSOBlockTextFormatterEditingTextForTextBlock)editingTextBlock NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithTextBlock:(nullable KSOBlockTextFormatterTextForEditingTextBlock)textBlock editingTextBlock:(nullable KSOBlockTextFormatterEditingTextForTextBlock)editingTextBlock;
+
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
 
 @end
 
