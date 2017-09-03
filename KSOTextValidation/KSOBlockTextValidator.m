@@ -58,6 +58,12 @@ NSString *const KSOBlockTextValidatorErrorDomain = @"KSOBlockTextValidatorErrorD
     
     _block = [validateBlock copy];
     
+    if (_block == nil) {
+        _block = ^BOOL(KSOBlockTextValidator *v, NSString *t, NSError **e){
+            return YES;
+        };
+    }
+    
     if (configureBlock != nil) {
         configureBlock(self);
     }

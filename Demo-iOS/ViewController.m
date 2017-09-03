@@ -20,8 +20,8 @@
 #import <KSOTextValidation/KSOTextValidation.h>
 
 @interface ViewController ()
-@property (strong,nonatomic) KDITextField *emailTextField, *minMaxTextField;
-@property (strong,nonatomic) KSOFormattedTextField *phoneNumberTextField, *numberTextField;
+@property (strong,nonatomic) KDITextField *emailTextField, *minMaxTextField, *uppercaseTextField;
+@property (strong,nonatomic) KSOFormattedTextField *phoneNumberTextField;
 @end
 
 @implementation ViewController
@@ -72,34 +72,28 @@
     [self.minMaxTextField setKSO_textValidator:[[KSOBlockTextValidator alloc] initWithConfigureBlock:^(__kindof KSOBlockTextValidator * _Nonnull validator) {
         [validator setMinimumLength:8];
         [validator setMaximumLength:16];
-    } validateBlock:^BOOL(KSOBlockTextValidator * _Nonnull textValidator, NSString * _Nullable text, NSError * _Nullable __autoreleasing * _Nullable error) {
-        return YES;
-    }]];
+    } validateBlock:nil]];
     [self.view addSubview:self.minMaxTextField];
     
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|" options:0 metrics:nil views:@{@"view": self.minMaxTextField}]];
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-[view]" options:0 metrics:nil views:@{@"view": self.minMaxTextField, @"top": self.phoneNumberTextField}]];
     
-    [self setNumberTextField:[[KSOFormattedTextField alloc] initWithFrame:CGRectZero]];
-    [self.numberTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.numberTextField setBorderStyle:UITextBorderStyleRoundedRect];
-    [self.numberTextField setSpellCheckingType:UITextSpellCheckingTypeNo];
-    [self.numberTextField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
-    [self.numberTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
-    [self.numberTextField setKeyboardType:UIKeyboardTypeNumbersAndPunctuation];
-    [self.numberTextField setPlaceholder:@"Currency"];
-    [self.numberTextField setFormatter:({
-        NSNumberFormatter *retval = [[NSNumberFormatter alloc] init];
-        
-        [retval setNumberStyle:NSNumberFormatterDecimalStyle];
-        [retval setTextAttributesForNegativeValues:@{NSForegroundColorAttributeName: UIColor.redColor}];
-        
-        retval;
-    })];
-    [self.view addSubview:self.numberTextField];
+    [self setUppercaseTextField:[[KDITextField alloc] initWithFrame:CGRectZero]];
+    [self.uppercaseTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.uppercaseTextField setBorderStyle:UITextBorderStyleRoundedRect];
+    [self.uppercaseTextField setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.uppercaseTextField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+    [self.uppercaseTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
+    [self.uppercaseTextField setPlaceholder:@"Always Uppercase"];
+    [self.uppercaseTextField setKSO_textFormatter:[KSOBlockTextFormatter blockTextFormatterWithTextBlock:^NSString * _Nullable(NSString * _Nullable editingText) {
+        return editingText.uppercaseString;
+    } editingTextBlock:^NSString * _Nullable(NSString * _Nullable text) {
+        return text.uppercaseString;
+    }]];
+    [self.view addSubview:self.uppercaseTextField];
     
-    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|" options:0 metrics:nil views:@{@"view": self.numberTextField}]];
-    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-[view]" options:0 metrics:nil views:@{@"view": self.numberTextField, @"top": self.minMaxTextField}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|" options:0 metrics:nil views:@{@"view": self.uppercaseTextField}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-[view]" options:0 metrics:nil views:@{@"view": self.uppercaseTextField, @"top": self.minMaxTextField}]];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];

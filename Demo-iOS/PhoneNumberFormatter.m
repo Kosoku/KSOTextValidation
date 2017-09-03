@@ -19,7 +19,7 @@
 @implementation PhoneNumberFormatter
 
 - (NSAttributedString *)attributedStringForObjectValue:(id)obj withDefaultAttributes:(NSDictionary<NSString *,id> *)attrs {
-    NSString *string = [self stringForObjectValue:obj];
+    NSString *string = [self stringForObjectValue:obj] ?: @"";
     NSMutableAttributedString *retval = [[NSMutableAttributedString alloc] initWithString:string attributes:attrs];
     NSRange range = [string rangeOfCharacterFromSet:[NSCharacterSet decimalDigitCharacterSet] options:0 range:NSMakeRange(0, string.length)];
     

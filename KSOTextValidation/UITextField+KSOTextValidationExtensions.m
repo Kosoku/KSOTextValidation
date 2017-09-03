@@ -84,12 +84,61 @@
 
 @implementation KSOTextFieldTextFormatterWrapper
 
+- (BOOL)respondsToSelector:(SEL)aSelector {
+    return [self.delegate respondsToSelector:aSelector] || [super respondsToSelector:aSelector];
+}
+- (void)forwardInvocation:(NSInvocation *)anInvocation {
+    [anInvocation forwardInvocation:self.delegate];
+}
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    BOOL retval = YES;
+    
+    if ([self.delegate respondsToSelector:_cmd]) {
+        retval = [self.delegate textFieldShouldBeginEditing:textField];
+    }
+    
+    if (retval) {
+        [textField setText:[self.textFormatter editingTextForText:textField.text]];
+    }
+    
+    return retval;
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason {
+    if ([self.delegate respondsToSelector:_cmd]) {
+        [self.delegate textFieldDidEndEditing:textField reason:reason];
+    }
+    
+    [textField setText:[self.textFormatter textForEditingText:textField.text]];
+}
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    BOOL retval = YES;
+    
+    if (retval &&
+        [self.delegate respondsToSelector:_cmd]) {
+        
+        retval = [self.delegate textField:textField shouldChangeCharactersInRange:range replacementString:string];
+    }
+    
+    return retval;
+}
+
 - (instancetype)initWithTextFormatter:(id<KSOTextFormatter>)textFormatter textField:(UITextField *)textField {
     if (!(self = [super init]))
         return nil;
     
     _textFormatter = textFormatter;
     _textField = textField;
+    
+    kstWeakify(self);
+    [_textField KAG_addObserverForKeyPath:@kstKeypath(_textField,delegate) options:NSKeyValueObservingOptionInitial block:^(NSString * _Nonnull keyPath, id _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change){
+        kstStrongify(self);
+        if (self.textField.delegate == self) {
+            return;
+        }
+        
+        [self setDelegate:self.textField.delegate];
+        [self.textField setDelegate:self];
+    }];
     
     return self;
 }
@@ -109,6 +158,19 @@ static void const *kKSOTextValidatorKey = &kKSOTextValidatorKey;
     KSOTextFieldTextValidatorWrapper *wrapper = [[KSOTextFieldTextValidatorWrapper alloc] initWithTextValidator:KSO_textValidator textField:self];
     
     objc_setAssociatedObject(self, kKSOTextValidatorKey, wrapper, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+static void const *kKSOTextFormatterKey = &kKSOTextFormatterKey;
+@dynamic KSO_textFormatter;
+- (id<KSOTextFormatter>)KSO_textFormatter {
+    KSOTextFieldTextFormatterWrapper *wrapper = objc_getAssociatedObject(self, kKSOTextFormatterKey);
+    
+    return wrapper.textFormatter;
+}
+- (void)setKSO_textFormatter:(id<KSOTextFormatter>)KSO_textFormatter {
+    KSOTextFieldTextFormatterWrapper *wrapper = [[KSOTextFieldTextFormatterWrapper alloc] initWithTextFormatter:KSO_textFormatter textField:self];
+    
+    objc_setAssociatedObject(self, kKSOTextFormatterKey, wrapper, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 @end

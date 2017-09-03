@@ -85,7 +85,7 @@ typedef BOOL(^KSOBlockTextValidatorValidateBlock)(KSOBlockTextValidator *textVal
  @param validateBlock The block to invoke when validating text
  @return The initialized instance
  */
-- (instancetype)initWithConfigureBlock:(nullable KSOBlockTextValidatorConfigureBlock)configureBlock validateBlock:(KSOBlockTextValidatorValidateBlock)validateBlock NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithConfigureBlock:(nullable KSOBlockTextValidatorConfigureBlock)configureBlock validateBlock:(nullable KSOBlockTextValidatorValidateBlock)validateBlock NS_DESIGNATED_INITIALIZER;
 /**
  Creates and returns a block text validator instance.
  
