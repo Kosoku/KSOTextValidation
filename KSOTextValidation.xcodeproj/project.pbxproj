@@ -72,6 +72,12 @@
 		07EEB3231F5BE719000C44C8 /* PhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EEB3221F5BE719000C44C8 /* PhoneNumberFormatter.m */; };
 		07EEB3251F5C8F67000C44C8 /* KSOTextFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 07EEB3241F5C8F67000C44C8 /* KSOTextFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07EEB3261F5C8F67000C44C8 /* KSOTextFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 07EEB3241F5C8F67000C44C8 /* KSOTextFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		07EEB3281F5C9260000C44C8 /* Agamotto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07EEB3271F5C9260000C44C8 /* Agamotto.framework */; };
+		07EEB32A1F5C9266000C44C8 /* Agamotto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07EEB3291F5C9266000C44C8 /* Agamotto.framework */; };
+		07EEB32C1F5C9275000C44C8 /* Agamotto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07EEB32B1F5C9275000C44C8 /* Agamotto.framework */; };
+		07EEB32D1F5C9275000C44C8 /* Agamotto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07EEB32B1F5C9275000C44C8 /* Agamotto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		07EEB32F1F5C927E000C44C8 /* Agamotto.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07EEB32E1F5C927E000C44C8 /* Agamotto.framework */; };
+		07EEB3301F5C927E000C44C8 /* Agamotto.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07EEB32E1F5C927E000C44C8 /* Agamotto.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +107,7 @@
 				072188731E9BFC48005C18D5 /* Stanley.framework in Embed Frameworks */,
 				07A168A51F592CF900B03AA8 /* Loki.framework in Embed Frameworks */,
 				072188701E9BFC41005C18D5 /* Ditko.framework in Embed Frameworks */,
+				07EEB3301F5C927E000C44C8 /* Agamotto.framework in Embed Frameworks */,
 				0721886A1E9BFC3B005C18D5 /* KSOTextValidation.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -115,6 +122,7 @@
 				0767982E1E9ACFD2009AB0F9 /* KSOTextValidation.framework in Embed Frameworks */,
 				07A168A21F592CEF00B03AA8 /* Loki.framework in Embed Frameworks */,
 				07277DD11E9BE518004237FD /* Stanley.framework in Embed Frameworks */,
+				07EEB32D1F5C9275000C44C8 /* Agamotto.framework in Embed Frameworks */,
 				0721884C1E9BEF68005C18D5 /* Ditko.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -178,6 +186,10 @@
 		07EEB3211F5BE719000C44C8 /* PhoneNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhoneNumberFormatter.h; sourceTree = "<group>"; };
 		07EEB3221F5BE719000C44C8 /* PhoneNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhoneNumberFormatter.m; sourceTree = "<group>"; };
 		07EEB3241F5C8F67000C44C8 /* KSOTextFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSOTextFormatter.h; sourceTree = "<group>"; };
+		07EEB3271F5C9260000C44C8 /* Agamotto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Agamotto.framework; path = "Vendor/Agamotto/build/Debug-iphoneos/Agamotto.framework"; sourceTree = "<group>"; };
+		07EEB3291F5C9266000C44C8 /* Agamotto.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Agamotto.framework; path = "Vendor/Agamotto/build/Debug-appletvos/Agamotto.framework"; sourceTree = "<group>"; };
+		07EEB32B1F5C9275000C44C8 /* Agamotto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Agamotto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		07EEB32E1F5C927E000C44C8 /* Agamotto.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Agamotto.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +200,7 @@
 				072188721E9BFC48005C18D5 /* Stanley.framework in Frameworks */,
 				07A168A41F592CF900B03AA8 /* Loki.framework in Frameworks */,
 				0721886F1E9BFC41005C18D5 /* Ditko.framework in Frameworks */,
+				07EEB32F1F5C927E000C44C8 /* Agamotto.framework in Frameworks */,
 				072188691E9BFC3B005C18D5 /* KSOTextValidation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -196,6 +209,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07EEB32A1F5C9266000C44C8 /* Agamotto.framework in Frameworks */,
 				07A1689F1F592CE600B03AA8 /* Loki.framework in Frameworks */,
 				072188501E9BEF7B005C18D5 /* Ditko.framework in Frameworks */,
 				07277DD61E9BE545004237FD /* Stanley.framework in Frameworks */,
@@ -209,6 +223,7 @@
 				0767982D1E9ACFD2009AB0F9 /* KSOTextValidation.framework in Frameworks */,
 				07A168A11F592CEF00B03AA8 /* Loki.framework in Frameworks */,
 				07277DD01E9BE518004237FD /* Stanley.framework in Frameworks */,
+				07EEB32C1F5C9275000C44C8 /* Agamotto.framework in Frameworks */,
 				0721884B1E9BEF68005C18D5 /* Ditko.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,6 +232,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07EEB3281F5C9260000C44C8 /* Agamotto.framework in Frameworks */,
 				07A1689D1F592CE000B03AA8 /* Loki.framework in Frameworks */,
 				0721884E1E9BEF74005C18D5 /* Ditko.framework in Frameworks */,
 				07277DD41E9BE52F004237FD /* Stanley.framework in Frameworks */,
@@ -252,6 +268,10 @@
 		07277DD21E9BE52F004237FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				07EEB32E1F5C927E000C44C8 /* Agamotto.framework */,
+				07EEB32B1F5C9275000C44C8 /* Agamotto.framework */,
+				07EEB3291F5C9266000C44C8 /* Agamotto.framework */,
+				07EEB3271F5C9260000C44C8 /* Agamotto.framework */,
 				07A168A31F592CF900B03AA8 /* Loki.framework */,
 				07A168A01F592CEF00B03AA8 /* Loki.framework */,
 				07A1689E1F592CE600B03AA8 /* Loki.framework */,
@@ -787,6 +807,7 @@
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-appletvos",
 					"$(PROJECT_DIR)/Vendor/Ditko/build/Debug-appletvos",
 					"$(PROJECT_DIR)/Vendor/Loki/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Vendor/Agamotto/build/Debug-appletvos",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -857,6 +878,7 @@
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-appletvos",
 					"$(PROJECT_DIR)/Vendor/Ditko/build/Debug-appletvos",
 					"$(PROJECT_DIR)/Vendor/Loki/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Vendor/Agamotto/build/Debug-appletvos",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1036,6 +1058,7 @@
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/Vendor/Ditko/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/Vendor/Loki/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Vendor/Agamotto/build/Debug-iphoneos",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1051,7 +1074,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "${SRCROOT}/Vendor/Ditko/Ditko/**";
+				HEADER_SEARCH_PATHS = (
+					"${SRCROOT}/Vendor/Agamotto",
+					"${SRCROOT}/Vendor/Stanley",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/KSOTextValidation/KSOTextValidation-iOS-Info.plist";
 				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/KSOTextValidation/KSOTextValidation-Info.h";
 				INFOPLIST_PREPROCESS = YES;
@@ -1108,6 +1134,7 @@
 					"$(PROJECT_DIR)/Vendor/Stanley/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/Vendor/Ditko/build/Debug-iphoneos",
 					"$(PROJECT_DIR)/Vendor/Loki/build/Debug-iphoneos",
+					"$(PROJECT_DIR)/Vendor/Agamotto/build/Debug-iphoneos",
 				);
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1117,7 +1144,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "${SRCROOT}/Vendor/Ditko/Ditko/**";
+				HEADER_SEARCH_PATHS = (
+					"${SRCROOT}/Vendor/Agamotto",
+					"${SRCROOT}/Vendor/Stanley",
+				);
 				INFOPLIST_FILE = "$(SRCROOT)/KSOTextValidation/KSOTextValidation-iOS-Info.plist";
 				INFOPLIST_PREFIX_HEADER = "$(SRCROOT)/KSOTextValidation/KSOTextValidation-Info.h";
 				INFOPLIST_PREPROCESS = YES;

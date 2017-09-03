@@ -10,3 +10,6 @@
 [submodule "Vendor/ECPhoneNumberFormatter"]
 	path = Vendor/ECPhoneNumberFormatter
 	url = https://github.com/enriquez/ECPhoneNumberFormatter.git
+[submodule "Vendor/Agamotto"]
+	path = Vendor/Agamotto
+	url = https://github.com/Kosoku/Agamotto.git

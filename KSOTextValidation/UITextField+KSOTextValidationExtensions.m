@@ -16,7 +16,8 @@
 #import "UITextField+KSOTextValidationExtensions.h"
 #import "KSOTextValidationErrorView.h"
 
-#import <Stanley/KSTScopeMacros.h>
+#import <Agamotto/Agamotto.h>
+#import <Stanley/Stanley.h>
 
 #import <objc/runtime.h>
 
@@ -73,9 +74,10 @@
 
 @end
 
-@interface KSOTextFieldTextFormatterWrapper : NSObject
+@interface KSOTextFieldTextFormatterWrapper : NSObject <UITextFieldDelegate>
 @property (strong,nonatomic) id<KSOTextFormatter> textFormatter;
 @property (weak,nonatomic) UITextField *textField;
+@property (weak,nonatomic) id<UITextFieldDelegate> delegate;
 
 - (instancetype)initWithTextFormatter:(id<KSOTextFormatter>)textFormatter textField:(UITextField *)textField;
 @end
