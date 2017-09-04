@@ -29,11 +29,18 @@
     return self.editingTextBlock(self,text);
 }
 
-- (NSAttributedString *)attributedTextForEditingText:(NSString *)editingText defaultAttributes:(NSDictionary<NSString *,id> *)defaultAttributes {
-    if (self.attributedTextForEditingTextBlock == nil) {
+- (NSAttributedString *)attributedTextForText:(NSString *)text defaultAttributes:(NSDictionary<NSString *,id> *)defaultAttributes {
+    if (self.attributedTextForTextBlock == nil) {
         return nil;
     }
-    return self.attributedTextForEditingTextBlock(self,editingText,defaultAttributes);
+    return self.attributedTextForTextBlock(self,text,defaultAttributes);
+}
+
+- (BOOL)isEditedTextValid:(NSString *__autoreleasing  _Nonnull *)editedText editedSelectedRange:(NSRangePointer)editedSelectedRange text:(NSString *)text selectedRange:(NSRange)selectedRange {
+    if (self.validateEditedTextBlock != nil) {
+        return self.validateEditedTextBlock(self,editedText,editedSelectedRange,text,selectedRange);
+    }
+    return YES;
 }
 
 - (instancetype)initWithConfigureBlock:(KSOBlockTextFormatterConfigureBlock)configureBlock textBlock:(KSOBlockTextFormatterTextForEditingTextBlock)textBlock editingTextBlock:(KSOBlockTextFormatterEditingTextForTextBlock)editingTextBlock {

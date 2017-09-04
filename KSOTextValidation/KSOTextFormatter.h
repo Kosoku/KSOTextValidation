@@ -22,7 +22,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (nullable NSString *)textForEditingText:(nullable NSString *)editingText;
 - (nullable NSString *)editingTextForText:(nullable NSString *)text;
 @optional
-- (nullable NSAttributedString *)attributedEditingTextForText:(nullable NSString *)text defaultAttributes:(NSDictionary<NSString *,id> *)defaultAttributes;
+- (nullable NSAttributedString *)attributedTextForText:(nullable NSString *)editingText defaultAttributes:(NSDictionary<NSString *,id> *)defaultAttributes;
+
+- (BOOL)isEditedTextValid:(NSString *_Nonnull * _Nonnull)editedText editedSelectedRange:(NSRangePointer)editedSelectedRange text:(NSString *)text selectedRange:(NSRange)selectedRange;
 @end
 
 NS_ASSUME_NONNULL_END

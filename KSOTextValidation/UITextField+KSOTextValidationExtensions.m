@@ -21,6 +21,20 @@
 
 #import <objc/runtime.h>
 
+static NSRange KSOSelectedRangeFromTextInput(id<UITextInput> textInput){
+    UITextRange *textRange = textInput.selectedTextRange;
+    NSInteger location = [textInput offsetFromPosition:textInput.beginningOfDocument toPosition:textRange.start];
+    NSInteger length = [textInput offsetFromPosition:textRange.start toPosition:textRange.end];
+    
+    return NSMakeRange(location, length);
+}
+static UITextRange* KSOTextRangeFromRangeInTextInput(id<UITextInput> textInput, NSRange range){
+    UITextPosition *start = [textInput positionFromPosition:textInput.beginningOfDocument offset:range.location];
+    UITextPosition *end = [textInput positionFromPosition:start offset:range.length];
+    
+    return [textInput textRangeFromPosition:start toPosition:end];
+}
+
 @interface KSOTextFieldTextValidatorWrapper : NSObject
 @property (strong,nonatomic) id<KSOTextValidator> textValidator;
 @property (weak,nonatomic) UITextField *textField;
@@ -78,6 +92,7 @@
 @property (strong,nonatomic) id<KSOTextFormatter> textFormatter;
 @property (weak,nonatomic) UITextField *textField;
 @property (weak,nonatomic) id<UITextFieldDelegate> delegate;
+@property (copy,nonatomic) NSDictionary<NSString *, id> *defaultTextAttributes;
 
 - (instancetype)initWithTextFormatter:(id<KSOTextFormatter>)textFormatter textField:(UITextField *)textField;
 @end
@@ -98,10 +113,11 @@
     }
     
     if (retval) {
-        NSAttributedString *attrEditingText = [self.textFormatter respondsToSelector:@selector(attributedEditingTextForText:defaultAttributes:)] ? [self.textFormatter attributedEditingTextForText:textField.text defaultAttributes:@{NSFontAttributeName: textField.font ?: [UIFont preferredFontForTextStyle:UIFontTextStyleBody], NSForegroundColorAttributeName: textField.textColor ?: UIColor.blackColor}] : nil;
+        NSString *text = [self.textFormatter editingTextForText:textField.text];
+        NSAttributedString *attrEditingText = [self.textFormatter respondsToSelector:@selector(attributedTextForText:defaultAttributes:)] ? [self.textFormatter attributedTextForText:text defaultAttributes:self.defaultTextAttributes] : nil;
         
         if (attrEditingText == nil) {
-            [textField setText:[self.textFormatter editingTextForText:textField.text]];
+            [textField setText:text];
         }
         else {
             [textField setAttributedText:attrEditingText];
@@ -115,12 +131,40 @@
         [self.delegate textFieldDidEndEditing:textField reason:reason];
     }
     
-    [textField setText:[self.textFormatter textForEditingText:textField.text]];
+    NSString *text = [self.textFormatter textForEditingText:textField.text];
+    NSAttributedString *attrText = [self.textFormatter respondsToSelector:@selector(attributedTextForText:defaultAttributes:)] ? [self.textFormatter attributedTextForText:text defaultAttributes:self.defaultTextAttributes] : nil;
+    
+    if (attrText == nil) {
+        [textField setText:text];
+    }
+    else {
+        [textField setAttributedText:attrText];
+    }
     
     [textField sendActionsForControlEvents:UIControlEventEditingChanged];
 }
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     BOOL retval = YES;
+    
+    if ([self.textFormatter respondsToSelector:@selector(isEditedTextValid:editedSelectedRange:text:selectedRange:)]) {
+        NSString *editedText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+        NSRange editedRange = NSMakeRange(range.location + string.length, 0);
+        
+        retval = [self.textFormatter isEditedTextValid:&editedText editedSelectedRange:&editedRange text:textField.text selectedRange:KSOSelectedRangeFromTextInput(textField)];
+        
+        if (!retval) {
+            [textField setSelectedTextRange:KSOTextRangeFromRangeInTextInput(textField, editedRange)];
+            
+            NSAttributedString *attrEditedText = [self.textFormatter respondsToSelector:@selector(attributedTextForText:defaultAttributes:)] ? [self.textFormatter attributedTextForText:editedText defaultAttributes:self.defaultTextAttributes] : nil;
+            
+            if (attrEditedText == nil) {
+                [textField setText:editedText];
+            }
+            else {
+                [textField setAttributedText:attrEditedText];
+            }
+        }
+    }
     
     if (retval &&
         [self.delegate respondsToSelector:_cmd]) {
@@ -137,6 +181,7 @@
     
     _textFormatter = textFormatter;
     _textField = textField;
+    _defaultTextAttributes = @{NSFontAttributeName: _textField.font ?: [UIFont preferredFontForTextStyle:UIFontTextStyleBody], NSForegroundColorAttributeName: _textField.textColor ?: UIColor.blackColor};
     
     kstWeakify(self);
     [_textField KAG_addObserverForKeyPath:@kstKeypath(_textField,delegate) options:NSKeyValueObservingOptionInitial block:^(NSString * _Nonnull keyPath, id _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change){

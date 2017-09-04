@@ -24,14 +24,18 @@ typedef void(^KSOBlockTextFormatterConfigureBlock)(__kindof KSOBlockTextFormatte
 typedef NSString * _Nullable(^KSOBlockTextFormatterTextForEditingTextBlock)(__kindof KSOBlockTextFormatter *formatter, NSString * _Nullable editingText);
 typedef NSString * _Nullable(^KSOBlockTextFormatterEditingTextForTextBlock)(__kindof KSOBlockTextFormatter *formatter, NSString * _Nullable text);
 
-typedef NSAttributedString * _Nullable(^KSOBlockTextFormatterAttributedTextForEditingTextBlock)(__kindof KSOBlockTextFormatter *formatter, NSString * _Nullable editingText, NSDictionary<NSString *,id> *defaultAttributes);
+typedef NSAttributedString * _Nullable(^KSOBlockTextFormatterAttributedTextForTextBlock)(__kindof KSOBlockTextFormatter *formatter, NSString * _Nullable text, NSDictionary<NSString *,id> *defaultAttributes);
+
+typedef BOOL(^KSOBlockTextFormatterValidateEditedTextBlock)(__kindof KSOBlockTextFormatter *formatter, NSString *_Nonnull * _Nonnull editedText, NSRangePointer editedSelectedRange, NSString * _Nullable text, NSRange selectedRange);
 
 @interface KSOBlockTextFormatter : NSObject <KSOTextFormatter>
 
 @property (readonly,copy,nonatomic) KSOBlockTextFormatterTextForEditingTextBlock textBlock;
 @property (readonly,copy,nonatomic) KSOBlockTextFormatterEditingTextForTextBlock editingTextBlock;
 
-@property (copy,nonatomic) KSOBlockTextFormatterAttributedTextForEditingTextBlock attributedTextForEditingTextBlock;
+@property (copy,nonatomic) KSOBlockTextFormatterAttributedTextForTextBlock attributedTextForTextBlock;
+
+@property (copy,nonatomic) KSOBlockTextFormatterValidateEditedTextBlock validateEditedTextBlock;
 
 - (instancetype)initWithConfigureBlock:(nullable KSOBlockTextFormatterConfigureBlock)configureBlock textBlock:(nullable KSOBlockTextFormatterTextForEditingTextBlock)textBlock editingTextBlock:(nullable KSOBlockTextFormatterEditingTextForTextBlock)editingTextBlock NS_DESIGNATED_INITIALIZER;
 - (instancetype)initWithTextBlock:(nullable KSOBlockTextFormatterTextForEditingTextBlock)textBlock editingTextBlock:(nullable KSOBlockTextFormatterEditingTextForTextBlock)editingTextBlock;

@@ -14,7 +14,7 @@
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "ViewController.h"
-#import "PhoneNumberFormatter.h"
+#import "ECPhoneNumberFormatter.h"
 
 #import <Ditko/Ditko.h>
 #import <KSOTextValidation/KSOTextValidation.h>
@@ -55,7 +55,7 @@
     [self.phoneNumberTextField setTextContentType:UITextContentTypeTelephoneNumber];
     [self.phoneNumberTextField setPlaceholder:@"Phone Number"];
     [self.phoneNumberTextField setKSO_textValidator:[KSOPhoneNumberValidator phoneNumberValidator]];
-    [self.phoneNumberTextField setFormatter:[[PhoneNumberFormatter alloc] init]];
+    
     [self.view addSubview:self.phoneNumberTextField];
     
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|" options:0 metrics:nil views:@{@"view": self.phoneNumberTextField}]];
@@ -86,8 +86,8 @@
     [self.uppercaseTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
     [self.uppercaseTextField setPlaceholder:@"Always Uppercase"];
     [self.uppercaseTextField setKSO_textFormatter:[[KSOBlockTextFormatter alloc] initWithConfigureBlock:^(__kindof KSOBlockTextFormatter * _Nonnull formatter) {
-        [formatter setAttributedTextForEditingTextBlock:^NSAttributedString * _Nullable(__kindof KSOBlockTextFormatter * _Nonnull formatter, NSString * _Nullable editingText, NSDictionary<NSString *,id> * _Nonnull defaultAttributes){
-            NSMutableAttributedString *retval = [[NSMutableAttributedString alloc] initWithString:formatter.textBlock(formatter,editingText) attributes:defaultAttributes];
+        [formatter setAttributedTextForTextBlock:^NSAttributedString * _Nullable(__kindof KSOBlockTextFormatter * _Nonnull formatter, NSString * _Nullable text, NSDictionary<NSString *,id> * _Nonnull defaultAttributes){
+            NSMutableAttributedString *retval = [[NSMutableAttributedString alloc] initWithString:text attributes:defaultAttributes];
             NSCharacterSet *set = [NSCharacterSet.letterCharacterSet invertedSet];
             NSRange range = [retval.string rangeOfCharacterFromSet:set options:0 range:NSMakeRange(0, retval.length)];
             
@@ -98,6 +98,10 @@
             }
             
             return retval;
+        }];
+        [formatter setValidateEditedTextBlock:^BOOL(__kindof KSOBlockTextFormatter * _Nonnull formatter, NSString *_Nonnull * _Nonnull editedText, NSRangePointer editedSelectedRange, NSString * _Nullable text, NSRange selectedRange){
+            *editedText = [*editedText uppercaseString];
+            return NO;
         }];
     } textBlock:^NSString * _Nullable(__kindof KSOBlockTextFormatter * _Nonnull formatter, NSString * _Nullable editingText) {
         return editingText.uppercaseString;
