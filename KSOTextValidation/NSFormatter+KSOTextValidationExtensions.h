@@ -15,5 +15,8 @@
 
 #import <KSOTextValidation/KSOTextFormatter.h>
 
+/**
+ Category allowing NSFormatter instances to be used where KSOTextFormatter objects are required.
+ */
 @interface NSFormatter (KSOTextValidationExtensions) <KSOTextFormatter>
 @end

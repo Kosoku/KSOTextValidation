@@ -19,27 +19,105 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class KSOBlockTextFormatter;
 
+/**
+ Block that is invoked to configure an instance of the receiver.
+ 
+ @param formatter The formatter invoking the block
+ */
 typedef void(^KSOBlockTextFormatterConfigureBlock)(__kindof KSOBlockTextFormatter *formatter);
 
+/**
+ Block that is invoked when `textForEditingText:` would normally be called.
+ 
+ @param formatter The formatter invoking the block
+ @param editingText The editing text
+ @return The unformatted text
+ */
 typedef NSString * _Nullable(^KSOBlockTextFormatterTextForEditingTextBlock)(__kindof KSOBlockTextFormatter *formatter, NSString * _Nullable editingText);
+/**
+ Block that is invoked when `editingTextForText:` would normally be called.
+ 
+ @param formatter The formatter invoking the block
+ @param text The unformatted text
+ @return The formatted editing text
+ */
 typedef NSString * _Nullable(^KSOBlockTextFormatterEditingTextForTextBlock)(__kindof KSOBlockTextFormatter *formatter, NSString * _Nullable text);
 
+/**
+ Block that is invoked when `attributedTextForText:defaultAttributes:` would normally be called.
+ 
+ @param formatter The formatter invoking the block
+ @param text The text to format
+ @param defaultAttributes The default text attributes to apply to the return value
+ @return The formatted text
+ */
 typedef NSAttributedString * _Nullable(^KSOBlockTextFormatterAttributedTextForTextBlock)(__kindof KSOBlockTextFormatter *formatter, NSString * _Nullable text, NSDictionary<NSString *,id> *defaultAttributes);
 
+/**
+ Block that is invoked when `isEditedTextValid:editedSelectedRange:text:selectedRange:` would normally be called.
+ 
+ @param formatter The formatter invoking the block
+ @param editedText The proposed edited text
+ @param editedSelectedRange The proposed edited selected range
+ @param text The current text
+ @param selectedRange The current selected range
+ @return YES if editedText and editedSelectedRange are acceptable, otherwise NO
+ */
 typedef BOOL(^KSOBlockTextFormatterValidateEditedTextBlock)(__kindof KSOBlockTextFormatter *formatter, NSString *_Nonnull * _Nonnull editedText, NSRangePointer editedSelectedRange, NSString * _Nullable text, NSRange selectedRange);
 
+/**
+ KSOBlockTextFormatter is designed to be set as the `KSO_textFormatter` as the UITextField.
+ */
 @interface KSOBlockTextFormatter : NSObject <KSOTextFormatter>
 
+/**
+ Set and get the maximum length of the formatted text. If > 0, edits that would make the text greater than maximumLength are not permitted.
+ */
 @property (assign,nonatomic) NSInteger maximumLength;
 
+/**
+ Get the text block of the receiver.
+ 
+ @see KSOBlockTextFormatterTextForEditingTextBlock
+ */
 @property (readonly,copy,nonatomic) KSOBlockTextFormatterTextForEditingTextBlock textBlock;
+/**
+ Get the editing text block of the receiver.
+ 
+ @see KSOBlockTextFormatterEditingTextForTextBlock
+ */
 @property (readonly,copy,nonatomic) KSOBlockTextFormatterEditingTextForTextBlock editingTextBlock;
 
+/**
+ Set and get the attributed text for text block of the receiver.
+ 
+ @see KSOBlockTextFormatterAttributedTextForTextBlock
+ */
 @property (copy,nonatomic) KSOBlockTextFormatterAttributedTextForTextBlock attributedTextForTextBlock;
 
+/**
+ Set and get the validate edited text block of the receiver.
+ 
+ @see KSOBlockTextFormatterValidateEditedTextBlock
+ */
 @property (copy,nonatomic) KSOBlockTextFormatterValidateEditedTextBlock validateEditedTextBlock;
 
+/**
+ Creates and return a block text formatter instance.
+ 
+ @param configureBlock The block to configure the receiver
+ @param textBlock The text block
+ @param editingTextBlock The editing text block
+ @return The initialized instance
+ */
 - (instancetype)initWithConfigureBlock:(nullable KSOBlockTextFormatterConfigureBlock)configureBlock textBlock:(nullable KSOBlockTextFormatterTextForEditingTextBlock)textBlock editingTextBlock:(nullable KSOBlockTextFormatterEditingTextForTextBlock)editingTextBlock NS_DESIGNATED_INITIALIZER;
+/**
+ Calls `initWithConfigureBlock:textBlock:editingTextBlock:`, passing nil, *textBlock*, and *editingTextBlock*.
+ 
+ @param textBlock The text block
+ @param editingTextBlock The editing text block
+ @return The initialized instance
+ */
 - (instancetype)initWithTextBlock:(nullable KSOBlockTextFormatterTextForEditingTextBlock)textBlock editingTextBlock:(nullable KSOBlockTextFormatterEditingTextForTextBlock)editingTextBlock;
 
 - (instancetype)init NS_UNAVAILABLE;

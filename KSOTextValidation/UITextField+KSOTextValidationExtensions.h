@@ -26,7 +26,11 @@ NS_ASSUME_NONNULL_BEGIN
  @see KSOTextValidator
  */
 @property (strong,nonatomic,nullable) id<KSOTextValidator> KSO_textValidator;
-
+/**
+ Set and get the text formatter of the receiver.
+ 
+ @see KSOTextFormatter
+ */
 @property (strong,nonatomic,nullable) id<KSOTextFormatter> KSO_textFormatter;
 
 @end
