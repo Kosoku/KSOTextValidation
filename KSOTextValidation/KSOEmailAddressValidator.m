@@ -14,22 +14,13 @@
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "KSOEmailAddressValidator.h"
-
-NSString *const KSOEmailAddressValidatorErrorDomain = @"KSOEmailAddressValidatorErrorDomain";
+#import "NSString+KSOTextValidationExtensions.h"
 
 @implementation KSOEmailAddressValidator
 
 + (instancetype)emailAddressValidator {
     return [[self alloc] initWithValidateBlock:^BOOL(KSOBlockTextValidator * _Nonnull textValidator, NSString * _Nullable text, NSError * _Nullable __autoreleasing * _Nullable error) {
-        BOOL retval = text.length > 0 && [[NSRegularExpression regularExpressionWithPattern:@"^.+@.+\\..+$" options:0 error:NULL] firstMatchInString:text options:0 range:NSMakeRange(0, text.length)] != nil;
-        
-        if (!retval &&
-            text.length > 0) {
-            
-            *error = [NSError errorWithDomain:KSOEmailAddressValidatorErrorDomain code:0 userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Enter a valid email address", @"email address validator error message")}];
-        }
-        
-        return retval;
+        return [text KSO_isValidEmailAddressWithError:error];
     }];
 }
 

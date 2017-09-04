@@ -66,7 +66,7 @@ typedef NSAttributedString * _Nullable(^KSOBlockTextFormatterAttributedTextForTe
 typedef BOOL(^KSOBlockTextFormatterValidateEditedTextBlock)(__kindof KSOBlockTextFormatter *formatter, NSString *_Nonnull * _Nonnull editedText, NSRangePointer editedSelectedRange, NSString * _Nullable text, NSRange selectedRange);
 
 /**
- KSOBlockTextFormatter is designed to be set as the `KSO_textFormatter` as the UITextField.
+ KSOBlockTextFormatter is designed to be set as the `KSO_textFormatter` of a UITextField.
  */
 @interface KSOBlockTextFormatter : NSObject <KSOTextFormatter>
 

@@ -15,14 +15,15 @@
 
 #import "KSOBlockTextValidator.h"
 
-NSString *const KSOBlockTextValidatorErrorDomain = @"KSOBlockTextValidatorErrorDomain";
+NSString *const KSOBlockTextValidatorErrorDomain = @"com.kosoku.ksotextvalidation.error.ksoblocktextvalidator";
 
 @interface KSOBlockTextValidator ()
 @property (copy,nonatomic) KSOBlockTextValidatorValidateBlock block;
 @end
 
 @implementation KSOBlockTextValidator
-
+#pragma mark *** Subclass Overrides ***
+#pragma mark KSOTextValidator
 - (BOOL)validateText:(NSString *)text error:(NSError * _Nullable __autoreleasing *)error {
     NSError *outError;
     BOOL retval = self.block(self,text,&outError);
@@ -51,7 +52,7 @@ NSString *const KSOBlockTextValidatorErrorDomain = @"KSOBlockTextValidatorErrorD
     
     return retval;
 }
-
+#pragma mark *** Public Methods ***
 - (instancetype)initWithConfigureBlock:(KSOBlockTextValidatorConfigureBlock)configureBlock validateBlock:(KSOBlockTextValidatorValidateBlock)validateBlock {
     if (!(self = [super init]))
         return nil;

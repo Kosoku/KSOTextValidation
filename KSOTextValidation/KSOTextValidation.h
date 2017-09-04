@@ -23,11 +23,13 @@ FOUNDATION_EXPORT const unsigned char KSOTextValidationVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <KSOTextValidation/PublicHeader.h>
 
+#import <KSOTextValidation/KSOTextValidationDefines.h>
 #import <KSOTextValidation/KSOTextValidator.h>
 #import <KSOTextValidation/KSOTextFormatter.h>
 #import <KSOTextValidation/NSFormatter+KSOTextValidationExtensions.h>
 #import <KSOTextValidation/UITextField+KSOTextValidationExtensions.h>
 #import <KSOTextValidation/KSOTextValidationErrorView.h>
+#import <KSOTextValidation/NSString+KSOTextValidationExtensions.h>
 #import <KSOTextValidation/KSOBlockTextValidator.h>
 #import <KSOTextValidation/KSOPhoneNumberValidator.h>
 #import <KSOTextValidation/KSOEmailAddressValidator.h>

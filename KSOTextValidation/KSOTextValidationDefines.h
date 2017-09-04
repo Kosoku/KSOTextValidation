@@ -1,8 +1,8 @@
 //
-//  KSOPhoneNumberValidator.m
+//  KSOTextValidationDefines.h
 //  KSOTextValidation
 //
-//  Created by William Towe on 9/3/17.
+//  Created by William Towe on 9/4/17.
 //  Copyright © 2017 Kosoku Interactive, LLC. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -13,15 +13,27 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import "KSOPhoneNumberValidator.h"
-#import "NSString+KSOTextValidationExtensions.h"
+#ifndef KSOTextValidationDefines_h
+#define KSOTextValidationDefines_h
 
-@implementation KSOPhoneNumberValidator
+#import <Foundation/Foundation.h>
 
-+ (instancetype)phoneNumberValidator {
-    return [[self alloc] initWithValidateBlock:^BOOL(KSOBlockTextValidator * _Nonnull textValidator, NSString * _Nullable text, NSError * _Nullable __autoreleasing * _Nullable error) {
-        return [text KSO_isValidPhoneNumberWithError:error];
-    }];
-}
+/**
+ Typedef describing possible KSOTextValidation errors.
+ */
+typedef NS_ENUM(NSInteger, KSOTextValidationErrorCode) {
+    /**
+     The email address was invalid.
+     */
+    KSOTextValidationErrorCodeInvalidEmailAddress = 1,
+    /**
+     The phone number was invalid.
+     */
+    KSOTextValidationErrorCodeInvalidPhoneNumber
+};
+/**
+ Error domain for any KSOTextValidation errors.
+ */
+static NSString *const KSOTextValidationErrorDomain = @"com.kosoku.ksotextvalidation.error";
 
-@end
+#endif

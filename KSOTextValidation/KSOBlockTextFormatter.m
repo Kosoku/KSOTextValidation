@@ -21,7 +21,8 @@
 @end
 
 @implementation KSOBlockTextFormatter
-
+#pragma mark *** Subclass Overrides ***
+#pragma mark KSOTextFormatter
 - (NSString *)textForEditingText:(NSString *)editingText {
     return self.textBlock(self,editingText);
 }
@@ -40,6 +41,7 @@
     if (self.validateEditedTextBlock != nil) {
         BOOL retval = self.validateEditedTextBlock(self,editedText,editedSelectedRange,text,selectedRange);
         
+        // if the editedText.length would exceed our maximumLength, prevent the edits
         if ((*editedText).length > self.maximumLength) {
             *editedText = text;
             *editedSelectedRange = selectedRange;
@@ -50,7 +52,7 @@
     }
     return YES;
 }
-
+#pragma mark *** Public Methods ***
 - (instancetype)initWithConfigureBlock:(KSOBlockTextFormatterConfigureBlock)configureBlock textBlock:(KSOBlockTextFormatterTextForEditingTextBlock)textBlock editingTextBlock:(KSOBlockTextFormatterEditingTextForTextBlock)editingTextBlock {
     if (!(self = [super init]))
         return nil;
