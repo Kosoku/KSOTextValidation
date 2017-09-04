@@ -19,9 +19,32 @@
 #import <Ditko/Ditko.h>
 #import <KSOTextValidation/KSOTextValidation.h>
 
+@interface CustomTextField : KDITextField <UITextFieldDelegate>
+
+@end
+
+@implementation CustomTextField
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (!(self = [super initWithFrame:frame]))
+        return nil;
+    
+    [self setDelegate:self];
+    
+    return self;
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [textField setBackgroundColor:KDIColorW(0.9)];
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason {
+    [textField setBackgroundColor:UIColor.whiteColor];
+}
+
+@end
+
 @interface ViewController ()
-@property (strong,nonatomic) KDITextField *emailTextField, *minMaxTextField, *uppercaseTextField;
-@property (strong,nonatomic) KSOFormattedTextField *phoneNumberTextField;
+@property (strong,nonatomic) KDITextField *emailTextField, *minMaxTextField, *uppercaseTextField, *phoneNumberTextField;
 @end
 
 @implementation ViewController
@@ -45,7 +68,7 @@
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|" options:0 metrics:nil views:@{@"view": self.emailTextField}]];
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-[view]" options:0 metrics:nil views:@{@"view": self.emailTextField, @"top": self.topLayoutGuide}]];
     
-    [self setPhoneNumberTextField:[[KSOFormattedTextField alloc] initWithFrame:CGRectZero]];
+    [self setPhoneNumberTextField:[[CustomTextField alloc] initWithFrame:CGRectZero]];
     [self.phoneNumberTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
     [self.phoneNumberTextField setBorderStyle:UITextBorderStyleRoundedRect];
     [self.phoneNumberTextField setSpellCheckingType:UITextSpellCheckingTypeNo];
@@ -54,6 +77,7 @@
     [self.phoneNumberTextField setKeyboardType:UIKeyboardTypePhonePad];
     [self.phoneNumberTextField setTextContentType:UITextContentTypeTelephoneNumber];
     [self.phoneNumberTextField setPlaceholder:@"Phone Number"];
+    [self.phoneNumberTextField setRightViewEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 8)];
     [self.phoneNumberTextField setKSO_textValidator:[KSOPhoneNumberValidator phoneNumberValidator]];
     [self.phoneNumberTextField setKSO_textFormatter:[[ECPhoneNumberFormatter alloc] init]];
     [self.view addSubview:self.phoneNumberTextField];

@@ -16,5 +16,4 @@
 #import <KSOTextValidation/KSOTextFormatter.h>
 
 @interface NSFormatter (KSOTextValidationExtensions) <KSOTextFormatter>
-
 @end

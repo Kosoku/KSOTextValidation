@@ -32,4 +32,3 @@ FOUNDATION_EXPORT const unsigned char KSOTextValidationVersionString[];
 #import <KSOTextValidation/KSOPhoneNumberValidator.h>
 #import <KSOTextValidation/KSOEmailAddressValidator.h>
 #import <KSOTextValidation/KSOBlockTextFormatter.h>
-#import <KSOTextValidation/KSOFormattedTextField.h>

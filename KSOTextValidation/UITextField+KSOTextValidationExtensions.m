@@ -93,17 +93,39 @@ static UITextRange* KSOTextRangeFromRangeInTextInput(id<UITextInput> textInput, 
 @property (weak,nonatomic) UITextField *textField;
 @property (weak,nonatomic) id<UITextFieldDelegate> delegate;
 @property (copy,nonatomic) NSDictionary<NSString *, id> *defaultTextAttributes;
+@property (assign,nonatomic) unsigned int delegateMethodsCount;
+@property (assign,nonatomic) struct objc_method_description *delegateMethods;
 
 - (instancetype)initWithTextFormatter:(id<KSOTextFormatter>)textFormatter textField:(UITextField *)textField;
 @end
 
 @implementation KSOTextFieldTextFormatterWrapper
 
-- (BOOL)respondsToSelector:(SEL)aSelector {
-    return [self.delegate respondsToSelector:aSelector] || [super respondsToSelector:aSelector];
+- (void)dealloc {
+    free(_delegateMethods);
 }
-- (void)forwardInvocation:(NSInvocation *)anInvocation {
-    [anInvocation forwardInvocation:self.delegate];
+// does the real delegate respond to the selector and is the selector part of the UITextFieldDelegate protocol
+- (BOOL)respondsToSelector:(SEL)aSelector {
+    if ([self.delegate respondsToSelector:aSelector]) {
+        for (unsigned int i=0; i<self.delegateMethodsCount; i++) {
+            if (self.delegateMethods[i].name == aSelector) {
+                return YES;
+            }
+        }
+        return NO;
+    }
+    return [super respondsToSelector:aSelector];
+}
+// only forward if the selector is part of the UITextField protocol
+- (id)forwardingTargetForSelector:(SEL)aSelector {
+    if ([self.delegate respondsToSelector:aSelector]) {
+        for (unsigned int i=0; i<self.delegateMethodsCount; i++) {
+            if (self.delegateMethods[i].name == aSelector) {
+                return self.delegate;
+            }
+        }
+    }
+    return [super forwardingTargetForSelector:aSelector];
 }
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     BOOL retval = YES;
@@ -163,6 +185,8 @@ static UITextRange* KSOTextRangeFromRangeInTextInput(id<UITextInput> textInput, 
             else {
                 [textField setAttributedText:attrEditedText];
             }
+            
+            [textField sendActionsForControlEvents:UIControlEventEditingChanged];
         }
     }
     
@@ -182,10 +206,12 @@ static UITextRange* KSOTextRangeFromRangeInTextInput(id<UITextInput> textInput, 
     _textFormatter = textFormatter;
     _textField = textField;
     _defaultTextAttributes = @{NSFontAttributeName: _textField.font ?: [UIFont preferredFontForTextStyle:UIFontTextStyleBody], NSForegroundColorAttributeName: _textField.textColor ?: UIColor.blackColor};
+    _delegateMethods = protocol_copyMethodDescriptionList(@protocol(UITextFieldDelegate), NO, YES, &_delegateMethodsCount);
     
     kstWeakify(self);
-    [_textField KAG_addObserverForKeyPath:@kstKeypath(_textField,delegate) options:NSKeyValueObservingOptionInitial block:^(NSString * _Nonnull keyPath, id _Nullable value, NSDictionary<NSKeyValueChangeKey,id> * _Nonnull change){
+    [_textField KAG_addObserverForKeyPath:@kstKeypath(_textField,delegate) options:NSKeyValueObservingOptionInitial block:^(NSString *keyPath, id _Nullable value, NSDictionary<NSKeyValueChangeKey, id> *change){
         kstStrongify(self);
+        
         if (self.textField.delegate == self) {
             return;
         }
