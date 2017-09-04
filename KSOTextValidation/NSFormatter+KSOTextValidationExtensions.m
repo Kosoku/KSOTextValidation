@@ -33,8 +33,8 @@
     return [self attributedStringForObjectValue:editingText withDefaultAttributes:defaultAttributes];
 }
 
-- (BOOL)isEditedTextValid:(NSString *__autoreleasing  _Nonnull *)editedText editedSelectedRange:(NSRangePointer)editedSelectedRange text:(NSString *)text selectedRange:(NSRange)selectedRange {
-    return [self isPartialStringValid:editedText proposedSelectedRange:editedSelectedRange originalString:text originalSelectedRange:selectedRange errorDescription:NULL];
+- (void)formatEditedText:(NSString *__autoreleasing  _Nonnull *)editedText editedSelectedRange:(NSRangePointer)editedSelectedRange text:(NSString *)text selectedRange:(NSRange)selectedRange {
+    [self isPartialStringValid:editedText proposedSelectedRange:editedSelectedRange originalString:text originalSelectedRange:selectedRange errorDescription:NULL];
 }
 
 @end
