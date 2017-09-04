@@ -30,6 +30,8 @@ typedef BOOL(^KSOBlockTextFormatterValidateEditedTextBlock)(__kindof KSOBlockTex
 
 @interface KSOBlockTextFormatter : NSObject <KSOTextFormatter>
 
+@property (assign,nonatomic) NSInteger maximumLength;
+
 @property (readonly,copy,nonatomic) KSOBlockTextFormatterTextForEditingTextBlock textBlock;
 @property (readonly,copy,nonatomic) KSOBlockTextFormatterEditingTextForTextBlock editingTextBlock;
 

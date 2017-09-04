@@ -110,6 +110,7 @@
     [self.uppercaseTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
     [self.uppercaseTextField setPlaceholder:@"Always Uppercase"];
     [self.uppercaseTextField setKSO_textFormatter:[[KSOBlockTextFormatter alloc] initWithConfigureBlock:^(__kindof KSOBlockTextFormatter * _Nonnull formatter) {
+        [formatter setMaximumLength:8];
         [formatter setAttributedTextForTextBlock:^NSAttributedString * _Nullable(__kindof KSOBlockTextFormatter * _Nonnull formatter, NSString * _Nullable text, NSDictionary<NSString *,id> * _Nonnull defaultAttributes){
             NSMutableAttributedString *retval = [[NSMutableAttributedString alloc] initWithString:text attributes:defaultAttributes];
             NSCharacterSet *set = [NSCharacterSet.letterCharacterSet invertedSet];

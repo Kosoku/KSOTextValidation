@@ -38,7 +38,15 @@
 
 - (BOOL)isEditedTextValid:(NSString *__autoreleasing  _Nonnull *)editedText editedSelectedRange:(NSRangePointer)editedSelectedRange text:(NSString *)text selectedRange:(NSRange)selectedRange {
     if (self.validateEditedTextBlock != nil) {
-        return self.validateEditedTextBlock(self,editedText,editedSelectedRange,text,selectedRange);
+        BOOL retval = self.validateEditedTextBlock(self,editedText,editedSelectedRange,text,selectedRange);
+        
+        if ((*editedText).length > self.maximumLength) {
+            *editedText = text;
+            *editedSelectedRange = selectedRange;
+            retval = NO;
+        }
+        
+        return retval;
     }
     return YES;
 }
