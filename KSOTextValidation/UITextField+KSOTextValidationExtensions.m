@@ -168,26 +168,42 @@ static UITextRange* KSOTextRangeFromRangeInTextInput(id<UITextInput> textInput, 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     BOOL retval = YES;
     
-    if ([self.textFormatter respondsToSelector:@selector(isEditedTextValid:editedSelectedRange:text:selectedRange:)]) {
-        NSString *editedText = [textField.text stringByReplacingCharactersInRange:range withString:string];
-        NSRange editedRange = NSMakeRange(range.location + string.length, 0);
+    NSString *editedText = [textField.text stringByReplacingCharactersInRange:range withString:string];
+    NSRange editedRange = NSMakeRange(range.location + string.length, 0);
+    
+    if ([self.textFormatter respondsToSelector:@selector(formatEditedText:editedSelectedRange:text:selectedRange:)]) {
+        retval = NO;
         
-        retval = [self.textFormatter isEditedTextValid:&editedText editedSelectedRange:&editedRange text:textField.text selectedRange:KSOSelectedRangeFromTextInput(textField)];
+        [self.textFormatter formatEditedText:&editedText editedSelectedRange:&editedRange text:textField.text selectedRange:KSOSelectedRangeFromTextInput(textField)];
         
-        if (!retval) {
-            [textField setSelectedTextRange:KSOTextRangeFromRangeInTextInput(textField, editedRange)];
-            
-            NSAttributedString *attrEditedText = [self.textFormatter respondsToSelector:@selector(attributedTextForText:defaultAttributes:)] ? [self.textFormatter attributedTextForText:editedText defaultAttributes:self.defaultTextAttributes] : nil;
-            
-            if (attrEditedText == nil) {
-                [textField setText:editedText];
-            }
-            else {
-                [textField setAttributedText:attrEditedText];
-            }
-            
-            [textField sendActionsForControlEvents:UIControlEventEditingChanged];
+        NSAttributedString *attrEditedText = [self.textFormatter respondsToSelector:@selector(attributedTextForText:defaultAttributes:)] ? [self.textFormatter attributedTextForText:editedText defaultAttributes:self.defaultTextAttributes] : nil;
+        
+        if (attrEditedText == nil) {
+            [textField setText:editedText];
         }
+        else {
+            [textField setAttributedText:attrEditedText];
+        }
+        
+        [textField setSelectedTextRange:KSOTextRangeFromRangeInTextInput(textField, editedRange)];
+        
+        [textField sendActionsForControlEvents:UIControlEventEditingChanged];
+    }
+    else if ([self.textFormatter respondsToSelector:@selector(attributedTextForText:defaultAttributes:)]) {
+        retval = NO;
+        
+        NSAttributedString *attrEditedText = [self.textFormatter respondsToSelector:@selector(attributedTextForText:defaultAttributes:)] ? [self.textFormatter attributedTextForText:editedText defaultAttributes:self.defaultTextAttributes] : nil;
+        
+        if (attrEditedText == nil) {
+            [textField setText:editedText];
+        }
+        else {
+            [textField setAttributedText:attrEditedText];
+        }
+        
+        [textField setSelectedTextRange:KSOTextRangeFromRangeInTextInput(textField, editedRange)];
+        
+        [textField sendActionsForControlEvents:UIControlEventEditingChanged];
     }
     
     if (retval &&

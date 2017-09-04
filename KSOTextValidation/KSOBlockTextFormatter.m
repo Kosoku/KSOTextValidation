@@ -37,20 +37,33 @@
     return self.attributedTextForTextBlock(self,text,defaultAttributes);
 }
 
-- (BOOL)isEditedTextValid:(NSString *__autoreleasing  _Nonnull *)editedText editedSelectedRange:(NSRangePointer)editedSelectedRange text:(NSString *)text selectedRange:(NSRange)selectedRange {
-    if (self.validateEditedTextBlock != nil) {
-        BOOL retval = self.validateEditedTextBlock(self,editedText,editedSelectedRange,text,selectedRange);
+- (void)formatEditedText:(NSString *__autoreleasing  _Nonnull *)editedText editedSelectedRange:(NSRangePointer)editedSelectedRange text:(NSString *)text selectedRange:(NSRange)selectedRange {
+    if (self.formatEditedTextBlock != nil) {
+        self.formatEditedTextBlock(self,editedText,editedSelectedRange,text,selectedRange);
+    }
+    
+    // if the editedText.length would exceed our maximumLength, prevent the edits
+    if ((*editedText).length > self.maximumLength) {
+        *editedText = text;
+        *editedSelectedRange = selectedRange;
+    }
+    
+    // if our allowed character set is non-nil and the edited text contains characters that do not belong to it, strip the edited text of those characters, then proceed with the edit
+    if (self.allowedCharacterSet != nil &&
+        [(*editedText) rangeOfCharacterFromSet:self.allowedCharacterSet.invertedSet].length > 0) {
         
-        // if the editedText.length would exceed our maximumLength, prevent the edits
-        if ((*editedText).length > self.maximumLength) {
-            *editedText = text;
-            *editedSelectedRange = selectedRange;
-            retval = NO;
+        NSMutableString *string = [[NSMutableString alloc] init];
+        NSRange range = [*editedText rangeOfCharacterFromSet:self.allowedCharacterSet options:0 range:NSMakeRange(0, string.length)];
+        
+        while (range.length > 0) {
+            [string appendString:[*editedText substringWithRange:range]];
+            
+            range = [*editedText rangeOfCharacterFromSet:self.allowedCharacterSet options:0 range:NSMakeRange(NSMaxRange(range), (*editedText).length - NSMaxRange(range))];
         }
         
-        return retval;
+        *editedText = [string copy];
+        *editedSelectedRange = NSMakeRange(selectedRange.location + (*editedText).length - text.length, selectedRange.length);
     }
-    return YES;
 }
 #pragma mark *** Public Methods ***
 - (instancetype)initWithConfigureBlock:(KSOBlockTextFormatterConfigureBlock)configureBlock textBlock:(KSOBlockTextFormatterTextForEditingTextBlock)textBlock editingTextBlock:(KSOBlockTextFormatterEditingTextForTextBlock)editingTextBlock {

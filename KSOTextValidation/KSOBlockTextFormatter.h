@@ -63,7 +63,7 @@ typedef NSAttributedString * _Nullable(^KSOBlockTextFormatterAttributedTextForTe
  @param selectedRange The current selected range
  @return YES if editedText and editedSelectedRange are acceptable, otherwise NO
  */
-typedef BOOL(^KSOBlockTextFormatterValidateEditedTextBlock)(__kindof KSOBlockTextFormatter *formatter, NSString *_Nonnull * _Nonnull editedText, NSRangePointer editedSelectedRange, NSString * _Nullable text, NSRange selectedRange);
+typedef void(^KSOBlockTextFormatterFormatEditedTextBlock)(__kindof KSOBlockTextFormatter *formatter, NSString *_Nonnull * _Nonnull editedText, NSRangePointer editedSelectedRange, NSString * _Nullable text, NSRange selectedRange);
 
 /**
  KSOBlockTextFormatter is designed to be set as the `KSO_textFormatter` of a UITextField.
@@ -74,6 +74,13 @@ typedef BOOL(^KSOBlockTextFormatterValidateEditedTextBlock)(__kindof KSOBlockTex
  Set and get the maximum length of the formatted text. If > 0, edits that would make the text greater than maximumLength are not permitted.
  */
 @property (assign,nonatomic) NSInteger maximumLength;
+
+/**
+ Set and get the allowed character set of the receiver. If non-nil, any edit containing characters that are not part of the provided character set are not allowed.
+ 
+ The default is nil.
+ */
+@property (copy,nonatomic,nullable) NSCharacterSet *allowedCharacterSet;
 
 /**
  Get the text block of the receiver.
@@ -98,9 +105,9 @@ typedef BOOL(^KSOBlockTextFormatterValidateEditedTextBlock)(__kindof KSOBlockTex
 /**
  Set and get the validate edited text block of the receiver.
  
- @see KSOBlockTextFormatterValidateEditedTextBlock
+ @see KSOBlockTextFormatterFormatEditedTextBlock
  */
-@property (copy,nonatomic) KSOBlockTextFormatterValidateEditedTextBlock validateEditedTextBlock;
+@property (copy,nonatomic) KSOBlockTextFormatterFormatEditedTextBlock formatEditedTextBlock;
 
 /**
  Creates and return a block text formatter instance.

@@ -52,9 +52,8 @@ NS_ASSUME_NONNULL_BEGIN
  @param editedSelectedRange A pointer to what will be the selected range of receiver
  @param text The current text of the receiver
  @param selectedRange The current selected range of the receiver
- @return YES if the proposed edits should be applied with adjustment, otherwise NO
  */
-- (BOOL)isEditedTextValid:(NSString * _Nonnull * _Nonnull)editedText editedSelectedRange:(NSRangePointer)editedSelectedRange text:(NSString *)text selectedRange:(NSRange)selectedRange;
+- (void)formatEditedText:(NSString * _Nonnull * _Nonnull)editedText editedSelectedRange:(NSRangePointer)editedSelectedRange text:(NSString *)text selectedRange:(NSRange)selectedRange;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -44,7 +44,7 @@
 @end
 
 @interface ViewController ()
-@property (strong,nonatomic) KDITextField *emailTextField, *minMaxTextField, *uppercaseTextField, *phoneNumberTextField;
+@property (strong,nonatomic) KDITextField *emailTextField, *minMaxTextField, *onlyNumbersTextField, *phoneNumberTextField;
 @end
 
 @implementation ViewController
@@ -102,41 +102,45 @@
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|" options:0 metrics:nil views:@{@"view": self.minMaxTextField}]];
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-[view]" options:0 metrics:nil views:@{@"view": self.minMaxTextField, @"top": self.phoneNumberTextField}]];
     
-    [self setUppercaseTextField:[[KDITextField alloc] initWithFrame:CGRectZero]];
-    [self.uppercaseTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.uppercaseTextField setBorderStyle:UITextBorderStyleRoundedRect];
-    [self.uppercaseTextField setSpellCheckingType:UITextSpellCheckingTypeNo];
-    [self.uppercaseTextField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
-    [self.uppercaseTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
-    [self.uppercaseTextField setPlaceholder:@"Always Uppercase"];
-    [self.uppercaseTextField setKSO_textFormatter:[[KSOBlockTextFormatter alloc] initWithConfigureBlock:^(__kindof KSOBlockTextFormatter * _Nonnull formatter) {
+    [self setOnlyNumbersTextField:[[KDITextField alloc] initWithFrame:CGRectZero]];
+    [self.onlyNumbersTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.onlyNumbersTextField setKeyboardType:UIKeyboardTypeNumberPad];
+    [self.onlyNumbersTextField setBorderStyle:UITextBorderStyleRoundedRect];
+    [self.onlyNumbersTextField setSpellCheckingType:UITextSpellCheckingTypeNo];
+    [self.onlyNumbersTextField setAutocapitalizationType:UITextAutocapitalizationTypeNone];
+    [self.onlyNumbersTextField setAutocorrectionType:UITextAutocorrectionTypeNo];
+    [self.onlyNumbersTextField setPlaceholder:@"Only Numbers"];
+    [self.onlyNumbersTextField setKSO_textFormatter:[[KSOBlockTextFormatter alloc] initWithConfigureBlock:^(__kindof KSOBlockTextFormatter * _Nonnull formatter) {
         [formatter setMaximumLength:8];
+        [formatter setAllowedCharacterSet:NSCharacterSet.decimalDigitCharacterSet];
         [formatter setAttributedTextForTextBlock:^NSAttributedString * _Nullable(__kindof KSOBlockTextFormatter * _Nonnull formatter, NSString * _Nullable text, NSDictionary<NSString *,id> * _Nonnull defaultAttributes){
             NSMutableAttributedString *retval = [[NSMutableAttributedString alloc] initWithString:text attributes:defaultAttributes];
-            NSCharacterSet *set = [NSCharacterSet.letterCharacterSet invertedSet];
-            NSRange range = [retval.string rangeOfCharacterFromSet:set options:0 range:NSMakeRange(0, retval.length)];
+            unichar characters[retval.length];
             
-            while (range.length > 0) {
-                [retval addAttribute:NSForegroundColorAttributeName value:UIColor.redColor range:range];
-                
-                range = [retval.string rangeOfCharacterFromSet:set options:0 range:NSMakeRange(NSMaxRange(range), retval.length - NSMaxRange(range))];
+            [retval.string getCharacters:characters range:NSMakeRange(0, retval.length)];
+            
+            for (NSUInteger i=0; i<retval.length; i++) {
+                switch (characters[i]) {
+                    case '0':
+                    case '2':
+                    case '4':
+                    case '6':
+                    case '8':
+                        [retval addAttribute:NSForegroundColorAttributeName value:UIColor.blueColor range:NSMakeRange(i, 1)];
+                        break;
+                    default:
+                        [retval addAttribute:NSForegroundColorAttributeName value:UIColor.redColor range:NSMakeRange(i, 1)];
+                        break;
+                }
             }
             
             return retval;
         }];
-        [formatter setValidateEditedTextBlock:^BOOL(__kindof KSOBlockTextFormatter * _Nonnull formatter, NSString *_Nonnull * _Nonnull editedText, NSRangePointer editedSelectedRange, NSString * _Nullable text, NSRange selectedRange){
-            *editedText = [*editedText uppercaseString];
-            return NO;
-        }];
-    } textBlock:^NSString * _Nullable(__kindof KSOBlockTextFormatter * _Nonnull formatter, NSString * _Nullable editingText) {
-        return editingText.uppercaseString;
-    } editingTextBlock:^NSString * _Nullable(__kindof KSOBlockTextFormatter * _Nonnull formatter, NSString * _Nullable text) {
-        return text.uppercaseString;
-    }]];
-    [self.view addSubview:self.uppercaseTextField];
+    } textBlock:nil editingTextBlock:nil]];
+    [self.view addSubview:self.onlyNumbersTextField];
     
-    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|" options:0 metrics:nil views:@{@"view": self.uppercaseTextField}]];
-    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-[view]" options:0 metrics:nil views:@{@"view": self.uppercaseTextField, @"top": self.minMaxTextField}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|" options:0 metrics:nil views:@{@"view": self.onlyNumbersTextField}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-[view]" options:0 metrics:nil views:@{@"view": self.onlyNumbersTextField, @"top": self.minMaxTextField}]];
 }
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
