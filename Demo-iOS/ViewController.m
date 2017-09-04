@@ -55,7 +55,7 @@
     [self.phoneNumberTextField setTextContentType:UITextContentTypeTelephoneNumber];
     [self.phoneNumberTextField setPlaceholder:@"Phone Number"];
     [self.phoneNumberTextField setKSO_textValidator:[KSOPhoneNumberValidator phoneNumberValidator]];
-    
+    [self.phoneNumberTextField setKSO_textFormatter:[[ECPhoneNumberFormatter alloc] init]];
     [self.view addSubview:self.phoneNumberTextField];
     
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|" options:0 metrics:nil views:@{@"view": self.phoneNumberTextField}]];

@@ -1,8 +1,8 @@
 //
-//  KSOTextValidation.h
+//  NSFormatter+KSOTextValidationExtensions.m
 //  KSOTextValidation
 //
-//  Created by William Towe on 4/7/17.
+//  Created by William Towe on 9/3/17.
 //  Copyright © 2017 Kosoku Interactive, LLC. All rights reserved.
 //
 //  Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:
@@ -13,23 +13,25 @@
 //
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <UIKit/UIKit.h>
+#import "NSFormatter+KSOTextValidationExtensions.h"
 
-//! Project version number for KSOTextValidation.
-FOUNDATION_EXPORT double KSOTextValidationVersionNumber;
+@implementation NSFormatter (KSOTextValidationExtensions)
 
-//! Project version string for KSOTextValidation.
-FOUNDATION_EXPORT const unsigned char KSOTextValidationVersionString[];
+- (NSString *)textForEditingText:(NSString *)editingText {
+    id retval;
+    if ([self getObjectValue:&retval forString:editingText errorDescription:NULL] &&
+        [retval isKindOfClass:NSString.class]) {
+        
+        return retval;
+    }
+    return editingText;
+}
+- (NSString *)editingTextForText:(NSString *)text {
+    return [self stringForObjectValue:text];
+}
 
-// In this header, you should import all the public headers of your framework using statements like #import <KSOTextValidation/PublicHeader.h>
+- (BOOL)isEditedTextValid:(NSString *__autoreleasing  _Nonnull *)editedText editedSelectedRange:(NSRangePointer)editedSelectedRange text:(NSString *)text selectedRange:(NSRange)selectedRange {
+    return [self isPartialStringValid:editedText proposedSelectedRange:editedSelectedRange originalString:text originalSelectedRange:selectedRange errorDescription:NULL];
+}
 
-#import <KSOTextValidation/KSOTextValidator.h>
-#import <KSOTextValidation/KSOTextFormatter.h>
-#import <KSOTextValidation/NSFormatter+KSOTextValidationExtensions.h>
-#import <KSOTextValidation/UITextField+KSOTextValidationExtensions.h>
-#import <KSOTextValidation/KSOTextValidationErrorView.h>
-#import <KSOTextValidation/KSOBlockTextValidator.h>
-#import <KSOTextValidation/KSOPhoneNumberValidator.h>
-#import <KSOTextValidation/KSOEmailAddressValidator.h>
-#import <KSOTextValidation/KSOBlockTextFormatter.h>
-#import <KSOTextValidation/KSOFormattedTextField.h>
+@end

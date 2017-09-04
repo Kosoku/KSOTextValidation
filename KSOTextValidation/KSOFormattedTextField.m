@@ -30,63 +30,14 @@
     return self;
 }
 
-- (NSString *)text {
-    NSString *retval = [super text];
-    
-    if (!self.isEditing &&
-        self.formatter != nil) {
-        
-        id realRetval;
-        [self.formatter getObjectValue:&realRetval forString:retval errorDescription:NULL];
-        
-        if ([realRetval isKindOfClass:NSString.class]) {
-            retval = realRetval;
-        }
-        else {
-            retval = [self.formatter stringForObjectValue:realRetval];
-        }
-    }
-    
-    return retval;
-}
-- (void)setText:(NSString *)text {
-    if (self.formatter == nil ||
-        self.isEditing) {
-        
-        [super setText:text];
-    }
-    else {
-        NSAttributedString *attrText = [self.formatter attributedStringForObjectValue:text withDefaultAttributes:@{NSForegroundColorAttributeName: UIColor.blackColor}];
-        
-        if (attrText == nil) {
-            NSString *realText = [self.formatter stringForObjectValue:text];
-            
-            if ([realText isKindOfClass:NSString.class]) {
-                [super setText:realText];
-            }
-            else {
-                id objectValue;
-                [self.formatter getObjectValue:&objectValue forString:text errorDescription:NULL];
-                
-                realText = [self.formatter stringForObjectValue:objectValue];
-                
-                [super setText:realText];
-            }
-        }
-        else {
-            [self setAttributedText:attrText];
-        }
-    }
-}
-
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     if (self.formatter != nil) {
         [textField setText:[self.formatter editingStringForObjectValue:textField.text]];
     }
 }
-- (void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason {
-    [textField setText:textField.text];
-}
+//- (void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason {
+//    [textField setText:textField.text];
+//}
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     if (self.formatter != nil) {
         NSString *newText = [textField.text stringByReplacingCharactersInRange:range withString:string];
