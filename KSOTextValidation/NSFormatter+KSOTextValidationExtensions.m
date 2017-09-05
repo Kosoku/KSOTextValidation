@@ -29,8 +29,8 @@
 - (NSString *)editingTextForText:(NSString *)text {
     return [self editingStringForObjectValue:text] ?: text;
 }
-- (NSAttributedString *)attributedTextForText:(NSString *)editingText defaultAttributes:(NSDictionary<NSString *,id> *)defaultAttributes {
-    return [self attributedStringForObjectValue:editingText withDefaultAttributes:defaultAttributes];
+- (NSAttributedString *)attributedTextForText:(NSString *)text defaultAttributes:(NSDictionary<NSString *,id> *)defaultAttributes {
+    return [self attributedStringForObjectValue:text withDefaultAttributes:defaultAttributes];
 }
 
 - (void)formatEditedText:(NSString *__autoreleasing  _Nonnull *)editedText editedSelectedRange:(NSRangePointer)editedSelectedRange text:(NSString *)text selectedRange:(NSRange)selectedRange {
