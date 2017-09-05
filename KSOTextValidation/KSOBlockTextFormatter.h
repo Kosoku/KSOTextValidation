@@ -61,7 +61,6 @@ typedef NSAttributedString * _Nullable(^KSOBlockTextFormatterAttributedTextForTe
  @param editedSelectedRange The proposed edited selected range
  @param text The current text
  @param selectedRange The current selected range
- @return YES if editedText and editedSelectedRange are acceptable, otherwise NO
  */
 typedef void(^KSOBlockTextFormatterFormatEditedTextBlock)(__kindof KSOBlockTextFormatter *formatter, NSString *_Nonnull * _Nonnull editedText, NSRangePointer editedSelectedRange, NSString * _Nullable text, NSRange selectedRange);
 
