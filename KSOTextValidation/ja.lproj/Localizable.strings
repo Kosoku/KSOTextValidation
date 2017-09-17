@@ -1,8 +1,8 @@
 ﻿/* block text validator maximum length error message format */
-"BLOCK_TEXT_VALIDATOR_MAXIMUM_LENGTH_FORMAT" = "The string cannot be more than %@ characters long";
+"BLOCK_TEXT_VALIDATOR_MAXIMUM_LENGTH_FORMAT" = "The text cannot have more than %@ characters";
 
 /* block text validator minimum length error message format */
-"BLOCK_TEXT_VALIDATOR_MINIMUM_LENGTH_FORMAT" = "The string must be at least %@ characters long";
+"BLOCK_TEXT_VALIDATOR_MINIMUM_LENGTH_FORMAT" = "The text must have at least %@ characters";
 
 /* email address validator error message */
 "INVALID_EMAIL_ADDRESS" = "Enter a valid email address";
