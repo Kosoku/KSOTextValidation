@@ -169,8 +169,9 @@
 		07277DD51E9BE545004237FD /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "Vendor/Stanley/build/Debug-appletvos/Stanley.framework"; sourceTree = "<group>"; };
 		072FDE041F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+KSOTextValidationPrivateExtensions.h"; path = "Private/NSBundle+KSOTextValidationPrivateExtensions.h"; sourceTree = "<group>"; };
 		072FDE051F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+KSOTextValidationPrivateExtensions.m"; path = "Private/NSBundle+KSOTextValidationPrivateExtensions.m"; sourceTree = "<group>"; };
-		072FDE0D1F6E633800E73661 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		072FDE101F6E635000E73661 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		072FDE0D1F6E633800E73661 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		072FDE101F6E635000E73661 /* ja */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
+		072FDE121F6EBF2600E73661 /* ro */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0744F5171F5DC5740044FFB0 /* NSString+KSOTextValidationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+KSOTextValidationExtensions.h"; sourceTree = "<group>"; };
 		0744F5181F5DC5740044FFB0 /* NSString+KSOTextValidationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+KSOTextValidationExtensions.m"; sourceTree = "<group>"; };
 		0744F51D1F5DC6B90044FFB0 /* KSOTextValidationDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSOTextValidationDefines.h; sourceTree = "<group>"; };
@@ -565,6 +566,7 @@
 				en,
 				Base,
 				ja,
+				ro,
 			);
 			mainGroup = 079728971E97FFA300E86545;
 			productRefGroup = 079728A41E97FFF400E86545 /* Products */;
@@ -731,6 +733,7 @@
 			children = (
 				072FDE0D1F6E633800E73661 /* en */,
 				072FDE101F6E635000E73661 /* ja */,
+				072FDE121F6EBF2600E73661 /* ro */,
 			);
 			name = Localizable.strings;
 			sourceTree = "<group>";
