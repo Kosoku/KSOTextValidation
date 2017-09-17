@@ -35,6 +35,12 @@
 		07277DD11E9BE518004237FD /* Stanley.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07277DCF1E9BE518004237FD /* Stanley.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		07277DD41E9BE52F004237FD /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07277DD31E9BE52F004237FD /* Stanley.framework */; };
 		07277DD61E9BE545004237FD /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07277DD51E9BE545004237FD /* Stanley.framework */; };
+		072FDE061F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 072FDE041F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		072FDE071F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 072FDE041F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.h */; settings = {ATTRIBUTES = (Private, ); }; };
+		072FDE081F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 072FDE051F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.m */; };
+		072FDE091F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 072FDE051F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.m */; };
+		072FDE0E1F6E633800E73661 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 072FDE0C1F6E633800E73661 /* Localizable.strings */; };
+		072FDE0F1F6E633800E73661 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 072FDE0C1F6E633800E73661 /* Localizable.strings */; };
 		0744F5191F5DC5740044FFB0 /* NSString+KSOTextValidationExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0744F5171F5DC5740044FFB0 /* NSString+KSOTextValidationExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0744F51A1F5DC5740044FFB0 /* NSString+KSOTextValidationExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0744F5171F5DC5740044FFB0 /* NSString+KSOTextValidationExtensions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0744F51B1F5DC5740044FFB0 /* NSString+KSOTextValidationExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0744F5181F5DC5740044FFB0 /* NSString+KSOTextValidationExtensions.m */; };
@@ -161,6 +167,10 @@
 		07277DCF1E9BE518004237FD /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07277DD31E9BE52F004237FD /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "Vendor/Stanley/build/Debug-iphoneos/Stanley.framework"; sourceTree = "<group>"; };
 		07277DD51E9BE545004237FD /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "Vendor/Stanley/build/Debug-appletvos/Stanley.framework"; sourceTree = "<group>"; };
+		072FDE041F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+KSOTextValidationPrivateExtensions.h"; path = "Private/NSBundle+KSOTextValidationPrivateExtensions.h"; sourceTree = "<group>"; };
+		072FDE051F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+KSOTextValidationPrivateExtensions.m"; path = "Private/NSBundle+KSOTextValidationPrivateExtensions.m"; sourceTree = "<group>"; };
+		072FDE0D1F6E633800E73661 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		072FDE101F6E635000E73661 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		0744F5171F5DC5740044FFB0 /* NSString+KSOTextValidationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+KSOTextValidationExtensions.h"; sourceTree = "<group>"; };
 		0744F5181F5DC5740044FFB0 /* NSString+KSOTextValidationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+KSOTextValidationExtensions.m"; sourceTree = "<group>"; };
 		0744F51D1F5DC6B90044FFB0 /* KSOTextValidationDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSOTextValidationDefines.h; sourceTree = "<group>"; };
@@ -322,6 +332,8 @@
 				07EEB3161F5BD760000C44C8 /* KSOPhoneNumberValidator.m */,
 				075C2C101F5CA8F3008A67E2 /* KSOBlockTextFormatter.h */,
 				075C2C111F5CA8F3008A67E2 /* KSOBlockTextFormatter.m */,
+				072FDE041F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.h */,
+				072FDE051F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.m */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -390,6 +402,7 @@
 				079728A71E97FFF400E86545 /* KSOTextValidation-iOS-Info.plist */,
 				0767980E1E9ACEE3009AB0F9 /* KSOTextValidation-tvOS-Info.plist */,
 				079728AD1E98004F00E86545 /* KSOTextValidation-Info.h */,
+				072FDE0C1F6E633800E73661 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -405,6 +418,7 @@
 				07106B411E9B23FA009FBC4E /* KSOTextValidationErrorView.h in Headers */,
 				075C2C191F5CDA0F008A67E2 /* NSFormatter+KSOTextValidationExtensions.h in Headers */,
 				0744F51F1F5DC6B90044FFB0 /* KSOTextValidationDefines.h in Headers */,
+				072FDE071F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.h in Headers */,
 				07EEB31E1F5BD908000C44C8 /* KSOEmailAddressValidator.h in Headers */,
 				07106B471E9B2AB5009FBC4E /* KSOBlockTextValidator.h in Headers */,
 				076798351E9AD00D009AB0F9 /* UITextField+KSOTextValidationExtensions.h in Headers */,
@@ -424,6 +438,7 @@
 				07106B401E9B23FA009FBC4E /* KSOTextValidationErrorView.h in Headers */,
 				075C2C181F5CDA0F008A67E2 /* NSFormatter+KSOTextValidationExtensions.h in Headers */,
 				0744F51E1F5DC6B90044FFB0 /* KSOTextValidationDefines.h in Headers */,
+				072FDE061F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.h in Headers */,
 				07EEB31D1F5BD908000C44C8 /* KSOEmailAddressValidator.h in Headers */,
 				07106B461E9B2AB5009FBC4E /* KSOBlockTextValidator.h in Headers */,
 				076798101E9ACF6E009AB0F9 /* KSOTextValidator.h in Headers */,
@@ -461,6 +476,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0767980B1E9ACEA4009AB0F9 /* Build configuration list for PBXNativeTarget "KSOTextValidation-tvOS" */;
 			buildPhases = (
+				072FDE0B1F6E608300E73661 /* genstrings */,
 				076798011E9ACEA4009AB0F9 /* Sources */,
 				076798021E9ACEA4009AB0F9 /* Frameworks */,
 				076798031E9ACEA4009AB0F9 /* Headers */,
@@ -498,6 +514,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 079728A91E97FFF400E86545 /* Build configuration list for PBXNativeTarget "KSOTextValidation-iOS" */;
 			buildPhases = (
+				072FDE0A1F6E607100E73661 /* genstrings */,
 				0797289E1E97FFF400E86545 /* Sources */,
 				0797289F1E97FFF400E86545 /* Frameworks */,
 				079728A01E97FFF400E86545 /* Headers */,
@@ -547,6 +564,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = 079728971E97FFA300E86545;
 			productRefGroup = 079728A41E97FFF400E86545 /* Products */;
@@ -575,6 +593,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				072FDE0F1F6E633800E73661 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -592,10 +611,42 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				072FDE0E1F6E633800E73661 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		072FDE0A1F6E607100E73661 /* genstrings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = genstrings;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = scripts/./genstrings.sh;
+		};
+		072FDE0B1F6E608300E73661 /* genstrings */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = genstrings;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = scripts/./genstrings.sh;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		072188511E9BFC18005C18D5 /* Sources */ = {
@@ -617,6 +668,7 @@
 				075C2C1B1F5CDA0F008A67E2 /* NSFormatter+KSOTextValidationExtensions.m in Sources */,
 				07106B491E9B2AB5009FBC4E /* KSOBlockTextValidator.m in Sources */,
 				075C2C151F5CA8F3008A67E2 /* KSOBlockTextFormatter.m in Sources */,
+				072FDE091F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.m in Sources */,
 				076798371E9AD00D009AB0F9 /* UITextField+KSOTextValidationExtensions.m in Sources */,
 				07EEB3201F5BD908000C44C8 /* KSOEmailAddressValidator.m in Sources */,
 				07106B431E9B23FA009FBC4E /* KSOTextValidationErrorView.m in Sources */,
@@ -643,6 +695,7 @@
 				075C2C1A1F5CDA0F008A67E2 /* NSFormatter+KSOTextValidationExtensions.m in Sources */,
 				07106B481E9B2AB5009FBC4E /* KSOBlockTextValidator.m in Sources */,
 				075C2C141F5CA8F3008A67E2 /* KSOBlockTextFormatter.m in Sources */,
+				072FDE081F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.m in Sources */,
 				076798361E9AD00D009AB0F9 /* UITextField+KSOTextValidationExtensions.m in Sources */,
 				07EEB31F1F5BD908000C44C8 /* KSOEmailAddressValidator.m in Sources */,
 				07106B421E9B23FA009FBC4E /* KSOTextValidationErrorView.m in Sources */,
@@ -671,6 +724,15 @@
 				072188611E9BFC18005C18D5 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		072FDE0C1F6E633800E73661 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				072FDE0D1F6E633800E73661 /* en */,
+				072FDE101F6E635000E73661 /* ja */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		076798211E9ACFAE009AB0F9 /* Main.storyboard */ = {
@@ -1021,12 +1083,14 @@
 		0797289C1E97FFA300E86545 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 			};
 			name = Debug;
 		};
 		0797289D1E97FFA300E86545 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 			};
 			name = Release;
 		};

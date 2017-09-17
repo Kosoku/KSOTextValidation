@@ -15,6 +15,8 @@
 
 #import "KSOBlockTextFormatter.h"
 
+#import <Stanley/Stanley.h>
+
 @interface KSOBlockTextFormatter ()
 @property (readwrite,copy,nonatomic) KSOBlockTextFormatterTextForEditingTextBlock textBlock;
 @property (readwrite,copy,nonatomic) KSOBlockTextFormatterEditingTextForTextBlock editingTextBlock;
@@ -52,16 +54,7 @@
     if (self.allowedCharacterSet != nil &&
         [(*editedText) rangeOfCharacterFromSet:self.allowedCharacterSet.invertedSet].length > 0) {
         
-        NSMutableString *string = [[NSMutableString alloc] init];
-        NSRange range = [*editedText rangeOfCharacterFromSet:self.allowedCharacterSet options:0 range:NSMakeRange(0, string.length)];
-        
-        while (range.length > 0) {
-            [string appendString:[*editedText substringWithRange:range]];
-            
-            range = [*editedText rangeOfCharacterFromSet:self.allowedCharacterSet options:0 range:NSMakeRange(NSMaxRange(range), (*editedText).length - NSMaxRange(range))];
-        }
-        
-        *editedText = [string copy];
+        *editedText = [*editedText KST_stringByRemovingCharactersInSet:self.allowedCharacterSet.invertedSet];
         *editedSelectedRange = NSMakeRange(selectedRange.location + (*editedText).length - text.length, selectedRange.length);
     }
 }

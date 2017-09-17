@@ -14,6 +14,7 @@
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "KSOBlockTextValidator.h"
+#import "NSBundle+KSOTextValidationPrivateExtensions.h"
 
 NSString *const KSOBlockTextValidatorErrorDomain = @"com.kosoku.ksotextvalidation.error.ksoblocktextvalidator";
 
@@ -33,7 +34,7 @@ NSString *const KSOBlockTextValidatorErrorDomain = @"com.kosoku.ksotextvalidatio
         text.length < self.minimumLength) {
         
         retval = NO;
-        outError = [NSError errorWithDomain:KSOBlockTextValidatorErrorDomain code:KSOBlockTextValidatorErrorCodeMinimumLength userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedString(@"The string must be at least %@ characters long", @"block text validator minimum length error message format"),[NSNumberFormatter localizedStringFromNumber:@(self.minimumLength) numberStyle:NSNumberFormatterDecimalStyle]]}];
+        outError = [NSError errorWithDomain:KSOBlockTextValidatorErrorDomain code:KSOBlockTextValidatorErrorCodeMinimumLength userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"BLOCK_TEXT_VALIDATOR_MINIMUM_LENGTH_FORMAT", nil, [NSBundle KSO_textValidationFrameworkBundle], @"The string must be at least %@ characters long", @"block text validator minimum length error message format"),[NSNumberFormatter localizedStringFromNumber:@(self.minimumLength) numberStyle:NSNumberFormatterDecimalStyle]]}];
     }
     
     if (retval &&
@@ -41,7 +42,7 @@ NSString *const KSOBlockTextValidatorErrorDomain = @"com.kosoku.ksotextvalidatio
         text.length > self.maximumLength) {
         
         retval = NO;
-        outError = [NSError errorWithDomain:KSOBlockTextValidatorErrorDomain code:KSOBlockTextValidatorErrorCodeMaximumLength userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedString(@"The string cannot be more than %@ characters long", @"block text validator maximum length error message format"),[NSNumberFormatter localizedStringFromNumber:@(self.maximumLength) numberStyle:NSNumberFormatterDecimalStyle]]}];
+        outError = [NSError errorWithDomain:KSOBlockTextValidatorErrorDomain code:KSOBlockTextValidatorErrorCodeMaximumLength userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"BLOCK_TEXT_VALIDATOR_MAXIMUM_LENGTH_FORMAT", nil, [NSBundle KSO_textValidationFrameworkBundle], @"The string cannot be more than %@ characters long", @"block text validator maximum length error message format"),[NSNumberFormatter localizedStringFromNumber:@(self.maximumLength) numberStyle:NSNumberFormatterDecimalStyle]]}];
     }
     
     if (!retval &&

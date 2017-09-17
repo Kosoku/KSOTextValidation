@@ -1,0 +1,1 @@
+find $SRCROOT/KSOTextValidation/ -name "*.m" | xargs genstrings -o $SRCROOT/KSOTextValidation/en.lproj

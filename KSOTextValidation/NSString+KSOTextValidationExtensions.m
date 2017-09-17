@@ -15,6 +15,7 @@
 
 #import "NSString+KSOTextValidationExtensions.h"
 #import "KSOTextValidationDefines.h"
+#import "NSBundle+KSOTextValidationPrivateExtensions.h"
 
 @implementation NSString (KSOTextValidationExtensions)
 
@@ -28,7 +29,7 @@
         if (!retval &&
             self.length > 0) {
             
-            *error = [NSError errorWithDomain:KSOTextValidationErrorDomain code:KSOTextValidationErrorCodeInvalidEmailAddress userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Enter a valid email address", @"email address validator error message")}];
+            *error = [NSError errorWithDomain:KSOTextValidationErrorDomain code:KSOTextValidationErrorCodeInvalidEmailAddress userInfo:@{NSLocalizedDescriptionKey: NSLocalizedStringWithDefaultValue(@"INVALID_EMAIL_ADDRESS", nil, [NSBundle KSO_textValidationFrameworkBundle], @"Enter a valid email address", @"email address validator error message")}];
         }
     }
     
@@ -45,7 +46,7 @@
         if (!retval &&
             self.length > 0) {
             
-            *error = [NSError errorWithDomain:KSOTextValidationErrorDomain code:KSOTextValidationErrorCodeInvalidPhoneNumber userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(@"Enter a valid phone number", @"phone number validator error message")}];
+            *error = [NSError errorWithDomain:KSOTextValidationErrorDomain code:KSOTextValidationErrorCodeInvalidPhoneNumber userInfo:@{NSLocalizedDescriptionKey: NSLocalizedStringWithDefaultValue(@"INVALID_PHONE_NUMBER", nil, [NSBundle KSO_textValidationFrameworkBundle], @"Enter a valid phone number", @"phone number validator error message")}];
         }
     }
     
