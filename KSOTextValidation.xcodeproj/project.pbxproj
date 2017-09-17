@@ -172,6 +172,7 @@
 		072FDE0D1F6E633800E73661 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		072FDE101F6E635000E73661 /* ja */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		072FDE121F6EBF2600E73661 /* ro */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
+		072FDE141F6EC4B800E73661 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Main.strings; sourceTree = "<group>"; };
 		0744F5171F5DC5740044FFB0 /* NSString+KSOTextValidationExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+KSOTextValidationExtensions.h"; sourceTree = "<group>"; };
 		0744F5181F5DC5740044FFB0 /* NSString+KSOTextValidationExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+KSOTextValidationExtensions.m"; sourceTree = "<group>"; };
 		0744F51D1F5DC6B90044FFB0 /* KSOTextValidationDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSOTextValidationDefines.h; sourceTree = "<group>"; };
@@ -742,6 +743,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				076798221E9ACFAE009AB0F9 /* Base */,
+				072FDE141F6EC4B800E73661 /* ro */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
