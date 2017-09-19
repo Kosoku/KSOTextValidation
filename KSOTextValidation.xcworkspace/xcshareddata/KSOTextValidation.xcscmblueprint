@@ -4,21 +4,23 @@
 
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "95DFEE02B27284838A8FA3A07714FEA27B4CE167" : 9223372036854775807,
-    "C94B06A26B26F3DFAC67E018206B5755A8E083DD" : 9223372036854775807,
-    "23D2B14CFC63A56B8AF48015DF4E29561E083AAB" : 9223372036854775807,
-    "6C4624F052CCBB7D5EC749C459613039B6B8C960" : 9223372036854775807,
-    "8B2A7E3741DEC22B5DBC9F3C8A40DDED7A1A1DF5" : 9223372036854775807,
-    "092992F99F236C29DF2CD167CFC9863E1570ED68" : 9223372036854775807
+    "95DFEE02B27284838A8FA3A07714FEA27B4CE167" : 0,
+    "A0AFD51EF4A534BFE1A57FB276E5E6605102BF83" : 9223372036854775807,
+    "C94B06A26B26F3DFAC67E018206B5755A8E083DD" : 0,
+    "6C4624F052CCBB7D5EC749C459613039B6B8C960" : 0,
+    "23D2B14CFC63A56B8AF48015DF4E29561E083AAB" : 0,
+    "092992F99F236C29DF2CD167CFC9863E1570ED68" : 0,
+    "8B2A7E3741DEC22B5DBC9F3C8A40DDED7A1A1DF5" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "35F5DEAF-04AB-43D4-A51B-C68524EB50DD",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
     "95DFEE02B27284838A8FA3A07714FEA27B4CE167" : "KSOTextValidation\/Vendor\/Ditko\/",
+    "A0AFD51EF4A534BFE1A57FB276E5E6605102BF83" : "KSOTextValidation\/Vendor\/KSOTooltip\/",
     "C94B06A26B26F3DFAC67E018206B5755A8E083DD" : "KSOTextValidation\/Vendor\/Stanley\/",
-    "23D2B14CFC63A56B8AF48015DF4E29561E083AAB" : "KSOTextValidation\/Vendor\/ECPhoneNumberFormatter\/",
     "6C4624F052CCBB7D5EC749C459613039B6B8C960" : "KSOTextValidation\/Vendor\/Agamotto\/",
-    "8B2A7E3741DEC22B5DBC9F3C8A40DDED7A1A1DF5" : "KSOTextValidation\/",
-    "092992F99F236C29DF2CD167CFC9863E1570ED68" : "KSOTextValidation\/Vendor\/Loki\/"
+    "23D2B14CFC63A56B8AF48015DF4E29561E083AAB" : "KSOTextValidation\/Vendor\/ECPhoneNumberFormatter\/",
+    "092992F99F236C29DF2CD167CFC9863E1570ED68" : "KSOTextValidation\/Vendor\/Loki\/",
+    "8B2A7E3741DEC22B5DBC9F3C8A40DDED7A1A1DF5" : "KSOTextValidation\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "KSOTextValidation",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
@@ -48,6 +50,11 @@
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Kosoku\/Ditko.git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "95DFEE02B27284838A8FA3A07714FEA27B4CE167"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Kosoku\/KSOTooltip.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A0AFD51EF4A534BFE1A57FB276E5E6605102BF83"
     },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Kosoku\/Stanley.git",
