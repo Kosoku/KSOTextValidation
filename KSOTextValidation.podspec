@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KSOTextValidation'
-  s.version          = '0.3.3'
+  s.version          = '0.4.0'
   s.summary          = 'KSOTextValidation is an iOS/tvOS framework for as the user types validation of textual input in UITextField.'
 
 # This description is used to generate tags and improve search results.
@@ -34,13 +34,15 @@ KSOTextValidation is an iOS/tvOS framework for as the user types validation of t
   s.source_files = 'KSOTextValidation/**/*.{h,m}'
   s.exclude_files = 'KSOTextValidation/KSOTextValidation-Info.h'
   
-  # s.resource_bundles = {
-  #   '${POD_NAME}' => ['${POD_NAME}/Assets/*.png']
-  # }
+  s.resource_bundles = {
+    'KSOTextValidation' => ['KSOTextValidation/**/*.{xcassets,lproj}']
+  }
 
   s.frameworks = 'UIKit'
   
   s.dependency 'Agamotto'
   s.dependency 'Ditko'
   s.dependency 'Stanley'
+  
+  s.ios.dependency 'KSOTooltip'
 end
