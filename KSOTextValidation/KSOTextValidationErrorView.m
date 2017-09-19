@@ -15,8 +15,11 @@
 
 #import "KSOTextValidationErrorView.h"
 
-#import <Stanley/KSTGeometryFunctions.h>
-#import <Ditko/UIAlertController+KDIExtensions.h>
+#import <Stanley/Stanley.h>
+#import <Ditko/Ditko.h>
+#if (TARGET_OS_IOS)
+#import <KSOTooltip/KSOTooltip.h>
+#endif
 
 @interface KSOTextValidationErrorView ()
 @property (strong,nonatomic) UIButton *button;
@@ -49,7 +52,7 @@
         
         UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.0);
         
-        [[UIColor redColor] setFill];
+        [UIColor.redColor setFill];
         [[UIBezierPath bezierPathWithOvalInRect:rect] fill];
         
         NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
@@ -81,7 +84,22 @@
 
 - (IBAction)_buttonAction:(id)sender {
     if (self.error != nil) {
+#if (TARGET_OS_IOS)
+        KSOTooltipViewController *viewController = [[KSOTooltipViewController alloc] init];
+        KSOTooltipTheme *theme = [viewController.theme copy];
+        
+        [theme setFillColor:UIColor.redColor];
+        [theme setTextStyle:UIFontTextStyleFootnote];
+        
+        [viewController setTheme:theme];
+        [viewController setText:self.error.KST_alertMessage];
+        [viewController setSourceView:self];
+        [viewController setAllowedArrowDirections:KSOTooltipArrowDirectionLeft|KSOTooltipArrowDirectionRight];
+        
+        [[UIAlertController KDI_viewControllerForPresenting] presentViewController:viewController animated:YES completion:nil];
+#else
         [UIAlertController KDI_presentAlertControllerWithError:self.error];
+#endif
     }
 }
 
