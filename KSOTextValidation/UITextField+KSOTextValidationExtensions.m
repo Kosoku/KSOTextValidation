@@ -48,6 +48,10 @@ static UITextRange* KSOTextRangeFromRangeInTextInput(id<UITextInput> textInput, 
     if (!(self = [super init]))
         return nil;
     
+    if (textValidator == nil) {
+        return nil;
+    }
+    
     _textValidator = textValidator;
     _textField = textField;
     
@@ -218,6 +222,10 @@ static UITextRange* KSOTextRangeFromRangeInTextInput(id<UITextInput> textInput, 
 - (instancetype)initWithTextFormatter:(id<KSOTextFormatter>)textFormatter textField:(UITextField *)textField {
     if (!(self = [super init]))
         return nil;
+    
+    if (textFormatter == nil) {
+        return nil;
+    }
     
     _textFormatter = textFormatter;
     _textField = textField;
