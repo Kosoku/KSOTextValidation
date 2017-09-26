@@ -79,7 +79,6 @@
 		07C2564A1F70CF1D000D3423 /* KSOTooltip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C256491F70CF1D000D3423 /* KSOTooltip.framework */; };
 		07C2564C1F70CF32000D3423 /* KSOTooltip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07C2564B1F70CF32000D3423 /* KSOTooltip.framework */; };
 		07C2564D1F70CF32000D3423 /* KSOTooltip.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07C2564B1F70CF32000D3423 /* KSOTooltip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		07EEB30E1F5BC880000C44C8 /* ECPhoneNumberFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EEB30D1F5BC880000C44C8 /* ECPhoneNumberFormatter.m */; };
 		07EEB3171F5BD760000C44C8 /* KSOPhoneNumberValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 07EEB3151F5BD760000C44C8 /* KSOPhoneNumberValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07EEB3181F5BD760000C44C8 /* KSOPhoneNumberValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 07EEB3151F5BD760000C44C8 /* KSOPhoneNumberValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		07EEB3191F5BD760000C44C8 /* KSOPhoneNumberValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 07EEB3161F5BD760000C44C8 /* KSOPhoneNumberValidator.m */; };
@@ -210,8 +209,6 @@
 		07A168A31F592CF900B03AA8 /* Loki.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Loki.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07C256491F70CF1D000D3423 /* KSOTooltip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KSOTooltip.framework; path = "Vendor/KSOTooltip/build/Debug-iphoneos/KSOTooltip.framework"; sourceTree = "<group>"; };
 		07C2564B1F70CF32000D3423 /* KSOTooltip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KSOTooltip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		07EEB30C1F5BC880000C44C8 /* ECPhoneNumberFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ECPhoneNumberFormatter.h; path = Vendor/ECPhoneNumberFormatter/ECPhoneNumberFormatter/ECPhoneNumberFormatter.h; sourceTree = SOURCE_ROOT; };
-		07EEB30D1F5BC880000C44C8 /* ECPhoneNumberFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ECPhoneNumberFormatter.m; path = Vendor/ECPhoneNumberFormatter/ECPhoneNumberFormatter/ECPhoneNumberFormatter.m; sourceTree = SOURCE_ROOT; };
 		07EEB3151F5BD760000C44C8 /* KSOPhoneNumberValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSOPhoneNumberValidator.h; sourceTree = "<group>"; };
 		07EEB3161F5BD760000C44C8 /* KSOPhoneNumberValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSOPhoneNumberValidator.m; sourceTree = "<group>"; };
 		07EEB31B1F5BD908000C44C8 /* KSOEmailAddressValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSOEmailAddressValidator.h; sourceTree = "<group>"; };
@@ -358,8 +355,6 @@
 				0767981C1E9ACFAE009AB0F9 /* AppDelegate.m */,
 				0767981E1E9ACFAE009AB0F9 /* ViewController.h */,
 				0767981F1E9ACFAE009AB0F9 /* ViewController.m */,
-				07EEB30C1F5BC880000C44C8 /* ECPhoneNumberFormatter.h */,
-				07EEB30D1F5BC880000C44C8 /* ECPhoneNumberFormatter.m */,
 				076798211E9ACFAE009AB0F9 /* Main.storyboard */,
 				076798241E9ACFAE009AB0F9 /* Assets.xcassets */,
 				076798261E9ACFAE009AB0F9 /* LaunchScreen.storyboard */,
@@ -696,7 +691,6 @@
 			files = (
 				076798201E9ACFAE009AB0F9 /* ViewController.m in Sources */,
 				0767981D1E9ACFAE009AB0F9 /* AppDelegate.m in Sources */,
-				07EEB30E1F5BC880000C44C8 /* ECPhoneNumberFormatter.m in Sources */,
 				0767981A1E9ACFAE009AB0F9 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

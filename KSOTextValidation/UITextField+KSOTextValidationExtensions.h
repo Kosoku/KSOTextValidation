@@ -26,12 +26,17 @@ NS_ASSUME_NONNULL_BEGIN
  @see KSOTextValidator
  */
 @property (strong,nonatomic,nullable) id<KSOTextValidator> KSO_textValidator;
+
 /**
  Set and get the text formatter of the receiver.
  
  @see KSOTextFormatter
  */
 @property (strong,nonatomic,nullable) id<KSOTextFormatter> KSO_textFormatter;
+/**
+ Get the unformatted text of the receiver. If `KSO_textFormatter` is non-nil, returns the result of `textForEditingText:` with `self.text`, otherwise returns `self.text`.
+ */
+@property (readonly,nonatomic,nullable) NSString *KSO_unformattedText;
 
 @end
 

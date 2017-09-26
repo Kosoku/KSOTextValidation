@@ -14,9 +14,9 @@
 //  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "ViewController.h"
-#import "ECPhoneNumberFormatter.h"
 
 #import <Ditko/Ditko.h>
+#import <Stanley/Stanley.h>
 #import <KSOTextValidation/KSOTextValidation.h>
 
 @interface CustomTextField : KDITextField <UITextFieldDelegate>
@@ -29,16 +29,17 @@
     if (!(self = [super initWithFrame:frame]))
         return nil;
     
+    [self setBackgroundColor:KDIColorW(0.9)];
     [self setDelegate:self];
     
     return self;
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    [textField setBackgroundColor:KDIColorW(0.9)];
+    [textField setBackgroundColor:UIColor.whiteColor];
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason {
-    [textField setBackgroundColor:UIColor.whiteColor];
+    [textField setBackgroundColor:KDIColorW(0.9)];
 }
 
 @end
@@ -51,6 +52,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    kstWeakify(self);
     
     [self setEmailTextField:[[KDITextField alloc] initWithFrame:CGRectZero]];
     [self.emailTextField setTranslatesAutoresizingMaskIntoConstraints:NO];
@@ -79,7 +82,11 @@
     [self.phoneNumberTextField setPlaceholder:@"Phone Number"];
     [self.phoneNumberTextField setRightViewEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 8)];
     [self.phoneNumberTextField setKSO_textValidator:[KSOPhoneNumberValidator phoneNumberValidator]];
-    [self.phoneNumberTextField setKSO_textFormatter:[[ECPhoneNumberFormatter alloc] init]];
+    [self.phoneNumberTextField setKSO_textFormatter:[[KSTPhoneNumberFormatter alloc] init]];
+    [self.phoneNumberTextField KDI_addBlock:^(__kindof UIControl * _Nonnull control, UIControlEvents controlEvents) {
+        kstStrongify(self);
+        KSTLog(@"unformatted text: %@",self.phoneNumberTextField.KSO_unformattedText);
+    } forControlEvents:UIControlEventEditingDidEnd|UIControlEventEditingDidEndOnExit];
     [self.view addSubview:self.phoneNumberTextField];
     
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|" options:0 metrics:nil views:@{@"view": self.phoneNumberTextField}]];

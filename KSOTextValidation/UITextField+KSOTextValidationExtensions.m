@@ -152,23 +152,6 @@ static UITextRange* KSOTextRangeFromRangeInTextInput(id<UITextInput> textInput, 
     
     return retval;
 }
-- (void)textFieldDidEndEditing:(UITextField *)textField reason:(UITextFieldDidEndEditingReason)reason {
-    if ([self.delegate respondsToSelector:_cmd]) {
-        [self.delegate textFieldDidEndEditing:textField reason:reason];
-    }
-    
-    NSString *text = [self.textFormatter textForEditingText:textField.text];
-    NSAttributedString *attrText = [self.textFormatter respondsToSelector:@selector(attributedTextForText:defaultAttributes:)] ? [self.textFormatter attributedTextForText:text defaultAttributes:self.defaultTextAttributes] : nil;
-    
-    if (attrText == nil) {
-        [textField setText:text];
-    }
-    else {
-        [textField setAttributedText:attrText];
-    }
-    
-    [textField sendActionsForControlEvents:UIControlEventEditingChanged];
-}
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     BOOL retval = YES;
     
@@ -275,6 +258,10 @@ static void const *kKSOTextFormatterKey = &kKSOTextFormatterKey;
     KSOTextFieldTextFormatterWrapper *wrapper = [[KSOTextFieldTextFormatterWrapper alloc] initWithTextFormatter:KSO_textFormatter textField:self];
     
     objc_setAssociatedObject(self, kKSOTextFormatterKey, wrapper, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSString *)KSO_unformattedText {
+    return self.KSO_textFormatter == nil ? self.text : [self.KSO_textFormatter textForEditingText:self.text];
 }
 
 @end
