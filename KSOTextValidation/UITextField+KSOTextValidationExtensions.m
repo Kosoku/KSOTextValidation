@@ -214,18 +214,9 @@ static UITextRange* KSOTextRangeFromRangeInTextInput(id<UITextInput> textInput, 
     _textField = textField;
     _defaultTextAttributes = @{NSFontAttributeName: _textField.font ?: [UIFont preferredFontForTextStyle:UIFontTextStyleBody], NSForegroundColorAttributeName: _textField.textColor ?: UIColor.blackColor};
     _delegateMethods = protocol_copyMethodDescriptionList(@protocol(UITextFieldDelegate), NO, YES, &_delegateMethodsCount);
+    _delegate = _textField.delegate;
     
-    kstWeakify(self);
-    [_textField KAG_addObserverForKeyPath:@kstKeypath(_textField,delegate) options:NSKeyValueObservingOptionInitial block:^(NSString *keyPath, id _Nullable value, NSDictionary<NSKeyValueChangeKey, id> *change){
-        kstStrongify(self);
-        
-        if (self.textField.delegate == self) {
-            return;
-        }
-        
-        [self setDelegate:self.textField.delegate];
-        [self.textField setDelegate:self];
-    }];
+    [_textField setDelegate:self];
     
     return self;
 }

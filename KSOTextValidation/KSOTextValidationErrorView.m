@@ -94,7 +94,6 @@
         [viewController setTheme:theme];
         [viewController setText:self.error.KST_alertMessage];
         [viewController setSourceView:self];
-        [viewController setAllowedArrowDirections:KSOTooltipArrowDirectionLeft|KSOTooltipArrowDirectionRight];
         
         [[UIAlertController KDI_viewControllerForPresenting] presentViewController:viewController animated:YES completion:nil];
 #else
