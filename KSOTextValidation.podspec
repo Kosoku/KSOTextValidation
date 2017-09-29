@@ -33,6 +33,7 @@ KSOTextValidation is an iOS/tvOS framework for as the user types validation of t
 
   s.source_files = 'KSOTextValidation/**/*.{h,m}'
   s.exclude_files = 'KSOTextValidation/KSOTextValidation-Info.h'
+  s.private_header_files = 'KSOTextValidation/Private/*.h'
   
   s.resource_bundles = {
     'KSOTextValidation' => ['KSOTextValidation/**/*.{xcassets,lproj}']
