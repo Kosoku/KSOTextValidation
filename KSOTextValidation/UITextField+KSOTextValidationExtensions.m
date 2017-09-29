@@ -16,7 +16,6 @@
 #import "UITextField+KSOTextValidationExtensions.h"
 #import "KSOTextValidationErrorView.h"
 
-#import <Agamotto/Agamotto.h>
 #import <Stanley/Stanley.h>
 
 #import <objc/runtime.h>
