@@ -65,6 +65,7 @@ static UITextRange* KSOTextRangeFromRangeInTextInput(id<UITextInput> textInput, 
     
     if (retval) {
         [self.textField setRightView:nil];
+        [self.textField setRightViewMode:UITextFieldViewModeNever];
     }
     else if (outError != nil) {
         if ([self.textValidator respondsToSelector:@selector(rightAccessoryView)] &&
@@ -86,6 +87,7 @@ static UITextRange* KSOTextRangeFromRangeInTextInput(id<UITextInput> textInput, 
     }
     else {
         [self.textField setRightView:nil];
+        [self.textField setRightViewMode:UITextFieldViewModeNever];
     }
 }
 
