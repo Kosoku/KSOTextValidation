@@ -35,6 +35,9 @@
 		07277DD11E9BE518004237FD /* Stanley.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 07277DCF1E9BE518004237FD /* Stanley.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		07277DD41E9BE52F004237FD /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07277DD31E9BE52F004237FD /* Stanley.framework */; };
 		07277DD61E9BE545004237FD /* Stanley.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07277DD51E9BE545004237FD /* Stanley.framework */; };
+		072B12851FDE3C9100D4F591 /* KSOFontAwesomeExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072B12841FDE3C9100D4F591 /* KSOFontAwesomeExtensions.framework */; };
+		072B12861FDE3C9100D4F591 /* KSOFontAwesomeExtensions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 072B12841FDE3C9100D4F591 /* KSOFontAwesomeExtensions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		072B12871FDE3CB600D4F591 /* KSOFontAwesomeExtensions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072B12881FDE3CB600D4F591 /* KSOFontAwesomeExtensions.framework */; };
 		072FDE061F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 072FDE041F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		072FDE071F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 072FDE041F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.h */; settings = {ATTRIBUTES = (Private, ); }; };
 		072FDE081F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 072FDE051F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.m */; };
@@ -138,6 +141,7 @@
 			files = (
 				07C2564D1F70CF32000D3423 /* KSOTooltip.framework in Embed Frameworks */,
 				0767982E1E9ACFD2009AB0F9 /* KSOTextValidation.framework in Embed Frameworks */,
+				072B12861FDE3C9100D4F591 /* KSOFontAwesomeExtensions.framework in Embed Frameworks */,
 				07A168A21F592CEF00B03AA8 /* Loki.framework in Embed Frameworks */,
 				07277DD11E9BE518004237FD /* Stanley.framework in Embed Frameworks */,
 				07EEB32D1F5C9275000C44C8 /* Agamotto.framework in Embed Frameworks */,
@@ -170,6 +174,8 @@
 		07277DCF1E9BE518004237FD /* Stanley.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Stanley.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07277DD31E9BE52F004237FD /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "Vendor/Stanley/build/Debug-iphoneos/Stanley.framework"; sourceTree = "<group>"; };
 		07277DD51E9BE545004237FD /* Stanley.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Stanley.framework; path = "Vendor/Stanley/build/Debug-appletvos/Stanley.framework"; sourceTree = "<group>"; };
+		072B12841FDE3C9100D4F591 /* KSOFontAwesomeExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KSOFontAwesomeExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		072B12881FDE3CB600D4F591 /* KSOFontAwesomeExtensions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = KSOFontAwesomeExtensions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		072FDE041F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSBundle+KSOTextValidationPrivateExtensions.h"; path = "Private/NSBundle+KSOTextValidationPrivateExtensions.h"; sourceTree = "<group>"; };
 		072FDE051F6E5FF700E73661 /* NSBundle+KSOTextValidationPrivateExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSBundle+KSOTextValidationPrivateExtensions.m"; path = "Private/NSBundle+KSOTextValidationPrivateExtensions.m"; sourceTree = "<group>"; };
 		072FDE0D1F6E633800E73661 /* en */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -250,6 +256,7 @@
 			files = (
 				07C2564C1F70CF32000D3423 /* KSOTooltip.framework in Frameworks */,
 				0767982D1E9ACFD2009AB0F9 /* KSOTextValidation.framework in Frameworks */,
+				072B12851FDE3C9100D4F591 /* KSOFontAwesomeExtensions.framework in Frameworks */,
 				07A168A11F592CEF00B03AA8 /* Loki.framework in Frameworks */,
 				07277DD01E9BE518004237FD /* Stanley.framework in Frameworks */,
 				07EEB32C1F5C9275000C44C8 /* Agamotto.framework in Frameworks */,
@@ -261,6 +268,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				072B12871FDE3CB600D4F591 /* KSOFontAwesomeExtensions.framework in Frameworks */,
 				07C2564A1F70CF1D000D3423 /* KSOTooltip.framework in Frameworks */,
 				07EEB3281F5C9260000C44C8 /* Agamotto.framework in Frameworks */,
 				07A1689D1F592CE000B03AA8 /* Loki.framework in Frameworks */,
@@ -298,6 +306,8 @@
 		07277DD21E9BE52F004237FD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				072B12881FDE3CB600D4F591 /* KSOFontAwesomeExtensions.framework */,
+				072B12841FDE3C9100D4F591 /* KSOFontAwesomeExtensions.framework */,
 				07C2564B1F70CF32000D3423 /* KSOTooltip.framework */,
 				07C256491F70CF1D000D3423 /* KSOTooltip.framework */,
 				07EEB32E1F5C927E000C44C8 /* Agamotto.framework */,
