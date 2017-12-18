@@ -1,12 +1,12 @@
-﻿/* block text validator maximum length error message format */
-"BLOCK_TEXT_VALIDATOR_MAXIMUM_LENGTH_FORMAT" = "The text cannot have more than %@ characters";
+/* block text validator maximum length error message format */
+"BLOCK_TEXT_VALIDATOR_MAXIMUM_LENGTH_FORMAT" = "入力したテキストの文字数は%@文字以下じゃなければなりません";
 
 /* block text validator minimum length error message format */
-"BLOCK_TEXT_VALIDATOR_MINIMUM_LENGTH_FORMAT" = "The text must have at least %@ characters";
+"BLOCK_TEXT_VALIDATOR_MINIMUM_LENGTH_FORMAT" = "入力したテキストの文字数は%@文字以上じゃなければなりません";
 
 /* email address validator error message */
-"INVALID_EMAIL_ADDRESS" = "Enter a valid email address";
+"INVALID_EMAIL_ADDRESS" = "有効なメールアドレスを入力してください";
 
 /* phone number validator error message */
-"INVALID_PHONE_NUMBER" = "Enter a valid phone number";
+"INVALID_PHONE_NUMBER" = "有効な電話番号を入力してください";
 
