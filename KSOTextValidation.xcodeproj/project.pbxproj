@@ -160,6 +160,8 @@
 		07106B441E9B2AB5009FBC4E /* KSOBlockTextValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KSOBlockTextValidator.h; sourceTree = "<group>"; };
 		07106B451E9B2AB5009FBC4E /* KSOBlockTextValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KSOBlockTextValidator.m; sourceTree = "<group>"; };
 		071E72131FE8C99000E92B75 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		071E72171FE8CE9F00E92B75 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ro; path = ro.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		071E72181FE8CEA100E92B75 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = es; path = es.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		0721884A1E9BEF68005C18D5 /* Ditko.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Ditko.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0721884D1E9BEF74005C18D5 /* Ditko.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ditko.framework; path = "Vendor/Ditko/build/Debug-iphoneos/Ditko.framework"; sourceTree = "<group>"; };
 		0721884F1E9BEF7B005C18D5 /* Ditko.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Ditko.framework; path = "Vendor/Ditko/build/Debug-appletvos/Ditko.framework"; sourceTree = "<group>"; };
@@ -777,6 +779,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				071E72131FE8C99000E92B75 /* en */,
+				071E72171FE8CE9F00E92B75 /* ro */,
+				071E72181FE8CEA100E92B75 /* es */,
 			);
 			name = Localizable.stringsdict;
 			sourceTree = "<group>";

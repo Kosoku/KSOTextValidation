@@ -34,7 +34,7 @@ NSString *const KSOBlockTextValidatorErrorDomain = @"com.kosoku.ksotextvalidatio
         text.length < self.minimumLength) {
         
         retval = NO;
-        outError = [NSError errorWithDomain:KSOBlockTextValidatorErrorDomain code:KSOBlockTextValidatorErrorCodeMinimumLength userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"text.validator.error.minimum-length", nil, [NSBundle KSO_textValidationFrameworkBundle], @"The text must have at least %lu character(s)", @"Also translate text.validator.error.minimum-length in .stringsdict file"),self.minimumLength]}];
+        outError = [NSError errorWithDomain:KSOBlockTextValidatorErrorDomain code:KSOBlockTextValidatorErrorCodeMinimumLength userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"text.validator.error.minimum-length", nil, [NSBundle KSO_textValidationFrameworkBundle], @"The text must have at least %lu character(s)", @"Also translate text.validator.error.minimum-length in .stringsdict file if necessary"),self.minimumLength]}];
     }
     
     if (retval &&
@@ -42,7 +42,7 @@ NSString *const KSOBlockTextValidatorErrorDomain = @"com.kosoku.ksotextvalidatio
         text.length > self.maximumLength) {
         
         retval = NO;
-        outError = [NSError errorWithDomain:KSOBlockTextValidatorErrorDomain code:KSOBlockTextValidatorErrorCodeMaximumLength userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"text.validator.error.maximum-length", nil, [NSBundle KSO_textValidationFrameworkBundle], @"The text cannot have more than %lu character(s)", @"Also translate text.validator.error.maximum-length in .stringsdict file"),self.maximumLength]}];
+        outError = [NSError errorWithDomain:KSOBlockTextValidatorErrorDomain code:KSOBlockTextValidatorErrorCodeMaximumLength userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"text.validator.error.maximum-length", nil, [NSBundle KSO_textValidationFrameworkBundle], @"The text cannot have more than %lu character(s)", @"Also translate text.validator.error.maximum-length in .stringsdict file if necessary"),self.maximumLength]}];
     }
     
     if (!retval &&

@@ -1,12 +1,12 @@
-/* block text validator maximum length error message format */
+/* Also translate text.validator.error.maximum-length in .stringsdict file if necessary */
 "text.validator.error.maximum-length" = "入力したテキストの文字数は%lu文字以下じゃなければなりません";
 
-/* block text validator minimum length error message format */
+/* Also translate text.validator.error.minimum-length in .stringsdict file if necessary */
 "text.validator.error.minimum-length" = "入力したテキストの文字数は%lu文字以上じゃなければなりません";
 
-/* email address validator error message */
+/* Enter a valid email address */
 "string.error.invalid-email-address" = "有効なメールアドレスを入力してください";
 
-/* phone number validator error message */
+/* Enter a valid phone number */
 "string.error.invalid-phone-number" = "有効な電話番号を入力してください";
 

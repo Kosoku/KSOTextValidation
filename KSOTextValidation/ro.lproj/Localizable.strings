@@ -1,12 +1,12 @@
-/* block text validator maximum length error message format */
+/* Also translate text.validator.error.maximum-length in .stringsdict file if necessary */
 "text.validator.error.maximum-length" = "Textul nu poate avea mai mult de %lu caractere";
 
-/* block text validator minimum length error message format */
+/* Also translate text.validator.error.minimum-length in .stringsdict file if necessary */
 "text.validator.error.minimum-length" = "Textul trebuie să fie cel puțin %lu caractere";
 
-/* email address validator error message */
+/* Enter a valid email address */
 "string.error.invalid-email-address" = "Introduceți o adresă de email validă";
 
-/* phone number validator error message */
+/* Enter a valid phone number */
 "string.error.invalid-phone-number" = "Introduceți un număr de telefon valabil";
 

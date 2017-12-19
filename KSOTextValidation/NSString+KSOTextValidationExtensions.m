@@ -29,7 +29,7 @@
         if (!retval &&
             self.length > 0) {
             
-            *error = [NSError errorWithDomain:KSOTextValidationErrorDomain code:KSOTextValidationErrorCodeInvalidEmailAddress userInfo:@{NSLocalizedDescriptionKey: NSLocalizedStringWithDefaultValue(@"string.error.invalid-email-address", nil, [NSBundle KSO_textValidationFrameworkBundle], @"Enter a valid email address", @"email address validator error message")}];
+            *error = [NSError errorWithDomain:KSOTextValidationErrorDomain code:KSOTextValidationErrorCodeInvalidEmailAddress userInfo:@{NSLocalizedDescriptionKey: NSLocalizedStringWithDefaultValue(@"string.error.invalid-email-address", nil, [NSBundle KSO_textValidationFrameworkBundle], @"Enter a valid email address", @"Enter a valid email address")}];
         }
     }
     
@@ -46,7 +46,7 @@
         if (!retval &&
             self.length > 0) {
             
-            *error = [NSError errorWithDomain:KSOTextValidationErrorDomain code:KSOTextValidationErrorCodeInvalidPhoneNumber userInfo:@{NSLocalizedDescriptionKey: NSLocalizedStringWithDefaultValue(@"string.error.invalid-phone-number", nil, [NSBundle KSO_textValidationFrameworkBundle], @"Enter a valid phone number", @"phone number validator error message")}];
+            *error = [NSError errorWithDomain:KSOTextValidationErrorDomain code:KSOTextValidationErrorCodeInvalidPhoneNumber userInfo:@{NSLocalizedDescriptionKey: NSLocalizedStringWithDefaultValue(@"string.error.invalid-phone-number", nil, [NSBundle KSO_textValidationFrameworkBundle], @"Enter a valid phone number", @"Enter a valid phone number")}];
         }
     }
     

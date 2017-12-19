@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>text.validator.error.maximum-length</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@length@</string>
+		<key>length</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>other</key>
+			<string>Textul nu poate avea mai mult de %lu caractere</string>
+		</dict>
+	</dict>
+	<key>text.validator.error.minimum-length</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@length@</string>
+		<key>length</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>lu</string>
+			<key>other</key>
+			<string>Textul trebuie să fie cel puțin %lu caractere</string>
+		</dict>
+	</dict>
+</dict>
+</plist>
