@@ -1,12 +1,12 @@
-﻿/* block text validator maximum length error message format */
-"BLOCK_TEXT_VALIDATOR_MAXIMUM_LENGTH_FORMAT" = "Textul nu poate avea mai mult de %@ caractere";
+/* block text validator maximum length error message format */
+"text.validator.error.maximum-length" = "Textul nu poate avea mai mult de %lu caractere";
 
 /* block text validator minimum length error message format */
-"BLOCK_TEXT_VALIDATOR_MINIMUM_LENGTH_FORMAT" = "Textul trebuie să fie cel puțin %@ caractere";
+"text.validator.error.minimum-length" = "Textul trebuie să fie cel puțin %lu caractere";
 
 /* email address validator error message */
-"INVALID_EMAIL_ADDRESS" = "Introduceți o adresă de email validă";
+"string.error.invalid-email-address" = "Introduceți o adresă de email validă";
 
 /* phone number validator error message */
-"INVALID_PHONE_NUMBER" = "Introduceți un număr de telefon valabil";
+"string.error.invalid-phone-number" = "Introduceți un număr de telefon valabil";
 

@@ -34,7 +34,7 @@ NSString *const KSOBlockTextValidatorErrorDomain = @"com.kosoku.ksotextvalidatio
         text.length < self.minimumLength) {
         
         retval = NO;
-        outError = [NSError errorWithDomain:KSOBlockTextValidatorErrorDomain code:KSOBlockTextValidatorErrorCodeMinimumLength userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"BLOCK_TEXT_VALIDATOR_MINIMUM_LENGTH_FORMAT", nil, [NSBundle KSO_textValidationFrameworkBundle], @"The text must have at least %@ characters", @"block text validator minimum length error message format"),[NSNumberFormatter localizedStringFromNumber:@(self.minimumLength) numberStyle:NSNumberFormatterDecimalStyle]]}];
+        outError = [NSError errorWithDomain:KSOBlockTextValidatorErrorDomain code:KSOBlockTextValidatorErrorCodeMinimumLength userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"text.validator.error.minimum-length", nil, [NSBundle KSO_textValidationFrameworkBundle], @"The text must have at least %lu character(s)", @"Also translate text.validator.error.minimum-length in .stringsdict file"),self.minimumLength]}];
     }
     
     if (retval &&
@@ -42,7 +42,7 @@ NSString *const KSOBlockTextValidatorErrorDomain = @"com.kosoku.ksotextvalidatio
         text.length > self.maximumLength) {
         
         retval = NO;
-        outError = [NSError errorWithDomain:KSOBlockTextValidatorErrorDomain code:KSOBlockTextValidatorErrorCodeMaximumLength userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"BLOCK_TEXT_VALIDATOR_MAXIMUM_LENGTH_FORMAT", nil, [NSBundle KSO_textValidationFrameworkBundle], @"The text cannot have more than %@ characters", @"block text validator maximum length error message format"),[NSNumberFormatter localizedStringFromNumber:@(self.maximumLength) numberStyle:NSNumberFormatterDecimalStyle]]}];
+        outError = [NSError errorWithDomain:KSOBlockTextValidatorErrorDomain code:KSOBlockTextValidatorErrorCodeMaximumLength userInfo:@{NSLocalizedDescriptionKey: [NSString stringWithFormat:NSLocalizedStringWithDefaultValue(@"text.validator.error.maximum-length", nil, [NSBundle KSO_textValidationFrameworkBundle], @"The text cannot have more than %lu character(s)", @"Also translate text.validator.error.maximum-length in .stringsdict file"),self.maximumLength]}];
     }
     
     if (!retval &&

@@ -1,12 +1,12 @@
-﻿/* block text validator maximum length error message format */
-"BLOCK_TEXT_VALIDATOR_MAXIMUM_LENGTH_FORMAT" = "El texto no puede tener más de %@ caracteres";
+/* block text validator maximum length error message format */
+"text.validator.error.maximum-length" = "El texto no puede tener más de %lu caracteres";
 
 /* block text validator minimum length error message format */
-"BLOCK_TEXT_VALIDATOR_MINIMUM_LENGTH_FORMAT" = "El texto debe tener al menos %@ caracteres";
+"text.validator.error.minimum-length" = "El texto debe tener al menos %lu caracteres";
 
 /* email address validator error message */
-"INVALID_EMAIL_ADDRESS" = "Introduzca una dirección de correo electrónico válida";
+"string.error.invalid-email-address" = "Introduzca una dirección de correo electrónico válida";
 
 /* phone number validator error message */
-"INVALID_PHONE_NUMBER" = "Ingrese un número de teléfono válido";
+"string.error.invalid-phone-number" = "Ingrese un número de teléfono válido";
 

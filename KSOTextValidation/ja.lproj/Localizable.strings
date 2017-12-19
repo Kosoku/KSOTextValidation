@@ -1,12 +1,12 @@
 /* block text validator maximum length error message format */
-"BLOCK_TEXT_VALIDATOR_MAXIMUM_LENGTH_FORMAT" = "入力したテキストの文字数は%@文字以下じゃなければなりません";
+"text.validator.error.maximum-length" = "入力したテキストの文字数は%lu文字以下じゃなければなりません";
 
 /* block text validator minimum length error message format */
-"BLOCK_TEXT_VALIDATOR_MINIMUM_LENGTH_FORMAT" = "入力したテキストの文字数は%@文字以上じゃなければなりません";
+"text.validator.error.minimum-length" = "入力したテキストの文字数は%lu文字以上じゃなければなりません";
 
 /* email address validator error message */
-"INVALID_EMAIL_ADDRESS" = "有効なメールアドレスを入力してください";
+"string.error.invalid-email-address" = "有効なメールアドレスを入力してください";
 
 /* phone number validator error message */
-"INVALID_PHONE_NUMBER" = "有効な電話番号を入力してください";
+"string.error.invalid-phone-number" = "有効な電話番号を入力してください";
 
