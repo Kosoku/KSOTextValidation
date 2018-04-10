@@ -17,22 +17,9 @@
 #import "KSOTextValidationErrorView.h"
 
 #import <Stanley/Stanley.h>
+#import <Ditko/Ditko.h>
 
 #import <objc/runtime.h>
-
-static NSRange KSOSelectedRangeFromTextInput(id<UITextInput> textInput){
-    UITextRange *textRange = textInput.selectedTextRange;
-    NSInteger location = [textInput offsetFromPosition:textInput.beginningOfDocument toPosition:textRange.start];
-    NSInteger length = [textInput offsetFromPosition:textRange.start toPosition:textRange.end];
-    
-    return NSMakeRange(location, length);
-}
-static UITextRange* KSOTextRangeFromRangeInTextInput(id<UITextInput> textInput, NSRange range){
-    UITextPosition *start = [textInput positionFromPosition:textInput.beginningOfDocument offset:range.location];
-    UITextPosition *end = [textInput positionFromPosition:start offset:range.length];
-    
-    return [textInput textRangeFromPosition:start toPosition:end];
-}
 
 @interface KSOTextFieldTextValidatorWrapper : NSObject
 @property (strong,nonatomic) id<KSOTextValidator> textValidator;
@@ -162,7 +149,7 @@ static UITextRange* KSOTextRangeFromRangeInTextInput(id<UITextInput> textInput, 
     if ([self.textFormatter respondsToSelector:@selector(formatEditedText:editedSelectedRange:text:selectedRange:)]) {
         retval = NO;
         
-        [self.textFormatter formatEditedText:&editedText editedSelectedRange:&editedRange text:textField.text selectedRange:KSOSelectedRangeFromTextInput(textField)];
+        [self.textFormatter formatEditedText:&editedText editedSelectedRange:&editedRange text:textField.text selectedRange:KDISelectedRangeFromTextInput(textField)];
         
         NSAttributedString *attrEditedText = [self.textFormatter respondsToSelector:@selector(attributedTextForText:defaultAttributes:)] ? [self.textFormatter attributedTextForText:editedText defaultAttributes:self.defaultTextAttributes] : nil;
         
@@ -173,7 +160,7 @@ static UITextRange* KSOTextRangeFromRangeInTextInput(id<UITextInput> textInput, 
             [textField setAttributedText:attrEditedText];
         }
         
-        [textField setSelectedTextRange:KSOTextRangeFromRangeInTextInput(textField, editedRange)];
+        [textField setSelectedTextRange:KDITextRangeFromTextInputRange(textField, editedRange)];
         
         [textField sendActionsForControlEvents:UIControlEventEditingChanged];
     }
@@ -189,7 +176,7 @@ static UITextRange* KSOTextRangeFromRangeInTextInput(id<UITextInput> textInput, 
             [textField setAttributedText:attrEditedText];
         }
         
-        [textField setSelectedTextRange:KSOTextRangeFromRangeInTextInput(textField, editedRange)];
+        [textField setSelectedTextRange:KDITextRangeFromTextInputRange(textField, editedRange)];
         
         [textField sendActionsForControlEvents:UIControlEventEditingChanged];
     }
