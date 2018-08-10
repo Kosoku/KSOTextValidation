@@ -48,12 +48,12 @@ typedef void(^KSOBlockTextValidatorConfigureBlock)(__kindof KSOBlockTextValidato
 /**
  Block that is invoked whenever there is text to validate.
  
- @param textValidator The text validator
+ @param validator The text validator
  @param text The text to validate
  @param error A pointer to an optional NSError describing the reason for failed validation
  @return YES if the text validates, otherwise NO
  */
-typedef BOOL(^KSOBlockTextValidatorValidateBlock)(KSOBlockTextValidator *textValidator, NSString * _Nullable text, NSError * __autoreleasing * error);
+typedef BOOL(^KSOBlockTextValidatorValidateBlock)(__kindof KSOBlockTextValidator *validator, NSString * _Nullable text, NSError * __autoreleasing * error);
 
 /**
  KSOBlockTextValidator is designed to be set as the *KSO_textValidator* of a UITextField. The provided block is called to perform text validation.
