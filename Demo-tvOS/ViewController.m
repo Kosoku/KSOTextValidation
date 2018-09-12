@@ -30,7 +30,7 @@
     
     [emailTextField setBorderStyle:UITextBorderStyleRoundedRect];
     [emailTextField setPlaceholder:@"Email"];
-    [emailTextField setKSO_textValidator:[[KSOBlockTextValidator alloc] initWithBlock:^BOOL(KSOBlockTextValidator * _Nonnull textValidator, NSString * _Nullable text, NSError * _Nullable __autoreleasing * _Nullable error) {
+    [emailTextField setKSO_textValidator:[[KSOBlockTextValidator alloc] initWithValidateBlock:^BOOL(__kindof KSOBlockTextValidator * _Nonnull validator, NSString * _Nullable text, NSError * _Nullable __autoreleasing * _Nullable error) {
         NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}" options:0 error:NULL];
         
         if (text.length == 0 ||
