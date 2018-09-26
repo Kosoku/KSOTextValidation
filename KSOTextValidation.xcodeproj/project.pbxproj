@@ -1039,7 +1039,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kosoku.ksotextvalidation;
 				PRODUCT_NAME = KSOTextValidation;
 				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 10.0;
 				VALIDATE_PRODUCT = YES;
@@ -1288,7 +1288,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kosoku.ksotextvalidation;
 				PRODUCT_NAME = KSOTextValidation;
 				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
+				SKIP_INSTALL = NO;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
