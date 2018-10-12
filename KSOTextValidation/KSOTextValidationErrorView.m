@@ -85,7 +85,7 @@
 - (IBAction)_buttonAction:(id)sender {
     if (self.error != nil) {
 #if (TARGET_OS_IOS)
-        KSOTooltipViewController *viewController = [[KSOTooltipViewController alloc] init];
+        KSOTooltipView *viewController = [[KSOTooltipView alloc] initWithFrame:CGRectZero];
         KSOTooltipTheme *theme = [viewController.theme copy];
         
         [theme setFillColor:UIColor.redColor];
@@ -94,8 +94,7 @@
         [viewController setTheme:theme];
         [viewController setText:self.error.KST_alertMessage];
         [viewController setSourceView:self];
-        
-        [[UIAlertController KDI_viewControllerForPresenting] presentViewController:viewController animated:YES completion:nil];
+        [viewController presentAnimated:YES completion:nil];
 #else
         [UIAlertController KDI_presentAlertControllerWithError:self.error];
 #endif
