@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KSOTextValidation'
-  s.version          = '0.7.0'
+  s.version          = '1.0.0'
   s.summary          = 'KSOTextValidation is an iOS/tvOS framework for as the user types validation of textual input in UITextField.'
 
 # This description is used to generate tags and improve search results.
@@ -45,5 +45,5 @@ KSOTextValidation is an iOS/tvOS framework for as the user types validation of t
   s.dependency 'Ditko'
   s.dependency 'Stanley'
   
-  s.ios.dependency 'KSOTooltip'
+  s.ios.dependency 'KSOTooltip', '~> 2.0'
 end
