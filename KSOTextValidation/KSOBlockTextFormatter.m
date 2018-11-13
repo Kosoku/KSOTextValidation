@@ -45,7 +45,9 @@
     }
     
     // if the editedText.length would exceed our maximumLength, prevent the edits
-    if ((*editedText).length > self.maximumLength) {
+    if (self.maximumLength > 0 &&
+        (*editedText).length > self.maximumLength) {
+        
         *editedText = text;
         *editedSelectedRange = selectedRange;
     }
