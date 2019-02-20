@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'KSOTextValidation'
-  s.version          = '1.0.1'
+  s.version          = '1.0.2'
   s.summary          = 'KSOTextValidation is an iOS/tvOS framework for as the user types validation of textual input in UITextField.'
 
 # This description is used to generate tags and improve search results.
@@ -23,7 +23,7 @@ KSOTextValidation is an iOS/tvOS framework for as the user types validation of t
 
   s.homepage         = 'https://github.com/Kosoku/KSOTextValidation'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'BSD', :file => 'license.txt' }
+  s.license          = { :type => 'Apache 2.0', :file => 'license.txt' }
   s.author           = { 'William Towe' => 'willbur1984@gmail.com' }
   s.source           = { :git => 'https://github.com/Kosoku/KSOTextValidation.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
