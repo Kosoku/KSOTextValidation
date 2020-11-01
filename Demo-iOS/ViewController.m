@@ -73,7 +73,7 @@
     [self.view addSubview:self.emailTextField];
     
     [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-[view]-|" options:0 metrics:nil views:@{@"view": self.emailTextField}]];
-    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-[view]" options:0 metrics:nil views:@{@"view": self.emailTextField, @"top": self.topLayoutGuide}]];
+    [NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[top]-[view]" options:0 metrics:nil views:@{@"view": self.emailTextField, @"top": self.view.safeAreaLayoutGuide.topAnchor}]];
     
     [self setPhoneNumberTextField:[[CustomTextField alloc] initWithFrame:CGRectZero]];
     [self.phoneNumberTextField setTranslatesAutoresizingMaskIntoConstraints:NO];

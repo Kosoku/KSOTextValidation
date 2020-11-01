@@ -1,35 +1,18 @@
-#
-# Be sure to run `pod lib lint ${POD_NAME}.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
   s.name             = 'KSOTextValidation'
-  s.version          = '1.0.2'
+  s.version          = '2.0.0'
   s.summary          = 'KSOTextValidation is an iOS/tvOS framework for as the user types validation of textual input in UITextField.'
-
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
-
   s.description      = <<-DESC
 KSOTextValidation is an iOS/tvOS framework for as the user types validation of textual input in `UITextField`. It provides a category method on UITextField and a protocol for objects conforming to the necessary text validation methods.
                        DESC
 
   s.homepage         = 'https://github.com/Kosoku/KSOTextValidation'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'Apache 2.0', :file => 'license.txt' }
   s.author           = { 'William Towe' => 'willbur1984@gmail.com' }
   s.source           = { :git => 'https://github.com/Kosoku/KSOTextValidation.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '10.0'
-  s.tvos.deployment_target = '10.0'
+  s.ios.deployment_target = '13.0'
+  s.tvos.deployment_target = '13.0'
 
   s.source_files = 'KSOTextValidation/**/*.{h,m}'
   s.exclude_files = 'KSOTextValidation/KSOTextValidation-Info.h'
@@ -45,5 +28,5 @@ KSOTextValidation is an iOS/tvOS framework for as the user types validation of t
   s.dependency 'Ditko'
   s.dependency 'Stanley'
   
-  s.ios.dependency 'KSOTooltip', '~> 2.0'
+  s.ios.dependency 'KSOTooltip', '~> 3.0'
 end
