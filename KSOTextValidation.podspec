@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'KSOTextValidation'
-  s.version          = '2.0.0'
+  s.version          = '2.0.1'
   s.summary          = 'KSOTextValidation is an iOS/tvOS framework for as the user types validation of textual input in UITextField.'
   s.description      = <<-DESC
 KSOTextValidation is an iOS/tvOS framework for as the user types validation of textual input in `UITextField`. It provides a category method on UITextField and a protocol for objects conforming to the necessary text validation methods.
